@@ -89,6 +89,12 @@ if($exp > 0) echo '<span class="badge">'.$exp.'</span>';
 <i class="fas fa-shield-halved"></i> Permisos RBAC
 </a>
 <?php endif; ?>
+
+<?php if (Auth::hasRole('admin')): ?>
+<a href="<?= APP_URL ?>?route=branches" class="nav-link <?= ($currentRoute ?? '') === 'branches' ? 'active' : '' ?>">
+<i class="fas fa-hospital"></i> Sucursales
+</a>
+<?php endif; ?>
 </div>
 <?php endif; ?>
 </nav>
@@ -111,6 +117,7 @@ if($exp > 0) echo '<span class="badge">'.$exp.'</span>';
 <h1><?= $pageTitle ?? 'Dashboard' ?></h1>
 </div>
 <div class="topbar-actions">
+<span class="branch-pill"><i class="fas fa-location-dot"></i> <?= Auth::user()['branch_name'] ?? 'Sede Principal' ?></span>
 <span style="font-size:13px;color:var(--text-muted)"><i class="fas fa-calendar"></i> <?= date('d M Y') ?></span>
 </div>
 </header>
@@ -131,3 +138,4 @@ if ($flash):
 <script src="<?= APP_URL ?>/public/js/app.js"></script>
 </body>
 </html>
+

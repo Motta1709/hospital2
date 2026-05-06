@@ -69,3 +69,4 @@ class RbacController {
         redirect('?route=rbac');
     }
 }
+

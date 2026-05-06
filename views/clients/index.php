@@ -130,3 +130,4 @@ function searchClients() {
     window.location.href = '<?= APP_URL ?>?route=clients&search=' + encodeURIComponent(search);
 }
 </script>
+

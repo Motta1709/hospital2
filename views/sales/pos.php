@@ -173,3 +173,4 @@ document.getElementById('paymentMethod').addEventListener('change',function(){
 document.getElementById('cashSection').style.display = this.value==='cash'?'block':'none';
 });
 </script>
+

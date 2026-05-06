@@ -108,3 +108,4 @@ class UserController {
         redirect('?route=users');
     }
 }
+

@@ -109,3 +109,4 @@
 function showNewPermModal() { document.getElementById('newPermModal').classList.remove('d-none'); }
 function hideNewPermModal() { document.getElementById('newPermModal').classList.add('d-none'); }
 </script>
+

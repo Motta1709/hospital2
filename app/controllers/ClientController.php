@@ -121,3 +121,4 @@ class ClientController {
         jsonResponse($this->clientModel->search($q));
     }
 }
+

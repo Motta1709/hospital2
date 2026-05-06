@@ -77,50 +77,39 @@
                             <?= formatCurrency($p['sale_price']) ?>
                         </td>
                         <td class="text-center">
-                            <?php if ($p['stock'] <= 0): ?>
-                                <span class="badge badge-danger px-3">Agotado</span>
-                            <?php elseif ($p['stock'] <= $p['min_stock']): ?>
-                                <span class="badge badge-warning px-3" title="Stock por debajo del mínimo (<?= $p['min_stock'] ?>)">
+                            <?php 
+                                $productModel = new Product();
+                                $status = $productModel->getTrafficLightStatus($p); 
+                            ?>
+                            <div class="d-flex flex-column align-items-center gap-1">
+                                <span class="badge badge-<?= $status['stock']['color'] ?> px-3 w-100">
                                     <?= $p['stock'] ?> uds
                                 </span>
-                            <?php else: ?>
-                                <span class="badge badge-success px-3">
-                                    <?= $p['stock'] ?> uds
-                                </span>
-                            <?php endif; ?>
+                                <small class="text-<?= $status['stock']['color'] ?>-dark fw-bold" style="font-size: 10px;">
+                                    <?= strtoupper($status['stock']['label']) ?>
+                                </small>
+                            </div>
                         </td>
                         <td class="text-center">
-                            <?php
-                            $days = $p['days_to_expire'];
-                            $cls = 'expiry-ok';
-                            $label = $days . 'd';
-
-                            if ($days < 0) {
-                                $cls = 'expiry-expired';
-                                $label = 'Vencido';
-                            } elseif ($days == 0) {
-                                $cls = 'expiry-7';
-                                $label = 'Hoy';
-                            } elseif ($days <= 7) {
-                                $cls = 'expiry-7';
-                            } elseif ($days <= 15) {
-                                $cls = 'expiry-15';
-                            } elseif ($days <= 30) {
-                                $cls = 'expiry-30';
-                            }
-                            ?>
-                            <span class="expiry-badge <?= $cls ?> d-block mb-1">
-                                <?= $label ?>
-                            </span>
-                            <small class="text-muted d-block" style="font-size: 10px;">
-                                <?= date('d/m/Y', strtotime($p['expiration_date'])) ?>
-                            </small>
+                            <div class="d-flex flex-column align-items-center gap-1">
+                                <span class="badge badge-<?= $status['expiration']['color'] ?> px-3 w-100">
+                                    <?= $p['days_to_expire'] ?>d
+                                </span>
+                                <small class="text-muted" style="font-size: 10px;">
+                                    <?= date('d/m/Y', strtotime($p['expiration_date'])) ?>
+                                </small>
+                            </div>
                         </td>
                         <td class="text-right">
                             <div class="btn-group gap-2">
+                                <a href="<?= APP_URL ?>?route=inventory&action=kardex&id=<?= $p['id'] ?>" 
+                                   class="btn btn-sm btn-outline-info" 
+                                   title="Ver Kardex">
+                                    <i class="fas fa-history"></i>
+                                </a>
                                 <a href="<?= APP_URL ?>?route=inventory&action=edit&id=<?= $p['id'] ?>" 
                                    class="btn btn-sm btn-outline-secondary" 
-                                   title="Editar Producto">
+                                   title="Editar">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <a href="<?= APP_URL ?>?route=inventory&action=delete&id=<?= $p['id'] ?>" 
@@ -174,3 +163,4 @@ function searchInventory() {
     window.location.href = '<?= APP_URL ?>?route=inventory&search=' + encodeURIComponent(search) + '&category=' + category;
 }
 </script>
+

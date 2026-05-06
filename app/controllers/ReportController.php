@@ -47,3 +47,4 @@ class ReportController {
     public function clientsReport() { $this->index(); }
     public function export() { $this->index(); }
 }
+

@@ -16,6 +16,8 @@ class Auth {
             'full_name' => $_SESSION['full_name'],
             'role' => $_SESSION['role'],
             'role_id' => $_SESSION['role_id'],
+            'branch_id' => $_SESSION['branch_id'] ?? 1,
+            'branch_name' => $_SESSION['branch_name'] ?? 'Sede Principal',
             'email' => $_SESSION['email'] ?? ''
         ];
     }
@@ -27,6 +29,8 @@ class Auth {
         $_SESSION['role'] = $user['role_name'] ?? $user['role'];
         $_SESSION['role_id'] = $user['role_id'];
         $_SESSION['email'] = $user['email'];
+        $_SESSION['branch_id'] = $user['branch_id'] ?? 1;
+        $_SESSION['branch_name'] = $user['branch_name'] ?? 'Sede Principal';
 
         // Cargar permisos en la sesión
         self::loadPermissions($user['role_id']);

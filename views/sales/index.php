@@ -39,3 +39,4 @@ if(f) url+='&date_from='+f; if(t) url+='&date_to='+t;
 window.location.href=url;
 }
 </script>
+

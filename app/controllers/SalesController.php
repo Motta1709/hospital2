@@ -115,3 +115,4 @@ class SalesController {
         jsonResponse($productModel->search($q));
     }
 }
+

@@ -52,3 +52,4 @@ class LoyaltyController {
         redirect('?route=loyalty');
     }
 }
+

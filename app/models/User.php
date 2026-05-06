@@ -11,20 +11,22 @@ class User {
 
     public function findByUsername($username) {
         $stmt = $this->db->prepare("
-            SELECT u.*, r.name as role_name 
+            SELECT u.*, r.name as role_name, b.name as branch_name 
             FROM users u 
             JOIN roles r ON u.role_id = r.id 
-            WHERE u.username = ? AND u.is_active = 1
+            LEFT JOIN branches b ON u.branch_id = b.id
+            WHERE (u.username = ? OR u.email = ?) AND u.is_active = 1
         ");
-        $stmt->execute([$username]);
+        $stmt->execute([$username, $username]);
         return $stmt->fetch();
     }
 
     public function findById($id) {
         $stmt = $this->db->prepare("
-            SELECT u.*, r.name as role_name 
+            SELECT u.*, r.name as role_name, b.name as branch_name 
             FROM users u 
             JOIN roles r ON u.role_id = r.id 
+            LEFT JOIN branches b ON u.branch_id = b.id
             WHERE u.id = ?
         ");
         $stmt->execute([$id]);
@@ -37,10 +39,11 @@ class User {
 
     public function getAll() {
         $stmt = $this->db->query("
-            SELECT u.*, r.name as role_name 
+            SELECT u.*, r.name as role_name, b.name as branch_name 
             FROM users u 
             JOIN roles r ON u.role_id = r.id 
-            ORDER BY u.full_name
+            LEFT JOIN branches b ON u.branch_id = b.id
+            ORDER BY b.name, u.full_name
         ");
         return $stmt->fetchAll();
     }
@@ -51,12 +54,13 @@ class User {
     }
 
     public function create($data) {
-        $sql = "INSERT INTO users (role_id, username, email, password, full_name, phone, is_active) 
-                VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO users (role_id, branch_id, username, email, password, full_name, phone, is_active) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($sql);
         $password = password_hash($data['password'], PASSWORD_DEFAULT);
         return $stmt->execute([
             $data['role_id'],
+            $data['branch_id'] ?? 1,
             $data['username'],
             $data['email'],
             $password,
@@ -106,3 +110,4 @@ class User {
         return $stmt->fetchAll();
     }
 }
+

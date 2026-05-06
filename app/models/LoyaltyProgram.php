@@ -66,3 +66,4 @@ class LoyaltyProgram {
         return $stmt->fetch()['total'];
     }
 }
+

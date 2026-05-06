@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS roles (
     name VARCHAR(50) NOT NULL UNIQUE,
     description VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- TABLA: users
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (role_id) REFERENCES roles(id)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- TABLA: categories (categorías de productos)
@@ -46,11 +46,36 @@ CREATE TABLE IF NOT EXISTS categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE,
     description TEXT,
+    characteristics JSON DEFAULT NULL,
     icon VARCHAR(50) DEFAULT 'fa-pills',
     color VARCHAR(7) DEFAULT '#0D9488',
     is_active TINYINT(1) DEFAULT 1,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- =====================================================
+-- TABLA: classifications
+-- =====================================================
+CREATE TABLE IF NOT EXISTS classifications (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    category_id INT NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- =====================================================
+-- TABLA: subclassifications
+-- =====================================================
+CREATE TABLE IF NOT EXISTS subclassifications (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    classification_id INT NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (classification_id) REFERENCES classifications(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- TABLA: suppliers (proveedores)
@@ -67,7 +92,7 @@ CREATE TABLE IF NOT EXISTS suppliers (
     is_active TINYINT(1) DEFAULT 1,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- TABLA: products (productos farmacéuticos)
@@ -75,16 +100,20 @@ CREATE TABLE IF NOT EXISTS suppliers (
 CREATE TABLE IF NOT EXISTS products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     category_id INT NOT NULL,
-    supplier_id INT DEFAULT NULL,
+    classification_id INT DEFAULT NULL,
+    subclassification_id INT DEFAULT NULL,
     barcode VARCHAR(50) UNIQUE,
     name VARCHAR(200) NOT NULL,
     generic_name VARCHAR(200),
     description TEXT,
+    usage_instructions TEXT,
+    recommendations TEXT,
     presentation VARCHAR(100),
     concentration VARCHAR(100),
+    unit_of_measure VARCHAR(50),
+    quantity_per_unit DECIMAL(10,2),
     lot_number VARCHAR(50),
     expiration_date DATE NOT NULL,
-    purchase_price DECIMAL(12,2) NOT NULL DEFAULT 0,
     sale_price DECIMAL(12,2) NOT NULL DEFAULT 0,
     stock INT NOT NULL DEFAULT 0,
     min_stock INT DEFAULT 10,
@@ -95,12 +124,27 @@ CREATE TABLE IF NOT EXISTS products (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (category_id) REFERENCES categories(id),
-    FOREIGN KEY (supplier_id) REFERENCES suppliers(id) ON DELETE SET NULL,
+    FOREIGN KEY (classification_id) REFERENCES classifications(id) ON DELETE SET NULL,
+    FOREIGN KEY (subclassification_id) REFERENCES subclassifications(id) ON DELETE SET NULL,
     INDEX idx_barcode (barcode),
     INDEX idx_expiration (expiration_date),
     INDEX idx_stock (stock),
     INDEX idx_name (name)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- =====================================================
+-- TABLA: product_suppliers (Relación Muchos a Muchos)
+-- =====================================================
+CREATE TABLE IF NOT EXISTS product_suppliers (
+    product_id INT NOT NULL,
+    supplier_id INT NOT NULL,
+    purchase_price DECIMAL(12,2) NOT NULL DEFAULT 0,
+    is_primary TINYINT(1) DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (product_id, supplier_id),
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
+    FOREIGN KEY (supplier_id) REFERENCES suppliers(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- TABLA: clients (clientes / pacientes)
@@ -128,7 +172,7 @@ CREATE TABLE IF NOT EXISTS clients (
     INDEX idx_document (document_number),
     INDEX idx_name (first_name, last_name),
     INDEX idx_phone (phone)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- TABLA: sales (encabezado de ventas)
@@ -155,7 +199,7 @@ CREATE TABLE IF NOT EXISTS sales (
     INDEX idx_invoice (invoice_number),
     INDEX idx_date (created_at),
     INDEX idx_client (client_id)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- TABLA: sale_items (detalle de ventas)
@@ -173,7 +217,7 @@ CREATE TABLE IF NOT EXISTS sale_items (
     FOREIGN KEY (product_id) REFERENCES products(id),
     INDEX idx_sale (sale_id),
     INDEX idx_product (product_id)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- TABLA: loyalty_transactions (movimientos de puntos)
@@ -191,7 +235,7 @@ CREATE TABLE IF NOT EXISTS loyalty_transactions (
     FOREIGN KEY (sale_id) REFERENCES sales(id) ON DELETE SET NULL,
     INDEX idx_client (client_id),
     INDEX idx_type (type)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- TABLA: promotions (promociones y campañas)
@@ -212,7 +256,7 @@ CREATE TABLE IF NOT EXISTS promotions (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL,
     FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE SET NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- TABLA: inventory_alerts (alertas de inventario)
@@ -228,7 +272,7 @@ CREATE TABLE IF NOT EXISTS inventory_alerts (
     FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
     INDEX idx_type (alert_type),
     INDEX idx_read (is_read)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- TABLA: audit_log (log de auditoría)
@@ -247,7 +291,7 @@ CREATE TABLE IF NOT EXISTS audit_log (
     INDEX idx_action (action),
     INDEX idx_entity (entity_type, entity_id),
     INDEX idx_date (created_at)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
 -- DATOS INICIALES (SEED)

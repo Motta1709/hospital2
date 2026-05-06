@@ -1,0 +1,2570 @@
+TEST LOG - tests/jwt-auth.yaml
+FECHA: 6/5/2026, 11:10:06 a. m.
+------------------------------------------
+Test run id: t5zcn_47j4r6p7cfmx77n7phn56gmkenef6_63za
+Phase started: Prueba de Stress Auth - 5 Etapas Consecutivas (index: 0, duration: 60s) 11:10:12(-0500)
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+--------------------------------------
+Metrics for period to: 11:10:20(-0500) (width: 6.339s)
+--------------------------------------
+
+errors.Failed capture or match: ................................................ 39
+http.codes.200: ................................................................ 79
+http.codes.302: ................................................................ 39
+http.downloaded_bytes: ......................................................... 1321776
+http.request_rate: ............................................................. 18/sec
+http.requests: ................................................................. 119
+http.response_time:
+  min: ......................................................................... 1
+  max: ......................................................................... 39
+  mean: ........................................................................ 12.5
+  median: ...................................................................... 7.9
+  p95: ......................................................................... 30.3
+  p99: ......................................................................... 32.1
+http.response_time.2xx:
+  min: ......................................................................... 1
+  max: ......................................................................... 32
+  mean: ........................................................................ 10.3
+  median: ...................................................................... 6
+  p95: ......................................................................... 29.1
+  p99: ......................................................................... 30.9
+http.response_time.3xx:
+  min: ......................................................................... 5
+  max: ......................................................................... 39
+  mean: ........................................................................ 16.9
+  median: ...................................................................... 18
+  p95: ......................................................................... 30.3
+  p99: ......................................................................... 34.8
+http.responses: ................................................................ 118
+plugins.expect.ok: ............................................................. 40
+plugins.expect.ok.statusCode: .................................................. 40
+vusers.created: ................................................................ 40
+vusers.created_by_name.Secuencia Completa (Auth Focus): ........................ 40
+vusers.failed: ................................................................. 39
+
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+--------------------------------------
+Metrics for period to: 11:10:30(-0500) (width: 9.957s)
+--------------------------------------
+
+errors.Failed capture or match: ................................................ 77
+http.codes.200: ................................................................ 153
+http.codes.302: ................................................................ 77
+http.downloaded_bytes: ......................................................... 2516084
+http.request_rate: ............................................................. 31/sec
+http.requests: ................................................................. 229
+http.response_time:
+  min: ......................................................................... 1
+  max: ......................................................................... 225
+  mean: ........................................................................ 13.5
+  median: ...................................................................... 6
+  p95: ......................................................................... 29.1
+  p99: ......................................................................... 32.8
+http.response_time.2xx:
+  min: ......................................................................... 1
+  max: ......................................................................... 33
+  mean: ........................................................................ 10.7
+  median: ...................................................................... 5
+  p95: ......................................................................... 29.1
+  p99: ......................................................................... 30.9
+http.response_time.3xx:
+  min: ......................................................................... 4
+  max: ......................................................................... 225
+  mean: ........................................................................ 18.9
+  median: ...................................................................... 18
+  p95: ......................................................................... 30.3
+  p99: ......................................................................... 58.6
+http.responses: ................................................................ 230
+plugins.expect.ok: ............................................................. 76
+plugins.expect.ok.statusCode: .................................................. 76
+vusers.created: ................................................................ 76
+vusers.created_by_name.Secuencia Completa (Auth Focus): ........................ 76
+vusers.failed: ................................................................. 77
+
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+--------------------------------------
+Metrics for period to: 11:10:40(-0500) (width: 9.971s)
+--------------------------------------
+
+errors.Failed capture or match: ................................................ 102
+http.codes.200: ................................................................ 205
+http.codes.302: ................................................................ 102
+http.downloaded_bytes: ......................................................... 3406131
+http.request_rate: ............................................................. 35/sec
+http.requests: ................................................................. 308
+http.response_time:
+  min: ......................................................................... 1
+  max: ......................................................................... 47
+  mean: ........................................................................ 11.5
+  median: ...................................................................... 6
+  p95: ......................................................................... 29.1
+  p99: ......................................................................... 32.8
+http.response_time.2xx:
+  min: ......................................................................... 1
+  max: ......................................................................... 47
+  mean: ........................................................................ 9.3
+  median: ...................................................................... 5
+  p95: ......................................................................... 29.1
+  p99: ......................................................................... 30.9
+http.response_time.3xx:
+  min: ......................................................................... 4
+  max: ......................................................................... 38
+  mean: ........................................................................ 16
+  median: ...................................................................... 19.1
+  p95: ......................................................................... 26.8
+  p99: ......................................................................... 30.3
+http.responses: ................................................................ 307
+plugins.expect.ok: ............................................................. 103
+plugins.expect.ok.statusCode: .................................................. 103
+vusers.created: ................................................................ 103
+vusers.created_by_name.Secuencia Completa (Auth Focus): ........................ 103
+vusers.failed: ................................................................. 102
+
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+--------------------------------------
+Metrics for period to: 11:10:50(-0500) (width: 9.945s)
+--------------------------------------
+
+errors.Failed capture or match: ................................................ 129
+http.codes.200: ................................................................ 257
+http.codes.302: ................................................................ 129
+http.downloaded_bytes: ......................................................... 4236504
+http.request_rate: ............................................................. 40/sec
+http.requests: ................................................................. 385
+http.response_time:
+  min: ......................................................................... 1
+  max: ......................................................................... 191
+  mean: ........................................................................ 11.6
+  median: ...................................................................... 6
+  p95: ......................................................................... 27.9
+  p99: ......................................................................... 34.1
+http.response_time.2xx:
+  min: ......................................................................... 1
+  max: ......................................................................... 191
+  mean: ........................................................................ 9.7
+  median: ...................................................................... 5
+  p95: ......................................................................... 27.9
+  p99: ......................................................................... 34.1
+http.response_time.3xx:
+  min: ......................................................................... 3
+  max: ......................................................................... 39
+  mean: ........................................................................ 15.3
+  median: ...................................................................... 18
+  p95: ......................................................................... 27.9
+  p99: ......................................................................... 30.3
+http.responses: ................................................................ 386
+plugins.expect.ok: ............................................................. 128
+plugins.expect.ok.statusCode: .................................................. 128
+vusers.created: ................................................................ 128
+vusers.created_by_name.Secuencia Completa (Auth Focus): ........................ 128
+vusers.failed: ................................................................. 129
+
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+--------------------------------------
+Metrics for period to: 11:11:00(-0500) (width: 9.923s)
+--------------------------------------
+
+errors.Failed capture or match: ................................................ 155
+http.codes.200: ................................................................ 310
+http.codes.302: ................................................................ 155
+http.downloaded_bytes: ......................................................... 5128175
+http.request_rate: ............................................................. 47/sec
+http.requests: ................................................................. 465
+http.response_time:
+  min: ......................................................................... 1
+  max: ......................................................................... 43
+  mean: ........................................................................ 10.9
+  median: ...................................................................... 6
+  p95: ......................................................................... 27.9
+  p99: ......................................................................... 32.8
+http.response_time.2xx:
+  min: ......................................................................... 1
+  max: ......................................................................... 43
+  mean: ........................................................................ 9
+  median: ...................................................................... 5
+  p95: ......................................................................... 25.8
+  p99: ......................................................................... 34.8
+http.response_time.3xx:
+  min: ......................................................................... 3
+  max: ......................................................................... 32
+  mean: ........................................................................ 14.8
+  median: ...................................................................... 16
+  p95: ......................................................................... 29.1
+  p99: ......................................................................... 30.9
+http.responses: ................................................................ 465
+plugins.expect.ok: ............................................................. 155
+plugins.expect.ok.statusCode: .................................................. 155
+vusers.created: ................................................................ 155
+vusers.created_by_name.Secuencia Completa (Auth Focus): ........................ 155
+vusers.failed: ................................................................. 155
+
+
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+Phase completed: Prueba de Stress Auth - 5 Etapas Consecutivas (index: 0, duration: 60s) 11:11:12(-0500)
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+  ok statusCode 200 
+* GET /hospital/?route=home 
+
+  ok statusCode 200 
+--------------------------------------
+Metrics for period to: 11:11:10(-0500) (width: 9.847s)
+--------------------------------------
+
+errors.Failed capture or match: ................................................ 179
+http.codes.200: ................................................................ 358
+http.codes.302: ................................................................ 179
+http.downloaded_bytes: ......................................................... 5922215
+http.request_rate: ............................................................. 54/sec
+http.requests: ................................................................. 537
+http.response_time:
+  min: ......................................................................... 1
+  max: ......................................................................... 231
+  mean: ........................................................................ 11.6
+  median: ...................................................................... 7
+  p95: ......................................................................... 27.9
+  p99: ......................................................................... 30.9
+http.response_time.2xx:
+  min: ......................................................................... 1
+  max: ......................................................................... 231
+  mean: ........................................................................ 9.5
+  median: ...................................................................... 5
+  p95: ......................................................................... 26.8
+  p99: ......................................................................... 30.9
+http.response_time.3xx:
+  min: ......................................................................... 3
+  max: ......................................................................... 33
+  mean: ........................................................................ 15.7
+  median: ...................................................................... 18
+  p95: ......................................................................... 29.1
+  p99: ......................................................................... 29.1
+http.responses: ................................................................ 537
+plugins.expect.ok: ............................................................. 179
+plugins.expect.ok.statusCode: .................................................. 179
+vusers.created: ................................................................ 179
+vusers.created_by_name.Secuencia Completa (Auth Focus): ........................ 179
+vusers.failed: ................................................................. 179
+
+
+--------------------------------------
+Metrics for period to: 11:11:20(-0500) (width: 3.568s)
+--------------------------------------
+
+errors.Failed capture or match: ................................................ 69
+http.codes.200: ................................................................ 138
+http.codes.302: ................................................................ 69
+http.downloaded_bytes: ......................................................... 2282865
+http.request_rate: ............................................................. 70/sec
+http.requests: ................................................................. 207
+http.response_time:
+  min: ......................................................................... 1
+  max: ......................................................................... 40
+  mean: ........................................................................ 10.5
+  median: ...................................................................... 6
+  p95: ......................................................................... 27.9
+  p99: ......................................................................... 30.9
+http.response_time.2xx:
+  min: ......................................................................... 1
+  max: ......................................................................... 40
+  mean: ........................................................................ 8.7
+  median: ...................................................................... 5
+  p95: ......................................................................... 29.1
+  p99: ......................................................................... 30.9
+http.response_time.3xx:
+  min: ......................................................................... 4
+  max: ......................................................................... 33
+  mean: ........................................................................ 14
+  median: ...................................................................... 13.9
+  p95: ......................................................................... 26.8
+  p99: ......................................................................... 27.9
+http.responses: ................................................................ 207
+plugins.expect.ok: ............................................................. 69
+plugins.expect.ok.statusCode: .................................................. 69
+vusers.created: ................................................................ 69
+vusers.created_by_name.Secuencia Completa (Auth Focus): ........................ 69
+vusers.failed: ................................................................. 69
+
+
+All VUs finished. Total time: 1 minute, 2 seconds
+
+--------------------------------
+Summary report @ 11:11:15(-0500)
+--------------------------------
+
+errors.Failed capture or match: ................................................ 750
+http.codes.200: ................................................................ 1500
+http.codes.302: ................................................................ 750
+http.downloaded_bytes: ......................................................... 24813750
+http.request_rate: ............................................................. 45/sec
+http.requests: ................................................................. 2250
+http.response_time:
+  min: ......................................................................... 1
+  max: ......................................................................... 231
+  mean: ........................................................................ 11.6
+  median: ...................................................................... 6
+  p95: ......................................................................... 27.9
+  p99: ......................................................................... 34.1
+http.response_time.2xx:
+  min: ......................................................................... 1
+  max: ......................................................................... 231
+  mean: ........................................................................ 9.5
+  median: ...................................................................... 5
+  p95: ......................................................................... 27.9
+  p99: ......................................................................... 34.1
+http.response_time.3xx:
+  min: ......................................................................... 3
+  max: ......................................................................... 225
+  mean: ........................................................................ 15.7
+  median: ...................................................................... 18
+  p95: ......................................................................... 29.1
+  p99: ......................................................................... 32.8
+http.responses: ................................................................ 2250
+plugins.expect.ok: ............................................................. 750
+plugins.expect.ok.statusCode: .................................................. 750
+vusers.created: ................................................................ 750
+vusers.created_by_name.Secuencia Completa (Auth Focus): ........................ 750
+vusers.failed: ................................................................. 750

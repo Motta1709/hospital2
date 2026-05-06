@@ -130,4 +130,27 @@ class InventoryController {
         $content = APP_ROOT . '/views/inventory/index.php';
         include APP_ROOT . '/views/layouts/main.php';
     }
+
+    public function kardex() {
+        if (!Auth::hasPermission('view_inventory')) {
+            setFlash('error', 'No tienes permiso para ver el kardex.');
+            redirect('?route=dashboard');
+        }
+
+        $id = intval($_GET['id'] ?? 0);
+        $kardexModel = new Kardex();
+        $movements = $kardexModel->getMovementHistory($id ?: null);
+        $product = $id ? $this->productModel->findById($id) : null;
+
+        $data = [
+            'movements' => $movements,
+            'product' => $product
+        ];
+
+        $pageTitle = 'Kardex de Inventario';
+        $currentRoute = 'inventory';
+        $content = APP_ROOT . '/views/inventory/kardex.php';
+        include APP_ROOT . '/views/layouts/main.php';
+    }
 }
+

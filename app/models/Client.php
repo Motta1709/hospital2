@@ -165,3 +165,4 @@ class Client {
         return $stmt->fetchAll();
     }
 }
+

@@ -1,0 +1,24 @@
+config:
+  target: "ws://localhost/hospital"
+  phases:
+    - duration: 30
+      arrivalRate: 5
+    - duration: 60
+      arrivalRate: 20
+  engines:
+    ws: {}
+
+scenarios:
+  - name: "WebSocket Test (Template)"
+    engine: "ws"
+    flow:
+      - send:
+          payload:
+            type: "auth"
+            token: "dummy-token"
+      - think: 1
+      - wait: 2000
+      - send:
+          payload:
+            type: "ping"
+      - wait: 5000

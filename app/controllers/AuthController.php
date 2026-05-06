@@ -32,3 +32,4 @@ class AuthController {
         redirect('?route=login');
     }
 }
+

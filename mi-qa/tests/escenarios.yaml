@@ -1,0 +1,96 @@
+config:
+  target: "http://localhost/hospital"
+  processor: "../scripts/helpers.js"
+  phases:
+    - name: "Fase Única: Jornada Completa"
+      duration: 60
+      arrivalRate: 5
+      rampTo: 15
+  
+  payload:
+    - path: "../data/usuarios.csv"
+      fields:
+        - "username"
+        - "password"
+      order: "random"
+    - path: "../data/productos.csv"
+      fields:
+        - "nombre_medicamento"
+      order: "random"
+    - path: "../data/clientes.csv"
+      fields:
+        - "cliente_id"
+      order: "random"
+
+  plugins:
+    expect: {}
+
+scenarios:
+  - name: "Jornada Completa PharmaCRM (5 Etapas Consecutivas)"
+    flow:
+      # ETAPA 1: Navegación de Visitante (Pública)
+      - get:
+          url: "/?route=home"
+          expect:
+            - statusCode: 200
+      - think: 1
+      - get:
+          url: "/?route=login"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      # ETAPA 2: Autenticación y Búsqueda de Productos
+      - post:
+          url: "/?route=auth&action=login"
+          form:
+            username: "{{ username }}"
+            password: "{{ password }}"
+          capture:
+            - header: "set-cookie"
+              as: "sessionCookie"
+          expect:
+            - statusCode: 302
+      - think: 1
+      - get:
+          url: "/?route=api&entity=products&q={{ nombre_medicamento }}"
+          headers:
+            Cookie: "{{ sessionCookie }}"
+          expect:
+            - statusCode: 200
+            - contentType: "json"
+      - think: 2
+
+      # ETAPA 3: Gestión y Perfil de Clientes
+      - get:
+          url: "/?route=clients&action=profile&id={{ cliente_id }}"
+          headers:
+            Cookie: "{{ sessionCookie }}"
+          expect:
+            - statusCode: 200
+      - think: 2
+
+      # ETAPA 4: Auditoría de Reportes (Fechas Variables)
+      - function: "generarFechas"
+      - get:
+          url: "/?route=reports&date_from={{ fecha_ayer }}&date_to={{ fecha_hoy }}"
+          headers:
+            Cookie: "{{ sessionCookie }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+      # ETAPA 5: Control de Inventario y Alertas
+      - get:
+          url: "/?route=inventory&action=alerts"
+          headers:
+            Cookie: "{{ sessionCookie }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+      - get:
+          url: "/?route=inventory&action=kardex"
+          headers:
+            Cookie: "{{ sessionCookie }}"
+          expect:
+            - statusCode: 200

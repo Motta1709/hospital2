@@ -36,6 +36,10 @@ define('ITEMS_PER_PAGE', 15);
 define('CURRENCY_SYMBOL', '$');
 define('CURRENCY_CODE', 'COP');
 
+// Configuración de ePayco (Sandbox)
+define('EPAYCO_PUBLIC_KEY', 'b36e8484e5695026c07659556d1f9746');
+define('EPAYCO_TESTING', true);
+
 /**
  * Helper para formatear moneda colombiana
  */

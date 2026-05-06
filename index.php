@@ -1,201 +1,134 @@
 <?php
 /**
- * PharmaCRM - Entry Point & Router
- * CRM Farmacéutico para Farmacias Independientes en Colombia
+ * PharmaCRM - Punto de Entrada & Enrutador Principal
+ * Revertido a Endpoints Tradicionales (?route=)
  */
 
-// Cargar configuración
+// 1. Inicialización y Carga de Núcleo
 require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/config/app.php';
 
-// Cargar helpers
+// 2. Carga de Helpers Esenciales
 require_once __DIR__ . '/app/helpers/Auth.php';
 require_once __DIR__ . '/app/helpers/Validator.php';
 
-// Cargar modelos
-require_once __DIR__ . '/app/models/User.php';
-require_once __DIR__ . '/app/models/Product.php';
-require_once __DIR__ . '/app/models/Client.php';
-require_once __DIR__ . '/app/models/Sale.php';
-require_once __DIR__ . '/app/models/LoyaltyProgram.php';
-require_once __DIR__ . '/app/models/Report.php';
-require_once __DIR__ . '/app/models/Permission.php';
-require_once __DIR__ . '/app/models/Role.php';
+// 3. Autocarga Automática de Modelos y Controladores
+spl_autoload_register(function ($class) {
+    $paths = [
+        __DIR__ . '/app/models/',
+        __DIR__ . '/app/controllers/',
+    ];
+    foreach ($paths as $path) {
+        $file = $path . $class . '.php';
+        if (file_exists($file)) {
+            require_once $file;
+            return;
+        }
+    }
+});
 
-// Cargar controladores
-require_once __DIR__ . '/app/controllers/AuthController.php';
-require_once __DIR__ . '/app/controllers/DashboardController.php';
-require_once __DIR__ . '/app/controllers/InventoryController.php';
-require_once __DIR__ . '/app/controllers/SalesController.php';
-require_once __DIR__ . '/app/controllers/ClientController.php';
-require_once __DIR__ . '/app/controllers/LoyaltyController.php';
-require_once __DIR__ . '/app/controllers/ReportController.php';
-require_once __DIR__ . '/app/controllers/UserController.php';
-require_once __DIR__ . '/app/controllers/RbacController.php';
-
-// Obtener la ruta
-$route = $_GET['route'] ?? 'dashboard';
+// 4. Lógica de Enrutamiento Tradicional
+$route = $_GET['route'] ?? 'home';
 $action = $_GET['action'] ?? 'index';
 
-// Rutas públicas (no requieren autenticación)
-$publicRoutes = ['login', 'auth'];
+// Rutas públicas
+$publicRoutes = ['home', 'login', 'auth', 'cart', 'checkout'];
 
-// Verificar autenticación
+// 5. Verificación de Seguridad
 if (!in_array($route, $publicRoutes) && !Auth::check()) {
-    redirect('?route=login');
+    header('Location: ?route=login');
+    exit;
 }
 
-// Router
+// 6. Router (Switch Tradicional)
 try {
     switch ($route) {
-        // === AUTH ===
+        case 'home':
+            (new HomeController())->index();
+            break;
+
         case 'login':
-            if (Auth::check()) {
-                redirect('?route=dashboard');
-            }
-            $controller = new AuthController();
-            $controller->login();
+            if (Auth::check()) { header('Location: ?route=dashboard'); exit; }
+            (new AuthController())->login();
             break;
 
         case 'auth':
             $controller = new AuthController();
-            if ($action === 'login') {
-                $controller->authenticate();
-            } elseif ($action === 'logout') {
-                $controller->logout();
-            }
+            if ($action === 'login') $controller->authenticate();
+            elseif ($action === 'logout') $controller->logout();
             break;
 
-        // === DASHBOARD ===
         case 'dashboard':
-            $controller = new DashboardController();
-            $controller->index();
+            (new DashboardController())->index();
             break;
 
-        // === INVENTARIO ===
         case 'inventory':
             $controller = new InventoryController();
-            switch ($action) {
-                case 'index':    $controller->index(); break;
-                case 'create':   $controller->create(); break;
-                case 'store':    $controller->store(); break;
-                case 'edit':     $controller->edit(); break;
-                case 'update':   $controller->update(); break;
-                case 'delete':   $controller->delete(); break;
-                case 'search':   $controller->search(); break;
-                case 'alerts':   $controller->alerts(); break;
-                default:         $controller->index(); break;
-            }
+            if (method_exists($controller, $action)) $controller->$action();
+            else $controller->index();
             break;
 
-        // === VENTAS / POS ===
         case 'sales':
             $controller = new SalesController();
-            switch ($action) {
-                case 'index':      $controller->index(); break;
-                case 'pos':        $controller->pos(); break;
-                case 'process':    $controller->process(); break;
-                case 'detail':     $controller->detail(); break;
-                case 'cancel':     $controller->cancel(); break;
-                case 'search-product': $controller->searchProduct(); break;
-                default:           $controller->index(); break;
-            }
+            if (method_exists($controller, $action)) $controller->$action();
+            else $controller->index();
             break;
 
-        // === CLIENTES ===
         case 'clients':
             $controller = new ClientController();
-            switch ($action) {
-                case 'index':    $controller->index(); break;
-                case 'create':   $controller->create(); break;
-                case 'store':    $controller->store(); break;
-                case 'profile':  $controller->profile(); break;
-                case 'edit':     $controller->edit(); break;
-                case 'update':   $controller->update(); break;
-                case 'delete':   $controller->delete(); break;
-                case 'search':   $controller->search(); break;
-                default:         $controller->index(); break;
-            }
+            if (method_exists($controller, $action)) $controller->$action();
+            else $controller->index();
             break;
 
-        // === FIDELIZACIÓN ===
         case 'loyalty':
             $controller = new LoyaltyController();
-            switch ($action) {
-                case 'index':      $controller->index(); break;
-                case 'redeem':     $controller->redeem(); break;
-                case 'add-bonus':  $controller->addBonus(); break;
-                default:           $controller->index(); break;
-            }
+            if (method_exists($controller, $action)) $controller->$action();
+            else $controller->index();
             break;
 
-        // === REPORTES ===
         case 'reports':
             $controller = new ReportController();
-            switch ($action) {
-                case 'index':       $controller->index(); break;
-                case 'sales':       $controller->salesReport(); break;
-                case 'inventory':   $controller->inventoryReport(); break;
-                case 'clients':     $controller->clientsReport(); break;
-                case 'export':      $controller->export(); break;
-                default:            $controller->index(); break;
-            }
+            if (method_exists($controller, $action)) $controller->$action();
+            else $controller->index();
             break;
 
-        // === USUARIOS ===
         case 'users':
             $controller = new UserController();
-            switch ($action) {
-                case 'index':    $controller->index(); break;
-                case 'create':   $controller->create(); break;
-                case 'store':    $controller->store(); break;
-                case 'edit':     $controller->edit(); break;
-                case 'update':   $controller->update(); break;
-                case 'delete':   $controller->delete(); break;
-                default:         $controller->index(); break;
-            }
+            if (method_exists($controller, $action)) $controller->$action();
+            else $controller->index();
             break;
 
-        // === SEGURIDAD / RBAC ===
+        case 'cart':
+            $controller = new CartController();
+            if (method_exists($controller, $action)) $controller->$action();
+            else $controller->index();
+            break;
+
+        case 'checkout':
+            $controller = new CheckoutController();
+            if (method_exists($controller, $action)) $controller->$action();
+            else $controller->index();
+            break;
+
+        case 'branches':
+            $controller = new BranchController();
+            if (method_exists($controller, $action)) $controller->$action();
+            else $controller->index();
+            break;
+
         case 'rbac':
             $controller = new RbacController();
-            switch ($action) {
-                case 'index':       $controller->index(); break;
-                case 'edit-role':   $controller->editRole(); break;
-                case 'update-role': $controller->updateRolePermissions(); break;
-                case 'store-perm':  $controller->storePermission(); break;
-                default:            $controller->index(); break;
-            }
+            if (method_exists($controller, $action)) $controller->$action();
+            else $controller->index();
             break;
 
-        // === API endpoints para AJAX ===
         case 'api':
-            $entity = $_GET['entity'] ?? '';
-            switch ($entity) {
-                case 'dashboard':
-                    $controller = new DashboardController();
-                    $controller->getStats();
-                    break;
-                case 'products':
-                    $controller = new InventoryController();
-                    $controller->search();
-                    break;
-                case 'clients':
-                    $controller = new ClientController();
-                    $controller->search();
-                    break;
-                case 'reports':
-                    $controller = new ReportController();
-                    $controller->getData();
-                    break;
-                default:
-                    jsonResponse(['error' => 'Endpoint no encontrado'], 404);
-            }
+            handleApiRoute($_GET['entity'] ?? '');
             break;
 
-        // === 404 ===
         default:
             http_response_code(404);
+            $pageTitle = '404 - No Encontrado';
             include __DIR__ . '/views/layouts/main.php';
             break;
     }
@@ -203,6 +136,21 @@ try {
     if (isAjax()) {
         jsonResponse(['error' => true, 'message' => $e->getMessage()], 500);
     } else {
-        die('<h1>Error del servidor</h1><p>' . htmlspecialchars($e->getMessage()) . '</p>');
+        die("<h1>Error</h1><p>{$e->getMessage()}</p>");
+    }
+}
+
+/**
+ * Manejador de API
+ */
+function handleApiRoute($entity) {
+    switch ($entity) {
+        case 'dashboard': (new DashboardController())->getStats(); break;
+        case 'products':
+        case 'inventory': (new InventoryController())->search(); break;
+        case 'clients': (new ClientController())->search(); break;
+        case 'reports': (new ReportController())->getData(); break;
+        case 'sales': (new SalesController())->process(); break;
+        default: jsonResponse(['error' => 'Entidad no válida'], 404);
     }
 }
