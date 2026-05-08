@@ -1,0 +1,16 @@
+# ─────────────────────────────────────────────────────────
+# Override: Entorno producción
+# ─────────────────────────────────────────────────────────
+config:
+  target: "https://dckcloud.com"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: "Prod warm-up"
+    - duration: 180
+      arrivalRate: 10
+      rampTo: 50
+      name: "Prod ramp-up"
+    - duration: 300
+      arrivalRate: 50
+      name: "Prod sustained"

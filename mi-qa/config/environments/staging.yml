@@ -1,0 +1,12 @@
+# ─────────────────────────────────────────────────────────
+# Override: Entorno staging
+# ─────────────────────────────────────────────────────────
+config:
+  target: "https://staging.dckcloud.com"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: "Staging warm-up"
+    - duration: 120
+      arrivalRate: 20
+      name: "Staging load"

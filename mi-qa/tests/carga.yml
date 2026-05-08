@@ -1,0 +1,57 @@
+# ─────────────────────────────────────────────────────────
+# TEST: Carga (Load Test)
+# Incremento progresivo de carga para encontrar el
+# punto de quiebre del sistema.
+# ─────────────────────────────────────────────────────────
+config:
+  target: "https://dckcloud.com"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: "Carga — warm-up"
+    - duration: 120
+      arrivalRate: 5
+      rampTo: 30
+      name: "Carga — ramp-up"
+    - duration: 300
+      arrivalRate: 30
+      name: "Carga — sostenida"
+    - duration: 60
+      arrivalRate: 30
+      rampTo: 1
+      name: "Carga — cool-down"
+  defaults:
+    headers:
+      Content-Type: "application/json"
+
+scenarios:
+  - name: "Navegación general bajo carga"
+    weight: 4
+    flow:
+      - get:
+          url: "/"
+      - think: 1
+      - get:
+          url: "/api/public/resources"
+      - think: 1
+
+  - name: "Operación autenticada bajo carga"
+    weight: 2
+    flow:
+      - post:
+          url: "/api/auth/login"
+          json:
+            username: "loadtest_user"
+            password: "loadtest_pass"
+          capture:
+            - json: "$.token"
+              as: "authToken"
+      - get:
+          url: "/api/protected/dashboard"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+      - think: 2
+      - get:
+          url: "/api/protected/records"
+          headers:
+            Authorization: "Bearer {{ authToken }}"

@@ -1,0 +1,27 @@
+# ─────────────────────────────────────────────────────────
+# TEST: Smoke / Básico
+# Verificación rápida de que los endpoints principales
+# responden correctamente (health check).
+# ─────────────────────────────────────────────────────────
+config:
+  target: "https://dckcloud.com"
+  phases:
+    - duration: 30
+      arrivalRate: 1
+      name: "Smoke test"
+  defaults:
+    headers:
+      Content-Type: "application/json"
+
+scenarios:
+  - name: "Health check — página principal"
+    flow:
+      - get:
+          url: "/"
+          expect:
+            - statusCode: 200
+
+  - name: "Health check — assets estáticos"
+    flow:
+      - get:
+          url: "/favicon.ico"

@@ -1,0 +1,77 @@
+# ─────────────────────────────────────────────────────────
+# TEST: API REST
+# Pruebas focalizadas en endpoints de la API.
+# Valida métodos GET, POST, PUT, DELETE y códigos de estado.
+# ─────────────────────────────────────────────────────────
+config:
+  target: "https://dckcloud.com"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: "API warm-up"
+    - duration: 120
+      arrivalRate: 15
+      name: "API sustained"
+  defaults:
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+  # Procesador JS para captura de tokens, etc.
+  processor: "../processors/helpers.js"
+
+scenarios:
+  # ── GET endpoints ────────────────────────────────────
+  - name: "GET — listar recursos públicos"
+    weight: 3
+    flow:
+      - get:
+          url: "/api/public/resources"
+          expect:
+            - statusCode: 200
+      - think: 1
+
+  # ── POST — autenticación ─────────────────────────────
+  - name: "POST — login"
+    weight: 2
+    flow:
+      - post:
+          url: "/api/auth/login"
+          json:
+            username: "{{ $processEnvironment.TEST_USER }}"
+            password: "{{ $processEnvironment.TEST_PASS }}"
+          capture:
+            - json: "$.token"
+              as: "authToken"
+          expect:
+            - statusCode: 200
+      - think: 1
+      - get:
+          url: "/api/protected/profile"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          expect:
+            - statusCode: 200
+
+  # ── POST — crear recurso ─────────────────────────────
+  - name: "POST — crear registro"
+    weight: 1
+    flow:
+      - post:
+          url: "/api/auth/login"
+          json:
+            username: "{{ $processEnvironment.TEST_USER }}"
+            password: "{{ $processEnvironment.TEST_PASS }}"
+          capture:
+            - json: "$.token"
+              as: "authToken"
+      - post:
+          url: "/api/protected/records"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          json:
+            name: "Recurso de prueba"
+            description: "Creado por Artillery"
+          expect:
+            - statusCode:
+                - 200
+                - 201

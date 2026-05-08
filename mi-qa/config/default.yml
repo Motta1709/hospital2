@@ -1,0 +1,22 @@
+# ─────────────────────────────────────────────────────────
+# Configuración base compartida (default)
+# Se hereda por todos los tests via la directiva "config"
+# ─────────────────────────────────────────────────────────
+config:
+  target: "http://localhost"
+  http:
+    timeout: 30            # timeout de cada request (seg)
+    pool: 10               # conexiones simultáneas en pool
+  defaults:
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+  plugins: {}
+  # Ambientes: artillery run --environment staging tests/basico.yml
+  environments:
+    local:
+      target: "http://localhost"
+    staging:
+      target: "https://staging.dckcloud.com"
+    production:
+      target: "https://dckcloud.com"

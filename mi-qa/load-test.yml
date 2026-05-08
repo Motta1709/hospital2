@@ -1,0 +1,36 @@
+config:
+  # Base URL of the service to test (dckcloud.com)
+  target: "https://dckcloud.com"
+  phases:
+    # Warm‑up: gradual start
+    - duration: 60        # seconds
+      arrivalRate: 5       # new VUs per second
+      name: "Warm‑up"
+    # Ramp‑up: increase load to peak
+    - duration: 180
+      arrivalRate: 10
+      rampTo: 50           # linearly increase to 50 VUs/sec
+      name: "Ramp‑up"
+    # Sustained load: maintain peak
+    - duration: 300
+      arrivalRate: 50
+      name: "Sustained load"
+  defaults:
+    headers:
+      Content-Type: "application/json"
+
+scenarios:
+  - name: "Basic user flow"
+    weight: 1
+    flow:
+      - get:
+          url: "/api/public/health"
+      - think: 2
+      - post:
+          url: "/api/public/login"
+          json:
+            username: "testuser"
+            password: "testpass"
+      - think: 1
+      - get:
+          url: "/api/public/dashboard"

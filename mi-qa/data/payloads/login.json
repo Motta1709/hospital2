@@ -1,0 +1,14 @@
+{
+  "valid_login": {
+    "username": "admin",
+    "password": "admin123"
+  },
+  "invalid_login": {
+    "username": "nonexistent",
+    "password": "wrongpass"
+  },
+  "empty_credentials": {
+    "username": "",
+    "password": ""
+  }
+}

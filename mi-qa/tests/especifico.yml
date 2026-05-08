@@ -1,0 +1,25 @@
+# ─────────────────────────────────────────────────────────
+# TEST: Personalizado (High Load)
+# Duración: 5 minutos (300s)
+# Configuración: Ramp-up hasta 100 usuarios/seg
+# ─────────────────────────────────────────────────────────
+config:
+  target: "https://dckcloud.com"
+  phases:
+    - duration: 300          # 5 minutos
+      arrivalRate: 10        # Inicia con 10 usuarios por segundo
+      rampTo: 100            # Incrementa linealmente hasta 100 usuarios por segundo
+      name: "Ramp-up sostenido (5 min)"
+  defaults:
+    headers:
+      Content-Type: "application/json"
+
+scenarios:
+  - name: "Flujo de alta carga"
+    flow:
+      - get:
+          url: "/"
+      - think: 1
+      - get:
+          url: "/api/public/resources"
+      - think: 2

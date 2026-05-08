@@ -1,0 +1,9 @@
+# ─────────────────────────────────────────────────────────
+# Override: Entorno local (WAMP / XAMPP)
+# ─────────────────────────────────────────────────────────
+config:
+  target: "http://localhost"
+  phases:
+    - duration: 30
+      arrivalRate: 2
+      name: "Local smoke"

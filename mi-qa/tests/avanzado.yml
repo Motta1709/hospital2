@@ -1,0 +1,66 @@
+# ─────────────────────────────────────────────────────────
+# TEST: Avanzado / Estrés
+# Prueba de estrés extrema: lleva el sistema al límite
+# para medir la degradación y recuperación.
+# ─────────────────────────────────────────────────────────
+config:
+  target: "https://dckcloud.com"
+  phases:
+    # Fase 1: baseline normal
+    - duration: 60
+      arrivalRate: 10
+      name: "Estrés — baseline"
+    # Fase 2: incremento agresivo
+    - duration: 120
+      arrivalRate: 10
+      rampTo: 100
+      name: "Estrés — ramp agresivo"
+    # Fase 3: pico extremo
+    - duration: 180
+      arrivalRate: 100
+      name: "Estrés — pico máximo"
+    # Fase 4: spike (ráfaga repentina)
+    - duration: 30
+      arrivalRate: 200
+      name: "Estrés — spike"
+    # Fase 5: recuperación
+    - duration: 120
+      arrivalRate: 200
+      rampTo: 5
+      name: "Estrés — recuperación"
+  defaults:
+    headers:
+      Content-Type: "application/json"
+  # Aumentar pool de conexiones para estrés
+  http:
+    timeout: 60
+    pool: 50
+
+scenarios:
+  - name: "Mix de tráfico bajo estrés"
+    flow:
+      - get:
+          url: "/"
+      - think: 0.5
+      - get:
+          url: "/api/public/resources"
+      - think: 0.5
+      - post:
+          url: "/api/auth/login"
+          json:
+            username: "stress_user"
+            password: "stress_pass"
+          capture:
+            - json: "$.token"
+              as: "authToken"
+      - get:
+          url: "/api/protected/dashboard"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+      - loop:
+          - get:
+              url: "/api/protected/records"
+              headers:
+                Authorization: "Bearer {{ authToken }}"
+          - think: 0.3
+        count: 5
