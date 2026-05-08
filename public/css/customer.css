@@ -1,0 +1,627 @@
+/* =====================================================
+   PharmaCRM - Dashboard del Cliente
+   Modulo desacoplado del admin (RNF-03)
+   ===================================================== */
+
+/* --- VARIABLES EXTENDIDAS --- */
+.customer-body {
+    --customer-primary: #2563EB;
+    --customer-accent: #10B981;
+    --customer-purple: #7C3AED;
+    --customer-orange: #F59E0B;
+    --customer-rose: #F43F5E;
+    --customer-cyan: #06B6D4;
+    --gradient-primary: linear-gradient(135deg, #2563EB, #7C3AED);
+    --gradient-accent: linear-gradient(135deg, #10B981, #06B6D4);
+    --gradient-warm: linear-gradient(135deg, #F59E0B, #F43F5E);
+}
+
+/* --- LAYOUT CLIENTE --- */
+.customer-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.customer-sidebar {
+    width: 260px;
+    background: var(--bg-card);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+/* --- GREETING --- */
+.customer-greeting {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: rgba(37,99,235,.08);
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+/* --- WELCOME BANNER --- */
+.welcome-banner {
+    background: var(--gradient-primary);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 28px;
+    box-shadow: 0 12px 30px rgba(37,99,235,.25);
+}
+
+.welcome-banner::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.08);
+}
+
+.welcome-banner::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: 20%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.05);
+}
+
+.welcome-banner h2 {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 1;
+}
+
+.welcome-banner p {
+    font-size: 14px;
+    opacity: .85;
+    position: relative;
+    z-index: 1;
+}
+
+.welcome-banner .welcome-stats {
+    display: flex;
+    gap: 24px;
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.welcome-banner .welcome-stat {
+    text-align: center;
+}
+
+.welcome-banner .welcome-stat .stat-value {
+    font-size: 28px;
+    font-weight: 800;
+    display: block;
+}
+
+.welcome-banner .welcome-stat .stat-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: .8;
+}
+
+/* --- KPI CARDS CLIENTE --- */
+.customer-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.customer-kpi {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+}
+
+.customer-kpi::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+}
+
+.customer-kpi:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.customer-kpi.kpi-compras::before { background: var(--customer-primary); }
+.customer-kpi.kpi-puntos::before { background: var(--customer-accent); }
+.customer-kpi.kpi-pqrsf::before { background: var(--customer-orange); }
+.customer-kpi.kpi-reservas::before { background: var(--customer-purple); }
+.customer-kpi.kpi-domicilios::before { background: var(--customer-cyan); }
+.customer-kpi.kpi-devoluciones::before { background: var(--customer-rose); }
+
+.customer-kpi .kpi-icon-sm {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.kpi-compras .kpi-icon-sm { background: rgba(37,99,235,.1); color: var(--customer-primary); }
+.kpi-puntos .kpi-icon-sm { background: rgba(16,185,129,.1); color: var(--customer-accent); }
+.kpi-pqrsf .kpi-icon-sm { background: rgba(245,158,11,.1); color: var(--customer-orange); }
+.kpi-reservas .kpi-icon-sm { background: rgba(124,58,237,.1); color: var(--customer-purple); }
+.kpi-domicilios .kpi-icon-sm { background: rgba(6,182,212,.1); color: var(--customer-cyan); }
+.kpi-devoluciones .kpi-icon-sm { background: rgba(244,63,94,.1); color: var(--customer-rose); }
+
+.customer-kpi .kpi-data h4 {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.customer-kpi .kpi-data .kpi-number {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+/* --- SECTION PANELS --- */
+.section-panel {
+    display: none;
+    animation: fadeIn .3s ease;
+}
+
+.section-panel.active {
+    display: block;
+}
+
+/* --- CONTENT GRID --- */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.content-grid-3 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+/* --- TIMELINE --- */
+.timeline {
+    position: relative;
+    padding-left: 28px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border-color);
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--customer-primary);
+    border: 2px solid var(--bg-card);
+    box-shadow: 0 0 0 3px rgba(37,99,235,.2);
+}
+
+.timeline-item.estado-cerrado::before { background: var(--success); box-shadow: 0 0 0 3px rgba(16,185,129,.2); }
+.timeline-item.estado-rechazado::before { background: var(--danger); box-shadow: 0 0 0 3px rgba(239,68,68,.2); }
+.timeline-item.estado-en_proceso::before { background: var(--warning); box-shadow: 0 0 0 3px rgba(245,158,11,.2); }
+
+.timeline-item .timeline-date {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.timeline-item .timeline-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 4px 0;
+}
+
+.timeline-item .timeline-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* --- NOTIFICATION LIST --- */
+.notif-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.notif-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.notif-item:hover {
+    background: var(--bg-surface);
+}
+
+.notif-item.unread {
+    background: rgba(37,99,235,.03);
+    border-left: 3px solid var(--customer-primary);
+}
+
+.notif-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.notif-icon.notif-success { background: rgba(16,185,129,.1); color: var(--success); }
+.notif-icon.notif-info { background: rgba(59,130,246,.1); color: var(--info); }
+.notif-icon.notif-warning { background: rgba(245,158,11,.1); color: var(--warning); }
+.notif-icon.notif-primary { background: rgba(37,99,235,.1); color: var(--primary); }
+.notif-icon.notif-danger { background: rgba(239,68,68,.1); color: var(--danger); }
+
+.notif-content h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.notif-content p {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.notif-content .notif-time {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* --- TRACKING PROGRESS --- */
+.tracking-bar {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 16px 0;
+}
+
+.tracking-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    position: relative;
+}
+
+.tracking-step::after {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    width: 100%;
+    height: 3px;
+    background: var(--border-color);
+    z-index: 0;
+}
+
+.tracking-step:last-child::after {
+    display: none;
+}
+
+.tracking-step.completed::after {
+    background: var(--customer-accent);
+}
+
+.tracking-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--bg-surface);
+    border: 3px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--text-muted);
+    z-index: 1;
+    transition: var(--transition);
+}
+
+.tracking-step.completed .tracking-dot {
+    background: var(--customer-accent);
+    border-color: var(--customer-accent);
+    color: #fff;
+}
+
+.tracking-step.active .tracking-dot {
+    background: var(--customer-primary);
+    border-color: var(--customer-primary);
+    color: #fff;
+    box-shadow: 0 0 0 4px rgba(37,99,235,.2);
+}
+
+.tracking-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.tracking-step.completed .tracking-label { color: var(--customer-accent); }
+.tracking-step.active .tracking-label { color: var(--customer-primary); }
+
+/* --- PROFILE CARD --- */
+.profile-card-customer {
+    text-align: center;
+    padding: 32px;
+}
+
+.profile-card-customer .avatar-lg {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 auto 16px;
+    box-shadow: 0 8px 24px rgba(37,99,235,.25);
+}
+
+.profile-card-customer h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.profile-card-customer .profile-doc {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.profile-card-customer .profile-meta {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 16px;
+}
+
+.profile-card-customer .profile-meta .meta-item {
+    text-align: center;
+}
+
+.profile-card-customer .profile-meta .meta-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--customer-primary);
+}
+
+.profile-card-customer .profile-meta .meta-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    display: block;
+    margin-top: 2px;
+}
+
+/* --- ADDRESS TAG --- */
+.address-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.address-tag.tag-casa { background: rgba(37,99,235,.1); color: var(--customer-primary); }
+.address-tag.tag-trabajo { background: rgba(124,58,237,.1); color: var(--customer-purple); }
+.address-tag.tag-otro { background: rgba(107,114,128,.1); color: var(--text-secondary); }
+
+/* --- MINI CHART --- */
+.mini-chart {
+    height: 180px;
+    position: relative;
+}
+
+.mini-chart canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* --- ESTADO BADGES EXTENDIDOS --- */
+.estado-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.estado-abierto { background: rgba(59,130,246,.12); color: var(--info); }
+.estado-en_proceso { background: rgba(245,158,11,.12); color: var(--warning); }
+.estado-cerrado { background: rgba(16,185,129,.12); color: var(--success); }
+.estado-rechazado { background: rgba(239,68,68,.12); color: var(--danger); }
+.estado-pendiente { background: rgba(245,158,11,.12); color: var(--warning); }
+.estado-aprobada { background: rgba(16,185,129,.12); color: var(--success); }
+.estado-solicitada { background: rgba(59,130,246,.12); color: var(--info); }
+.estado-en_revision { background: rgba(124,58,237,.12); color: var(--customer-purple); }
+.estado-entregada { background: rgba(16,185,129,.12); color: var(--success); }
+.estado-cancelada { background: rgba(107,114,128,.12); color: var(--text-secondary); }
+.estado-confirmado { background: rgba(59,130,246,.12); color: var(--info); }
+.estado-despachado { background: rgba(37,99,235,.12); color: var(--customer-primary); }
+.estado-entregado { background: rgba(16,185,129,.12); color: var(--success); }
+.estado-cancelado { background: rgba(107,114,128,.12); color: var(--text-secondary); }
+
+/* --- TAB NAVIGATION (for sections) --- */
+.section-tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--bg-surface);
+    padding: 4px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    overflow-x: auto;
+}
+
+.section-tab {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+    background: none;
+    white-space: nowrap;
+}
+
+.section-tab:hover {
+    color: var(--customer-primary);
+    background: rgba(37,99,235,.06);
+}
+
+.section-tab.active {
+    background: var(--customer-primary);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(37,99,235,.25);
+}
+
+/* --- EMPTY STATE CUSTOMER --- */
+.empty-state-customer {
+    text-align: center;
+    padding: 48px 20px;
+}
+
+.empty-state-customer i {
+    font-size: 42px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    opacity: .4;
+}
+
+.empty-state-customer h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.empty-state-customer p {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* --- RESPONSIVE CUSTOMER --- */
+@media (max-width: 1024px) {
+    .customer-sidebar {
+        transform: translateX(-100%);
+    }
+    .customer-sidebar.open {
+        transform: translateX(0);
+    }
+    .content-grid,
+    .content-grid-3 {
+        grid-template-columns: 1fr;
+    }
+    .customer-kpi-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+    .welcome-banner .welcome-stats {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 640px) {
+    .customer-kpi-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .tracking-label {
+        font-size: 8px;
+    }
+    .tracking-dot {
+        width: 26px;
+        height: 26px;
+        font-size: 10px;
+    }
+}

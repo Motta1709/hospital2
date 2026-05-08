@@ -32,7 +32,7 @@ $route = $_GET['route'] ?? 'home';
 $action = $_GET['action'] ?? 'index';
 
 // Rutas públicas
-$publicRoutes = ['home', 'login', 'auth', 'cart', 'checkout'];
+$publicRoutes = ['home', 'login', 'auth', 'cart', 'checkout', 'customer-dashboard'];
 
 // 5. Verificación de Seguridad
 if (!in_array($route, $publicRoutes) && !Auth::check()) {
@@ -118,6 +118,16 @@ try {
 
         case 'rbac':
             $controller = new RbacController();
+            if (method_exists($controller, $action)) $controller->$action();
+            else $controller->index();
+            break;
+
+        case 'customer-dashboard':
+            $controller = new CustomerDashboardController();
+            if ($action === 'getOrderItems') { // Manejo especial para AJAX
+                $controller->getOrderItems();
+                exit;
+            }
             if (method_exists($controller, $action)) $controller->$action();
             else $controller->index();
             break;

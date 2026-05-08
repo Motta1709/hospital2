@@ -9,6 +9,7 @@ bin-release/
 docs/
 context/*.docx
 gen_hash.php
+mi-qa/
 
 # Executables
 *.swf
@@ -27,3 +28,5 @@ gen_hash.php
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
+/mi-qa/node_modules/.bin
+/mi-qa
