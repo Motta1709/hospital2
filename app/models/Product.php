@@ -34,12 +34,12 @@ class Product {
                    ps.purchase_price as primary_purchase_price,
                    s.name as primary_supplier_name,
                    DATEDIFF(p.expiration_date, CURDATE()) as days_to_expire
-            FROM products p
-            LEFT JOIN categories c ON p.category_id = c.id
+            FROM productos p
+            LEFT JOIN categorias c ON p.category_id = c.id
             LEFT JOIN classifications cl ON p.classification_id = cl.id
             LEFT JOIN subclassifications sc ON p.subclassification_id = sc.id
             LEFT JOIN product_suppliers ps ON p.id = ps.product_id AND ps.is_primary = 1
-            LEFT JOIN suppliers s ON ps.supplier_id = s.id
+            LEFT JOIN proveedores s ON ps.supplier_id = s.id
             {$where}
             ORDER BY p.expiration_date ASC
             LIMIT {$perPage} OFFSET {$offset}
@@ -64,7 +64,7 @@ class Product {
             $params[] = $category;
         }
 
-        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM products {$where}");
+        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM productos {$where}");
         $stmt->execute($params);
         return $stmt->fetch()['total'];
     }
@@ -78,8 +78,8 @@ class Product {
                    cl.name as classification_name,
                    sc.name as subclassification_name,
                    DATEDIFF(p.expiration_date, CURDATE()) as days_to_expire
-            FROM products p
-            LEFT JOIN categories c ON p.category_id = c.id
+            FROM productos p
+            LEFT JOIN categorias c ON p.category_id = c.id
             LEFT JOIN classifications cl ON p.classification_id = cl.id
             LEFT JOIN subclassifications sc ON p.subclassification_id = sc.id
             WHERE p.id = ? AND p.branch_id = ?
@@ -99,7 +99,7 @@ class Product {
         $stmt = $this->db->prepare("
             SELECT s.*, ps.purchase_price, ps.is_primary
             FROM product_suppliers ps
-            JOIN suppliers s ON ps.supplier_id = s.id
+            JOIN proveedores s ON ps.supplier_id = s.id
             WHERE ps.product_id = ?
             ORDER BY ps.is_primary DESC, s.name ASC
         ");
@@ -112,8 +112,8 @@ class Product {
         $stmt = $this->db->prepare("
             SELECT p.*, c.name as category_name, 
                    DATEDIFF(p.expiration_date, CURDATE()) as days_to_expire
-            FROM products p
-            LEFT JOIN categories c ON p.category_id = c.id
+            FROM productos p
+            LEFT JOIN categorias c ON p.category_id = c.id
             WHERE p.barcode = ? AND p.branch_id = ? AND p.is_active = 1
         ");
         $stmt->execute([$barcode, $branchId]);
@@ -125,8 +125,8 @@ class Product {
         $stmt = $this->db->prepare("
             SELECT p.id, p.name, p.generic_name, p.barcode, p.sale_price, p.stock, p.lot_number, p.expiration_date,
                    c.name as category_name, DATEDIFF(p.expiration_date, CURDATE()) as days_to_expire
-            FROM products p
-            LEFT JOIN categories c ON p.category_id = c.id
+            FROM productos p
+            LEFT JOIN categorias c ON p.category_id = c.id
             WHERE p.is_active = 1 AND p.branch_id = ?
               AND (p.name LIKE ? OR p.generic_name LIKE ? OR p.barcode LIKE ?)
             ORDER BY p.name ASC
@@ -142,7 +142,7 @@ class Product {
         $this->db->beginTransaction();
         try {
             $stmt = $this->db->prepare("
-                INSERT INTO products (
+                INSERT INTO productos (
                     branch_id, category_id, classification_id, subclassification_id, barcode, name, generic_name, 
                     description, usage_instructions, recommendations, presentation, concentration, 
                     unit_of_measure, quantity_per_unit, lot_number, expiration_date, sale_price, 
@@ -191,7 +191,7 @@ class Product {
         $this->db->beginTransaction();
         try {
             $stmt = $this->db->prepare("
-                UPDATE products SET 
+                UPDATE productos SET 
                     category_id = ?, classification_id = ?, subclassification_id = ?, 
                     barcode = ?, name = ?, generic_name = ?, description = ?, 
                     usage_instructions = ?, recommendations = ?, presentation = ?, 
@@ -248,13 +248,13 @@ class Product {
 
     public function delete($id) {
         $branchId = $_SESSION['branch_id'] ?? 1;
-        $stmt = $this->db->prepare("UPDATE products SET is_active = 0 WHERE id = ? AND branch_id = ?");
+        $stmt = $this->db->prepare("UPDATE productos SET is_active = 0 WHERE id = ? AND branch_id = ?");
         return $stmt->execute([$id, $branchId]);
     }
 
     public function updateStock($id, $quantity, $branchId = null) {
         $branchId = $branchId ?? $_SESSION['branch_id'] ?? 1;
-        $stmt = $this->db->prepare("UPDATE products SET stock = stock - ? WHERE id = ? AND branch_id = ? AND stock >= ?");
+        $stmt = $this->db->prepare("UPDATE productos SET stock = stock - ? WHERE id = ? AND branch_id = ? AND stock >= ?");
         return $stmt->execute([$quantity, $id, $branchId, $quantity]);
     }
 
@@ -264,8 +264,8 @@ class Product {
         $stmt = $this->db->prepare("
             SELECT p.*, c.name as category_name, c.color as category_color,
                    DATEDIFF(p.expiration_date, CURDATE()) as days_to_expire
-            FROM products p
-            LEFT JOIN categories c ON p.category_id = c.id
+            FROM productos p
+            LEFT JOIN categorias c ON p.category_id = c.id
             WHERE p.is_active = 1 AND p.stock > 0 AND p.branch_id = ?
               AND DATEDIFF(p.expiration_date, CURDATE()) <= ?
               AND DATEDIFF(p.expiration_date, CURDATE()) >= 0
@@ -280,8 +280,8 @@ class Product {
         $stmt = $this->db->prepare("
             SELECT p.*, c.name as category_name, c.color as category_color,
                    DATEDIFF(p.expiration_date, CURDATE()) as days_to_expire
-            FROM products p
-            LEFT JOIN categories c ON p.category_id = c.id
+            FROM productos p
+            LEFT JOIN categorias c ON p.category_id = c.id
             WHERE p.is_active = 1 AND p.stock > 0 AND p.branch_id = ?
               AND p.expiration_date < CURDATE()
             ORDER BY p.expiration_date ASC
@@ -295,8 +295,8 @@ class Product {
         $stmt = $this->db->prepare("
             SELECT p.*, c.name as category_name, c.color as category_color,
                    DATEDIFF(p.expiration_date, CURDATE()) as days_to_expire
-            FROM products p
-            LEFT JOIN categories c ON p.category_id = c.id
+            FROM productos p
+            LEFT JOIN categorias c ON p.category_id = c.id
             WHERE p.is_active = 1 AND p.stock <= p.min_stock AND p.stock > 0 AND p.branch_id = ?
             ORDER BY p.stock ASC
         ");
@@ -308,8 +308,8 @@ class Product {
         $branchId = $branchId ?? $_SESSION['branch_id'] ?? 1;
         $stmt = $this->db->prepare("
             SELECT p.*, c.name as category_name
-            FROM products p
-            LEFT JOIN categories c ON p.category_id = c.id
+            FROM productos p
+            LEFT JOIN categorias c ON p.category_id = c.id
             WHERE p.is_active = 1 AND p.stock = 0 AND p.branch_id = ?
             ORDER BY p.name
         ");
@@ -319,25 +319,25 @@ class Product {
 
     public function getTotalProducts($branchId = null) {
         $branchId = $branchId ?? $_SESSION['branch_id'] ?? 1;
-        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM products WHERE is_active = 1 AND branch_id = ?");
+        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM productos WHERE is_active = 1 AND branch_id = ?");
         $stmt->execute([$branchId]);
         return $stmt->fetch()['total'];
     }
 
     public function getTotalStockValue($branchId = null) {
         $branchId = $branchId ?? $_SESSION['branch_id'] ?? 1;
-        $stmt = $this->db->prepare("SELECT SUM(stock * sale_price) as total FROM products WHERE is_active = 1 AND branch_id = ?");
+        $stmt = $this->db->prepare("SELECT SUM(stock * sale_price) as total FROM productos WHERE is_active = 1 AND branch_id = ?");
         $stmt->execute([$branchId]);
         return $stmt->fetch()['total'] ?? 0;
     }
 
     public function getCategories() {
-        $stmt = $this->db->query("SELECT * FROM categories WHERE is_active = 1 ORDER BY name");
+        $stmt = $this->db->query("SELECT * FROM categorias WHERE is_active = 1 ORDER BY name");
         return $stmt->fetchAll();
     }
 
     public function getSuppliers() {
-        $stmt = $this->db->query("SELECT * FROM suppliers WHERE is_active = 1 ORDER BY name");
+        $stmt = $this->db->query("SELECT * FROM proveedores WHERE is_active = 1 ORDER BY name");
         return $stmt->fetchAll();
     }
 

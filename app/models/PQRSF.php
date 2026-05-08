@@ -23,7 +23,7 @@ class PQRSF {
      */
     public function getByClient($clientId, $page = 1, $perPage = 10, $estado = null) {
         $offset = ($page - 1) * $perPage;
-        $where = "WHERE client_id = ?";
+        $where = "WHERE cliente_id = ?";
         $params = [$clientId];
         if ($estado) {
             $where .= " AND estado = ?";
@@ -32,7 +32,7 @@ class PQRSF {
         $stmt = $this->db->prepare("
             SELECT p.*, u.full_name as respondido_por_nombre
             FROM pqrsf p
-            LEFT JOIN users u ON p.respondido_por = u.id
+            LEFT JOIN usuarios u ON p.respondido_por = u.id
             {$where}
             ORDER BY p.created_at DESC
             LIMIT {$perPage} OFFSET {$offset}
@@ -48,7 +48,7 @@ class PQRSF {
      * @return int
      */
     public function countByClient($clientId, $estado = null) {
-        $where = "WHERE client_id = ?";
+        $where = "WHERE cliente_id = ?";
         $params = [$clientId];
         if ($estado) {
             $where .= " AND estado = ?";
@@ -70,7 +70,7 @@ class PQRSF {
         $fechaLimite = date('Y-m-d', strtotime('+15 days'));
 
         $stmt = $this->db->prepare("
-            INSERT INTO pqrsf (client_id, radicado, tipo, asunto, descripcion, prioridad, fecha_limite)
+            INSERT INTO pqrsf (cliente_id, radicado, tipo, asunto, descripcion, prioridad, fecha_limite)
             VALUES (?, ?, ?, ?, ?, ?, ?)
         ");
         $stmt->execute([
@@ -101,8 +101,8 @@ class PQRSF {
         $stmt = $this->db->prepare("
             SELECT p.*, u.full_name as respondido_por_nombre
             FROM pqrsf p
-            LEFT JOIN users u ON p.respondido_por = u.id
-            WHERE p.id = ? AND p.client_id = ?
+            LEFT JOIN usuarios u ON p.respondido_por = u.id
+            WHERE p.id = ? AND p.cliente_id = ?
         ");
         $stmt->execute([$id, $clientId]);
         return $stmt->fetch();
@@ -129,7 +129,7 @@ class PQRSF {
     public function getStatusCounts($clientId) {
         $stmt = $this->db->prepare("
             SELECT estado, COUNT(*) as total
-            FROM pqrsf WHERE client_id = ?
+            FROM pqrsf WHERE cliente_id = ?
             GROUP BY estado
         ");
         $stmt->execute([$clientId]);

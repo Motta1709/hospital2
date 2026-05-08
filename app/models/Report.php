@@ -13,7 +13,7 @@ class Report {
         $stmt = $this->db->prepare("
             SELECT COUNT(*) as total_sales, COALESCE(SUM(total),0) as total_revenue,
                    COALESCE(AVG(total),0) as avg_sale, COALESCE(SUM(discount_amount),0) as total_discounts
-            FROM sales WHERE status='completed' AND DATE(created_at) BETWEEN ? AND ?
+            FROM ventas WHERE status='completed' AND DATE(created_at) BETWEEN ? AND ?
         ");
         $stmt->execute([$dateFrom, $dateTo]);
         return $stmt->fetch();

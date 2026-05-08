@@ -25,10 +25,10 @@ class Devolucion {
             SELECT d.*, s.invoice_number, p.name as product_name,
                    si.quantity, si.unit_price
             FROM devoluciones d
-            JOIN sales s ON d.sale_id = s.id
-            JOIN sale_items si ON d.sale_item_id = si.id
-            JOIN products p ON si.product_id = p.id
-            WHERE d.client_id = ?
+            JOIN ventas s ON d.venta_id = s.id
+            JOIN items_venta si ON d.item_venta_id = si.id
+            JOIN productos p ON si.product_id = p.id
+            WHERE d.cliente_id = ?
             ORDER BY d.created_at DESC
             LIMIT {$perPage} OFFSET {$offset}
         ");
@@ -42,7 +42,7 @@ class Devolucion {
      * @return int
      */
     public function countByClient($clientId) {
-        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM devoluciones WHERE client_id = ?");
+        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM devoluciones WHERE cliente_id = ?");
         $stmt->execute([$clientId]);
         return $stmt->fetch()['total'];
     }
@@ -55,7 +55,7 @@ class Devolucion {
      */
     public function create($clientId, $data) {
         $stmt = $this->db->prepare("
-            INSERT INTO devoluciones (client_id, sale_id, sale_item_id, motivo, descripcion, evidencia_path)
+            INSERT INTO devoluciones (cliente_id, venta_id, item_venta_id, motivo, descripcion, evidencia_path)
             VALUES (?, ?, ?, ?, ?, ?)
         ");
         $stmt->execute([

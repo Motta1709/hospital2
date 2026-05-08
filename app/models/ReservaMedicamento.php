@@ -19,9 +19,9 @@ class ReservaMedicamento {
                    u.full_name as aprobado_por_nombre,
                    (SELECT COUNT(*) FROM prescripciones WHERE reserva_id = r.id) as tiene_prescripcion
             FROM reservas r
-            JOIN products p ON r.product_id = p.id
-            LEFT JOIN users u ON r.aprobado_por = u.id
-            WHERE r.client_id = ?
+            JOIN productos p ON r.producto_id = p.id
+            LEFT JOIN usuarios u ON r.aprobado_por = u.id
+            WHERE r.cliente_id = ?
             ORDER BY r.created_at DESC
             LIMIT {$perPage} OFFSET {$offset}
         ");
@@ -30,7 +30,7 @@ class ReservaMedicamento {
     }
 
     public function countByClient($clientId) {
-        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM reservas WHERE client_id = ?");
+        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM reservas WHERE cliente_id = ?");
         $stmt->execute([$clientId]);
         return $stmt->fetch()['total'];
     }
@@ -46,7 +46,7 @@ class ReservaMedicamento {
         $this->db->beginTransaction();
         try {
             $stmt = $this->db->prepare("
-                INSERT INTO reservas (client_id, product_id, cantidad) VALUES (?, ?, ?)
+                INSERT INTO reservas (cliente_id, producto_id, cantidad) VALUES (?, ?, ?)
             ");
             $stmt->execute([$clientId, $data['product_id'], $data['cantidad'] ?? 1]);
             $reservaId = $this->db->lastInsertId();
@@ -68,7 +68,7 @@ class ReservaMedicamento {
     }
 
     private function getProduct($productId) {
-        $stmt = $this->db->prepare("SELECT id, name, requires_prescription, sale_price FROM products WHERE id = ? AND is_active = 1");
+        $stmt = $this->db->prepare("SELECT id, name, requires_prescription, sale_price FROM productos WHERE id = ? AND is_active = 1");
         $stmt->execute([$productId]);
         return $stmt->fetch();
     }
@@ -77,7 +77,7 @@ class ReservaMedicamento {
         $stmt = $this->db->prepare("
             SELECT id, name, generic_name, presentation, concentration, 
                    sale_price, stock, requires_prescription
-            FROM products WHERE is_active = 1 AND stock <= min_stock
+            FROM productos WHERE is_active = 1 AND stock <= min_stock
             ORDER BY name LIMIT 50
         ");
         $stmt->execute();

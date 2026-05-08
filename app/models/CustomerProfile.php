@@ -21,11 +21,11 @@ class CustomerProfile {
     public function getProfile($clientId) {
         $stmt = $this->db->prepare("
             SELECT c.*, 
-                   (SELECT COUNT(*) FROM client_addresses WHERE client_id = c.id AND is_active = 1) as total_addresses,
-                   (SELECT COUNT(*) FROM pqrsf WHERE client_id = c.id) as total_pqrsf,
-                   (SELECT COUNT(*) FROM reservas WHERE client_id = c.id) as total_reservas,
-                   (SELECT COUNT(*) FROM notificaciones WHERE client_id = c.id AND leida = 0) as unread_notifications
-            FROM clients c
+                   (SELECT COUNT(*) FROM direcciones_cliente WHERE cliente_id = c.id AND activo = 1) as total_addresses,
+                   (SELECT COUNT(*) FROM pqrsf WHERE cliente_id = c.id) as total_pqrsf,
+                   (SELECT COUNT(*) FROM reservas WHERE cliente_id = c.id) as total_reservas,
+                   (SELECT COUNT(*) FROM notificaciones WHERE cliente_id = c.id AND leida = 0) as unread_notifications
+            FROM clientes c
             WHERE c.id = ? AND c.is_active = 1
         ");
         $stmt->execute([$clientId]);
@@ -69,9 +69,9 @@ class CustomerProfile {
      */
     public function getAddresses($clientId) {
         $stmt = $this->db->prepare("
-            SELECT * FROM client_addresses 
-            WHERE client_id = ? AND is_active = 1 
-            ORDER BY is_default DESC, created_at DESC
+            SELECT * FROM direcciones_cliente 
+            WHERE cliente_id = ? AND activo = 1 
+            ORDER BY es_principal DESC, created_at DESC
         ");
         $stmt->execute([$clientId]);
         return $stmt->fetchAll();
@@ -85,10 +85,10 @@ class CustomerProfile {
      */
     public function addAddress($clientId, $data) {
         if (!empty($data['is_default'])) {
-            $this->db->prepare("UPDATE client_addresses SET is_default = 0 WHERE client_id = ?")->execute([$clientId]);
+            $this->db->prepare("UPDATE direcciones_cliente SET es_principal = 0 WHERE cliente_id = ?")->execute([$clientId]);
         }
         $stmt = $this->db->prepare("
-            INSERT INTO client_addresses (client_id, label, address_line, city, neighborhood, postal_code, instructions, is_default)
+            INSERT INTO direcciones_cliente (cliente_id, etiqueta, direccion, ciudad, barrio, codigo_postal, instrucciones, es_principal)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         ");
         $stmt->execute([
@@ -101,7 +101,7 @@ class CustomerProfile {
             $data['instructions'] ?? null,
             $data['is_default'] ?? 0
         ]);
-        $this->logAudit($clientId, 'direccion_agregada', 'client_addresses', null, $data['address_line']);
+        $this->logAudit($clientId, 'direccion_agregada', 'direcciones_cliente', null, $data['address_line']);
         return $this->db->lastInsertId();
     }
 
@@ -112,8 +112,8 @@ class CustomerProfile {
      * @return bool
      */
     public function removeAddress($clientId, $addressId) {
-        $stmt = $this->db->prepare("UPDATE client_addresses SET is_active = 0 WHERE id = ? AND client_id = ?");
-        $this->logAudit($clientId, 'direccion_eliminada', 'client_addresses', $addressId, null);
+        $stmt = $this->db->prepare("UPDATE direcciones_cliente SET activo = 0 WHERE id = ? AND cliente_id = ?");
+        $this->logAudit($clientId, 'direccion_eliminada', 'direcciones_cliente', $addressId, null);
         return $stmt->execute([$addressId, $clientId]);
     }
 
@@ -130,38 +130,38 @@ class CustomerProfile {
             SELECT COUNT(*) as total_compras, 
                    COALESCE(SUM(total), 0) as total_gastado,
                    MAX(created_at) as ultima_compra
-            FROM sales WHERE client_id = ? AND status = 'completed'
+            FROM ventas WHERE cliente_id = ? AND status = 'completed'
         ");
         $stmt->execute([$clientId]);
         $summary['compras'] = $stmt->fetch();
 
         // Puntos de fidelizacion
-        $stmt = $this->db->prepare("SELECT loyalty_points FROM clients WHERE id = ?");
+        $stmt = $this->db->prepare("SELECT loyalty_points FROM clientes WHERE id = ?");
         $stmt->execute([$clientId]);
         $summary['puntos'] = $stmt->fetch()['loyalty_points'] ?? 0;
 
         // PQRSF abiertas
-        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM pqrsf WHERE client_id = ? AND estado IN ('abierto', 'en_proceso')");
+        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM pqrsf WHERE cliente_id = ? AND estado IN ('abierto', 'en_proceso')");
         $stmt->execute([$clientId]);
         $summary['pqrsf_abiertas'] = $stmt->fetch()['total'];
 
         // Reservas pendientes
-        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM reservas WHERE client_id = ? AND estado = 'pendiente'");
+        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM reservas WHERE cliente_id = ? AND estado = 'pendiente'");
         $stmt->execute([$clientId]);
         $summary['reservas_pendientes'] = $stmt->fetch()['total'];
 
         // Domicilios activos
-        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM domicilios WHERE client_id = ? AND estado IN ('pendiente', 'confirmado', 'despachado')");
+        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM domicilios WHERE cliente_id = ? AND estado IN ('pendiente', 'confirmado', 'despachado')");
         $stmt->execute([$clientId]);
         $summary['domicilios_activos'] = $stmt->fetch()['total'];
 
         // Devoluciones en proceso
-        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM devoluciones WHERE client_id = ? AND estado IN ('solicitada', 'en_revision')");
+        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM devoluciones WHERE cliente_id = ? AND estado IN ('solicitada', 'en_revision')");
         $stmt->execute([$clientId]);
         $summary['devoluciones_proceso'] = $stmt->fetch()['total'];
 
         // Notificaciones no leidas
-        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM notificaciones WHERE client_id = ? AND leida = 0");
+        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM notificaciones WHERE cliente_id = ? AND leida = 0");
         $stmt->execute([$clientId]);
         $summary['notificaciones'] = $stmt->fetch()['total'];
 
@@ -178,7 +178,7 @@ class CustomerProfile {
      */
     public function logAudit($clientId, $accion, $campo = null, $valorAnterior = null, $valorNuevo = null) {
         $stmt = $this->db->prepare("
-            INSERT INTO client_audit_log (client_id, accion, campo_alterado, valor_anterior, valor_nuevo, ip_address)
+            INSERT INTO bitacora_cliente (cliente_id, accion, campo_alterado, valor_anterior, valor_nuevo, ip_address)
             VALUES (?, ?, ?, ?, ?, ?)
         ");
         $stmt->execute([

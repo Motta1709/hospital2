@@ -14,7 +14,7 @@ class Notificacion {
         $offset = ($page - 1) * $perPage;
         $stmt = $this->db->prepare("
             SELECT * FROM notificaciones 
-            WHERE client_id = ?
+            WHERE cliente_id = ?
             ORDER BY created_at DESC
             LIMIT {$perPage} OFFSET {$offset}
         ");
@@ -23,25 +23,25 @@ class Notificacion {
     }
 
     public function countUnread($clientId) {
-        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM notificaciones WHERE client_id = ? AND leida = 0");
+        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM notificaciones WHERE cliente_id = ? AND leida = 0");
         $stmt->execute([$clientId]);
         return $stmt->fetch()['total'];
     }
 
     public function markAsRead($id, $clientId) {
-        $stmt = $this->db->prepare("UPDATE notificaciones SET leida = 1 WHERE id = ? AND client_id = ?");
+        $stmt = $this->db->prepare("UPDATE notificaciones SET leida = 1 WHERE id = ? AND cliente_id = ?");
         return $stmt->execute([$id, $clientId]);
     }
 
     public function markAllAsRead($clientId) {
-        $stmt = $this->db->prepare("UPDATE notificaciones SET leida = 1 WHERE client_id = ? AND leida = 0");
+        $stmt = $this->db->prepare("UPDATE notificaciones SET leida = 1 WHERE cliente_id = ? AND leida = 0");
         return $stmt->execute([$clientId]);
     }
 
     public static function create($clientId, $evento, $titulo, $mensaje, $refTipo = null, $refId = null) {
         $db = Database::getInstance()->getConnection();
         $stmt = $db->prepare("
-            INSERT INTO notificaciones (client_id, evento, titulo, mensaje, referencia_tipo, referencia_id)
+            INSERT INTO notificaciones (cliente_id, evento, titulo, mensaje, referencia_tipo, referencia_id)
             VALUES (?, ?, ?, ?, ?, ?)
         ");
         $stmt->execute([$clientId, $evento, $titulo, $mensaje, $refTipo, $refId]);

@@ -12,10 +12,10 @@ class User {
     public function findByUsername($username) {
         $stmt = $this->db->prepare("
             SELECT u.*, r.name as role_name, b.name as branch_name 
-            FROM users u 
+            FROM usuarios u 
             JOIN roles r ON u.role_id = r.id 
-            LEFT JOIN branches b ON u.branch_id = b.id
-            WHERE (u.username = ? OR u.email = ?) AND u.is_active = 1
+            LEFT JOIN sucursales b ON u.branch_id = b.id
+            WHERE (u.username = ? OR u.email = ?) AND u.activo = 1
         ");
         $stmt->execute([$username, $username]);
         return $stmt->fetch();
@@ -24,9 +24,9 @@ class User {
     public function findById($id) {
         $stmt = $this->db->prepare("
             SELECT u.*, r.name as role_name, b.name as branch_name 
-            FROM users u 
+            FROM usuarios u 
             JOIN roles r ON u.role_id = r.id 
-            LEFT JOIN branches b ON u.branch_id = b.id
+            LEFT JOIN sucursales b ON u.branch_id = b.id
             WHERE u.id = ?
         ");
         $stmt->execute([$id]);
@@ -40,21 +40,21 @@ class User {
     public function getAll() {
         $stmt = $this->db->query("
             SELECT u.*, r.name as role_name, b.name as branch_name 
-            FROM users u 
+            FROM usuarios u 
             JOIN roles r ON u.role_id = r.id 
-            LEFT JOIN branches b ON u.branch_id = b.id
+            LEFT JOIN sucursales b ON u.branch_id = b.id
             ORDER BY b.name, u.full_name
         ");
         return $stmt->fetchAll();
     }
 
     public function countActive() {
-        $stmt = $this->db->query("SELECT COUNT(*) as total FROM users WHERE is_active = 1");
+        $stmt = $this->db->query("SELECT COUNT(*) as total FROM usuarios WHERE activo = 1");
         return $stmt->fetch()['total'];
     }
 
     public function create($data) {
-        $sql = "INSERT INTO users (role_id, branch_id, username, email, password, full_name, phone, is_active) 
+        $sql = "INSERT INTO usuarios (role_id, branch_id, username, email, password, full_name, phone, activo) 
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($sql);
         $password = password_hash($data['password'], PASSWORD_DEFAULT);
@@ -71,7 +71,7 @@ class User {
     }
 
     public function update($id, $data) {
-        $sql = "UPDATE users SET role_id = ?, username = ?, email = ?, full_name = ?, phone = ?, is_active = ? ";
+        $sql = "UPDATE usuarios SET role_id = ?, username = ?, email = ?, full_name = ?, phone = ?, activo = ? ";
         $params = [
             $data['role_id'],
             $data['username'],
@@ -94,14 +94,14 @@ class User {
     }
 
     public function delete($id) {
-        $stmt = $this->db->prepare("DELETE FROM users WHERE id = ?");
+        $stmt = $this->db->prepare("DELETE FROM usuarios WHERE id = ?");
         return $stmt->execute([$id]);
     }
 
     public function getPermissions($roleId) {
         $stmt = $this->db->prepare("
             SELECT p.*, m.name as module_name 
-            FROM permissions p
+            FROM permisos p
             JOIN modules m ON p.module_id = m.id
             JOIN role_permissions rp ON p.id = rp.permission_id
             WHERE rp.role_id = ?

@@ -25,9 +25,9 @@ class CustomerOrder {
             SELECT s.id, s.invoice_number, s.subtotal, s.discount_amount, 
                    s.total, s.payment_method, s.status, s.created_at,
                    s.loyalty_points_earned,
-                   (SELECT COUNT(*) FROM sale_items WHERE sale_id = s.id) as total_items
-            FROM sales s
-            WHERE s.client_id = ? AND s.status != 'cancelled'
+                   (SELECT COUNT(*) FROM items_venta WHERE venta_id = s.id) as total_items
+            FROM ventas s
+            WHERE s.cliente_id = ? AND s.status != 'cancelled'
             ORDER BY s.created_at DESC
             LIMIT {$perPage} OFFSET {$offset}
         ");
@@ -41,7 +41,7 @@ class CustomerOrder {
      * @return int
      */
     public function countByClient($clientId) {
-        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM sales WHERE client_id = ? AND status != 'cancelled'");
+        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM ventas WHERE cliente_id = ? AND status != 'cancelled'");
         $stmt->execute([$clientId]);
         return $stmt->fetch()['total'];
     }
@@ -55,9 +55,9 @@ class CustomerOrder {
     public function getDetail($saleId, $clientId) {
         $stmt = $this->db->prepare("
             SELECT s.*, u.full_name as cashier_name
-            FROM sales s
-            JOIN users u ON s.user_id = u.id
-            WHERE s.id = ? AND s.client_id = ?
+            FROM ventas s
+            JOIN usuarios u ON s.usuario_id = u.id
+            WHERE s.id = ? AND s.cliente_id = ?
         ");
         $stmt->execute([$saleId, $clientId]);
         return $stmt->fetch();
@@ -72,9 +72,9 @@ class CustomerOrder {
         $stmt = $this->db->prepare("
             SELECT si.*, p.name as product_name, p.presentation, 
                    p.concentration, p.generic_name
-            FROM sale_items si
-            JOIN products p ON si.product_id = p.id
-            WHERE si.sale_id = ?
+            FROM items_venta si
+            JOIN productos p ON si.product_id = p.id
+            WHERE si.venta_id = ?
             ORDER BY si.id
         ");
         $stmt->execute([$saleId]);
@@ -89,9 +89,9 @@ class CustomerOrder {
     public function getEligibleForReturn($clientId) {
         $stmt = $this->db->prepare("
             SELECT s.id, s.invoice_number, s.total, s.created_at,
-                   (SELECT COUNT(*) FROM sale_items WHERE sale_id = s.id) as total_items
-            FROM sales s
-            WHERE s.client_id = ? 
+                   (SELECT COUNT(*) FROM items_venta WHERE venta_id = s.id) as total_items
+            FROM ventas s
+            WHERE s.cliente_id = ? 
               AND s.status = 'completed'
               AND s.created_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)
             ORDER BY s.created_at DESC
@@ -111,8 +111,8 @@ class CustomerOrder {
             SELECT DATE_FORMAT(created_at, '%Y-%m') as mes,
                    COUNT(*) as total_compras,
                    COALESCE(SUM(total), 0) as total_gastado
-            FROM sales
-            WHERE client_id = ? AND status = 'completed'
+            FROM ventas
+            WHERE cliente_id = ? AND status = 'completed'
               AND created_at >= DATE_SUB(NOW(), INTERVAL ? MONTH)
             GROUP BY DATE_FORMAT(created_at, '%Y-%m')
             ORDER BY mes ASC

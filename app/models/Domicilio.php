@@ -14,11 +14,11 @@ class Domicilio {
         $offset = ($page - 1) * $perPage;
         $stmt = $this->db->prepare("
             SELECT d.*, s.invoice_number, s.total as orden_total,
-                   ca.address_line, ca.city, ca.neighborhood, ca.label as address_label
+                   ca.direccion as address_line, ca.ciudad as city, ca.barrio as neighborhood, ca.etiqueta as address_label
             FROM domicilios d
-            LEFT JOIN sales s ON d.sale_id = s.id
-            JOIN client_addresses ca ON d.address_id = ca.id
-            WHERE d.client_id = ?
+            LEFT JOIN ventas s ON d.venta_id = s.id
+            JOIN direcciones_cliente ca ON d.direccion_id = ca.id
+            WHERE d.cliente_id = ?
             ORDER BY d.created_at DESC
             LIMIT {$perPage} OFFSET {$offset}
         ");
@@ -27,14 +27,14 @@ class Domicilio {
     }
 
     public function countByClient($clientId) {
-        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM domicilios WHERE client_id = ?");
+        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM domicilios WHERE cliente_id = ?");
         $stmt->execute([$clientId]);
         return $stmt->fetch()['total'];
     }
 
     public function create($clientId, $data) {
         $stmt = $this->db->prepare("
-            INSERT INTO domicilios (client_id, sale_id, address_id, tipo_entrega, fecha_programada, franja_horaria, notas, costo_envio)
+            INSERT INTO domicilios (cliente_id, venta_id, direccion_id, tipo_entrega, fecha_programada, franja_horaria, notas, costo_envio)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         ");
         $stmt->execute([

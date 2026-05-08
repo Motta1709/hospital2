@@ -20,8 +20,8 @@ class Sale {
         $stmt = $this->db->prepare("
             SELECT s.*, CONCAT(c.first_name, ' ', c.last_name) as client_name,
                    c.document_number as client_document, u.full_name as cashier_name
-            FROM sales s LEFT JOIN clients c ON s.client_id = c.id
-            JOIN users u ON s.user_id = u.id {$where}
+            FROM ventas s LEFT JOIN clientes c ON s.cliente_id = c.id
+            JOIN usuarios u ON s.usuario_id = u.id {$where}
             ORDER BY s.created_at DESC LIMIT {$perPage} OFFSET {$offset}
         ");
         $stmt->execute($params);
@@ -33,7 +33,7 @@ class Sale {
         $where = "WHERE branch_id = ?"; $params = [$branchId];
         if ($dateFrom) { $where .= " AND DATE(created_at) >= ?"; $params[] = $dateFrom; }
         if ($dateTo) { $where .= " AND DATE(created_at) <= ?"; $params[] = $dateTo; }
-        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM sales {$where}");
+        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM ventas {$where}");
         $stmt->execute($params);
         return $stmt->fetch()['total'];
     }
@@ -44,8 +44,8 @@ class Sale {
             SELECT s.*, CONCAT(c.first_name, ' ', c.last_name) as client_name,
                    c.document_number as client_document, c.phone as client_phone,
                    u.full_name as cashier_name
-            FROM sales s LEFT JOIN clients c ON s.client_id = c.id
-            JOIN users u ON s.user_id = u.id WHERE s.id = ? AND s.branch_id = ?
+            FROM ventas s LEFT JOIN clientes c ON s.cliente_id = c.id
+            JOIN usuarios u ON s.usuario_id = u.id WHERE s.id = ? AND s.branch_id = ?
         ");
         $stmt->execute([$id, $branchId]);
         return $stmt->fetch();
@@ -54,7 +54,7 @@ class Sale {
     public function getSaleItems($saleId) {
         $stmt = $this->db->prepare("
             SELECT si.*, p.name as product_name, p.barcode, p.presentation, p.concentration
-            FROM sale_items si JOIN products p ON si.product_id = p.id WHERE si.sale_id = ?
+            FROM items_venta si JOIN productos p ON si.product_id = p.id WHERE si.venta_id = ?
         ");
         $stmt->execute([$saleId]);
         return $stmt->fetchAll();
@@ -65,7 +65,7 @@ class Sale {
         $this->db->beginTransaction();
         try {
             $stmt = $this->db->prepare("
-                INSERT INTO sales (client_id, user_id, branch_id, invoice_number, subtotal, discount_amount,
+                INSERT INTO ventas (cliente_id, usuario_id, branch_id, invoice_number, subtotal, discount_amount,
                     tax_amount, total, payment_method, cash_received, change_amount,
                     loyalty_points_earned, loyalty_points_used, notes)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -81,7 +81,7 @@ class Sale {
             $saleId = $this->db->lastInsertId();
 
             $stmtItem = $this->db->prepare("
-                INSERT INTO sale_items (sale_id, product_id, quantity, unit_price, discount_percent, subtotal)
+                INSERT INTO items_venta (venta_id, product_id, quantity, unit_price, discount_percent, subtotal)
                 VALUES (?, ?, ?, ?, ?, ?)
             ");
             $kardexModel = new Kardex();
@@ -143,35 +143,35 @@ class Sale {
 
     public function getTodaySales($branchId = null) {
         $branchId = $branchId ?? $_SESSION['branch_id'] ?? 1;
-        $stmt = $this->db->prepare("SELECT COUNT(*) as count, COALESCE(SUM(total),0) as total FROM sales WHERE DATE(created_at)=CURDATE() AND status='completed' AND branch_id = ?");
+        $stmt = $this->db->prepare("SELECT COUNT(*) as count, COALESCE(SUM(total),0) as total FROM ventas WHERE DATE(created_at)=CURDATE() AND status='completed' AND branch_id = ?");
         $stmt->execute([$branchId]);
         return $stmt->fetch();
     }
 
     public function getMonthSales($branchId = null) {
         $branchId = $branchId ?? $_SESSION['branch_id'] ?? 1;
-        $stmt = $this->db->prepare("SELECT COUNT(*) as count, COALESCE(SUM(total),0) as total FROM sales WHERE MONTH(created_at)=MONTH(CURDATE()) AND YEAR(created_at)=YEAR(CURDATE()) AND status='completed' AND branch_id = ?");
+        $stmt = $this->db->prepare("SELECT COUNT(*) as count, COALESCE(SUM(total),0) as total FROM ventas WHERE MONTH(created_at)=MONTH(CURDATE()) AND YEAR(created_at)=YEAR(CURDATE()) AND status='completed' AND branch_id = ?");
         $stmt->execute([$branchId]);
         return $stmt->fetch();
     }
 
     public function getDailySalesChart($days = 7, $branchId = null) {
         $branchId = $branchId ?? $_SESSION['branch_id'] ?? 1;
-        $stmt = $this->db->prepare("SELECT DATE(created_at) as date, COUNT(*) as count, SUM(total) as total FROM sales WHERE created_at >= DATE_SUB(CURDATE(), INTERVAL ? DAY) AND status='completed' AND branch_id = ? GROUP BY DATE(created_at) ORDER BY date");
+        $stmt = $this->db->prepare("SELECT DATE(created_at) as date, COUNT(*) as count, SUM(total) as total FROM ventas WHERE created_at >= DATE_SUB(CURDATE(), INTERVAL ? DAY) AND status='completed' AND branch_id = ? GROUP BY DATE(created_at) ORDER BY date");
         $stmt->execute([$days, $branchId]);
         return $stmt->fetchAll();
     }
 
     public function getPaymentMethodStats($branchId = null) {
         $branchId = $branchId ?? $_SESSION['branch_id'] ?? 1;
-        $stmt = $this->db->prepare("SELECT payment_method, COUNT(*) as count, SUM(total) as total FROM sales WHERE status='completed' AND branch_id = ? GROUP BY payment_method");
+        $stmt = $this->db->prepare("SELECT payment_method, COUNT(*) as count, SUM(total) as total FROM ventas WHERE status='completed' AND branch_id = ? GROUP BY payment_method");
         $stmt->execute([$branchId]);
         return $stmt->fetchAll();
     }
 
     public function getRecentSales($limit = 5, $branchId = null) {
         $branchId = $branchId ?? $_SESSION['branch_id'] ?? 1;
-        $stmt = $this->db->prepare("SELECT s.id, s.invoice_number, s.total, s.payment_method, s.created_at, CONCAT(c.first_name,' ',c.last_name) as client_name FROM sales s LEFT JOIN clients c ON s.client_id=c.id WHERE s.status='completed' AND s.branch_id = ? ORDER BY s.created_at DESC LIMIT ?");
+        $stmt = $this->db->prepare("SELECT s.id, s.invoice_number, s.total, s.payment_method, s.created_at, CONCAT(c.first_name,' ',c.last_name) as client_name FROM ventas s LEFT JOIN clientes c ON s.client_id=c.id WHERE s.status='completed' AND s.branch_id = ? ORDER BY s.created_at DESC LIMIT ?");
         $stmt->execute([$branchId, $limit]);
         return $stmt->fetchAll();
     }

@@ -11,7 +11,7 @@ class Client {
 
     public function getAll($page = 1, $perPage = ITEMS_PER_PAGE, $search = '') {
         $offset = ($page - 1) * $perPage;
-        $where = "WHERE is_active = 1";
+        $where = "WHERE activo = 1";
         $params = [];
 
         if ($search) {
@@ -20,7 +20,7 @@ class Client {
         }
 
         $stmt = $this->db->prepare("
-            SELECT * FROM clients {$where}
+            SELECT * FROM clientes {$where}
             ORDER BY last_name, first_name
             LIMIT {$perPage} OFFSET {$offset}
         ");
@@ -35,19 +35,19 @@ class Client {
             $where .= " AND (first_name LIKE ? OR last_name LIKE ? OR document_number LIKE ? OR phone LIKE ?)";
             $params = array_fill(0, 4, "%{$search}%");
         }
-        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM clients {$where}");
+        $stmt = $this->db->prepare("SELECT COUNT(*) as total FROM clientes {$where}");
         $stmt->execute($params);
         return $stmt->fetch()['total'];
     }
 
     public function findById($id) {
-        $stmt = $this->db->prepare("SELECT * FROM clients WHERE id = ?");
+        $stmt = $this->db->prepare("SELECT * FROM clientes WHERE id = ?");
         $stmt->execute([$id]);
         return $stmt->fetch();
     }
 
     public function findByDocument($docNumber) {
-        $stmt = $this->db->prepare("SELECT * FROM clients WHERE document_number = ?");
+        $stmt = $this->db->prepare("SELECT * FROM clientes WHERE document_number = ?");
         $stmt->execute([$docNumber]);
         return $stmt->fetch();
     }
@@ -55,8 +55,8 @@ class Client {
     public function search($query) {
         $stmt = $this->db->prepare("
             SELECT id, first_name, last_name, document_number, phone, loyalty_points, allergies
-            FROM clients
-            WHERE is_active = 1
+            FROM clientes
+            WHERE activo = 1
               AND (first_name LIKE ? OR last_name LIKE ? OR document_number LIKE ? OR phone LIKE ?)
             ORDER BY first_name, last_name
             LIMIT 20
@@ -68,7 +68,7 @@ class Client {
 
     public function create($data) {
         $stmt = $this->db->prepare("
-            INSERT INTO clients (document_type, document_number, first_name, last_name, 
+            INSERT INTO clientes (document_type, document_number, first_name, last_name, 
                 email, phone, address, city, date_of_birth, gender, allergies, medical_notes)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ");
@@ -85,7 +85,7 @@ class Client {
 
     public function update($id, $data) {
         $stmt = $this->db->prepare("
-            UPDATE clients SET 
+            UPDATE clientes SET 
                 document_type = ?, document_number = ?, first_name = ?, last_name = ?,
                 email = ?, phone = ?, address = ?, city = ?, date_of_birth = ?,
                 gender = ?, allergies = ?, medical_notes = ?
@@ -131,16 +131,16 @@ class Client {
     }
 
     public function getTotalClients() {
-        $stmt = $this->db->query("SELECT COUNT(*) as total FROM clients WHERE is_active = 1");
+        $stmt = $this->db->query("SELECT COUNT(*) as total FROM clientes WHERE activo = 1");
         return $stmt->fetch()['total'];
     }
 
     public function getClientPurchaseHistory($clientId, $limit = 20) {
         $stmt = $this->db->prepare("
             SELECT s.*, u.full_name as cashier_name
-            FROM sales s
-            JOIN users u ON s.user_id = u.id
-            WHERE s.client_id = ? AND s.status = 'completed'
+            FROM ventas s
+            JOIN usuarios u ON s.user_id = u.id
+            WHERE s.cliente_id = ? AND s.status = 'completed'
             ORDER BY s.created_at DESC
             LIMIT ?
         ");
@@ -153,10 +153,10 @@ class Client {
             SELECT p.name, p.generic_name, p.presentation, p.concentration,
                    SUM(si.quantity) as total_purchased, 
                    MAX(s.created_at) as last_purchase
-            FROM sale_items si
-            JOIN sales s ON si.sale_id = s.id
-            JOIN products p ON si.product_id = p.id
-            WHERE s.client_id = ? AND s.status = 'completed'
+            FROM items_venta si
+            JOIN ventas s ON si.venta_id = s.id
+            JOIN productos p ON si.product_id = p.id
+            WHERE s.cliente_id = ? AND s.status = 'completed'
             GROUP BY p.id
             ORDER BY total_purchased DESC
             LIMIT 10

@@ -14,7 +14,7 @@ class Kardex {
      */
     public function recordMovement($data) {
         $stmt = $this->db->prepare("
-            INSERT INTO inventory_movements (
+            INSERT INTO movimientos_inventario (
                 product_id, branch_id, batch_id, user_id, type, quantity, 
                 balance_after, reference_type, reference_id, notes
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -42,7 +42,7 @@ class Kardex {
     public function getAvailableBatches($productId, $branchId = null) {
         $branchId = $branchId ?? $_SESSION['branch_id'] ?? 1;
         $stmt = $this->db->prepare("
-            SELECT * FROM product_batches 
+            SELECT * FROM lotes_producto 
             WHERE product_id = ? AND branch_id = ? AND current_quantity > 0 AND is_active = 1
             ORDER BY expiration_date ASC, created_at ASC
         ");
@@ -66,7 +66,7 @@ class Kardex {
             
             // Actualizar lote
             $newQuantity = $batch['current_quantity'] - $deduction;
-            $stmt = $this->db->prepare("UPDATE product_batches SET current_quantity = ? WHERE id = ?");
+            $stmt = $this->db->prepare("UPDATE lotes_producto SET current_quantity = ? WHERE id = ?");
             $stmt->execute([$newQuantity, $batch['id']]);
 
             // Registrar en Kardex
@@ -84,7 +84,7 @@ class Kardex {
             ]);
 
             // Actualizar stock general en tabla productos (para esa sucursal específica)
-            $stmt = $this->db->prepare("UPDATE products SET stock = stock - ? WHERE id = ? AND branch_id = ?");
+            $stmt = $this->db->prepare("UPDATE productos SET stock = stock - ? WHERE id = ? AND branch_id = ?");
             $stmt->execute([$deduction, $productId, $branchId]);
 
             $remainingToDeduct -= $deduction;
@@ -110,7 +110,7 @@ class Kardex {
 
         // 1. Crear lote ligado a la sucursal
         $stmt = $this->db->prepare("
-            INSERT INTO product_batches (
+            INSERT INTO lotes_producto (
                 product_id, branch_id, lot_number, expiration_date, purchase_price, initial_quantity, current_quantity
             ) VALUES (?, ?, ?, ?, ?, ?, ?)
         ");
@@ -126,7 +126,7 @@ class Kardex {
         $batchId = $this->db->lastInsertId();
 
         // 2. Actualizar stock general de la sucursal
-        $stmt = $this->db->prepare("UPDATE products SET stock = stock + ? WHERE id = ? AND branch_id = ?");
+        $stmt = $this->db->prepare("UPDATE productos SET stock = stock + ? WHERE id = ? AND branch_id = ?");
         $stmt->execute([$batchData['quantity'], $productId, $branchId]);
 
         // 3. Registrar en Kardex
@@ -148,7 +148,7 @@ class Kardex {
 
     private function getProductTotalStock($productId, $branchId = null) {
         $branchId = $branchId ?? $_SESSION['branch_id'] ?? 1;
-        $stmt = $this->db->prepare("SELECT stock FROM products WHERE id = ? AND branch_id = ?");
+        $stmt = $this->db->prepare("SELECT stock FROM productos WHERE id = ? AND branch_id = ?");
         $stmt->execute([$productId, $branchId]);
         return $stmt->fetch()['stock'] ?? 0;
     }
@@ -160,10 +160,10 @@ class Kardex {
         $branchId = $branchId ?? $_SESSION['branch_id'] ?? 1;
         $query = "
             SELECT k.*, p.name as product_name, b.lot_number, u.username
-            FROM inventory_movements k
-            JOIN products p ON k.product_id = p.id
-            LEFT JOIN product_batches b ON k.batch_id = b.id
-            JOIN users u ON k.user_id = u.id
+            FROM movimientos_inventario k
+            JOIN productos p ON k.product_id = p.id
+            LEFT JOIN lotes_producto b ON k.batch_id = b.id
+            JOIN usuarios u ON k.user_id = u.id
             WHERE k.branch_id = ?
         ";
         $params = [$branchId];
