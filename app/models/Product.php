@@ -396,5 +396,36 @@ class Product {
 
         return $status;
     }
+
+    public function getTopProducts($limit = 5, $branchId = null) {
+        $branchId = $branchId ?? $_SESSION['branch_id'] ?? 1;
+        $stmt = $this->db->prepare("
+            SELECT p.id, p.name, p.generic_name, p.sale_price, p.stock,
+                   SUM(si.quantity) as total_sold,
+                   SUM(si.subtotal) as total_revenue
+            FROM sale_items si
+            JOIN products p ON si.product_id = p.id
+            JOIN sales s ON si.sale_id = s.id
+            WHERE s.status = 'completed' AND s.branch_id = ?
+            GROUP BY p.id
+            ORDER BY total_sold DESC
+            LIMIT ?
+        ");
+        $stmt->execute([$branchId, (int)$limit]);
+        return $stmt->fetchAll();
+    }
+
+    public function getCategoryDistribution($branchId = null) {
+        $branchId = $branchId ?? $_SESSION['branch_id'] ?? 1;
+        $stmt = $this->db->prepare("
+            SELECT c.name as category, COUNT(p.id) as count
+            FROM products p
+            JOIN categories c ON p.category_id = c.id
+            WHERE p.is_active = 1 AND p.branch_id = ?
+            GROUP BY c.id
+        ");
+        $stmt->execute([$branchId]);
+        return $stmt->fetchAll();
+    }
 }
 

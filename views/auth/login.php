@@ -20,7 +20,7 @@
 <i class="fas fa-exclamation-circle"></i> <?= htmlspecialchars($flash['message']) ?>
 </div>
 <?php endif; ?>
-<form action="<?= APP_URL ?>?route=auth&action=login" method="POST">
+<form action="<?= APP_URL ?>/?route=auth&action=login" method="POST">
 <div class="form-group">
 <label for="username"><i class="fas fa-user"></i> Usuario</label>
 <input type="text" id="username" name="username" class="form-control" placeholder="Ingrese su usuario" required autofocus>
@@ -33,9 +33,16 @@
 <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
 </button>
 </form>
-<div style="text-align:center;margin-top:24px;font-size:12px;color:var(--text-muted)">
-<p>Demo: admin / password</p>
-<p style="margin-top:8px">PharmaCRM v1.0 — CRM Farmacéutico</p>
+<div style="text-align:center;margin-top:20px">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+<hr style="flex:1;border:none;border-top:1px solid var(--border-color,#333)">
+<span style="font-size:12px;color:var(--text-muted);white-space:nowrap">Nuevo en PharmaCRM?</span>
+<hr style="flex:1;border:none;border-top:1px solid var(--border-color,#333)">
+</div>
+<a href="<?= APP_URL ?>/?route=auth&action=register" class="btn btn-block" style="background:transparent;border:2px solid var(--primary-light);color:var(--primary-light);padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .3s ease" onmouseover="this.style.background='var(--primary-light)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--primary-light)'">
+<i class="fas fa-user-plus"></i> Crear Cuenta de Cliente
+</a>
+<p style="margin-top:16px;font-size:11px;color:var(--text-muted)">PharmaCRM v1.0 — CRM Farmaceutico</p>
 </div>
 </div>
 </div>

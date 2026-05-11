@@ -24,7 +24,7 @@
                 </div>
             </div>
         <?php else: ?>
-            <form action="<?= APP_URL ?>?route=cart&action=update" method="POST" id="cartForm">
+            <form action="<?= APP_URL ?>/?route=cart&action=update" method="POST" id="cartForm">
                 <div class="row g-4">
                     <!-- Lista de Productos -->
                     <div class="col-lg-8">

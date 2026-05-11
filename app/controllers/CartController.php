@@ -61,7 +61,9 @@ class CartController {
             setFlash('success', 'Producto añadido al carrito.');
         }
 
-        redirect('?route=home');
+        $referer = $_SERVER['HTTP_REFERER'] ?? APP_URL . '/?route=home';
+        header('Location: ' . $referer);
+        exit;
     }
 
     public function update() {

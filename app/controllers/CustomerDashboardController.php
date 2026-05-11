@@ -10,8 +10,12 @@ class CustomerDashboardController {
 
     public function __construct() {
         $this->profileModel = new CustomerProfile();
-        // Para demo: usar client_id del parametro GET o sesion
-        $this->clientId = intval($_GET['client_id'] ?? $_SESSION['client_id'] ?? 1);
+        // Usar client_id de la sesion autenticada
+        $this->clientId = intval($_SESSION['client_id'] ?? 0);
+        if (!$this->clientId) {
+            setFlash('error', 'Debe iniciar sesion como cliente.');
+            redirect('?route=login');
+        }
     }
 
     /**
@@ -21,7 +25,7 @@ class CustomerDashboardController {
         $profile = $this->profileModel->getProfile($this->clientId);
         if (!$profile) { setFlash('error', 'Cliente no encontrado.'); redirect('?route=home'); }
 
-        $section = $_GET['section'] ?? 'resumen';
+        $section = $_GET['section'] ?? 'tienda';
         $summary = $this->profileModel->getDashboardSummary($this->clientId);
         
         $pqrsfModel = new PQRSF();
@@ -30,6 +34,7 @@ class CustomerDashboardController {
         $domicilioModel = new Domicilio();
         $notifModel = new Notificacion();
         $devolucionModel = new Devolucion();
+        $productModel = new Product();
 
         $data = [
             'profile' => $profile,
@@ -51,6 +56,18 @@ class CustomerDashboardController {
             $data['misDevoluciones'] = $devolucionModel->getByClient($this->clientId);
         } elseif ($section === 'reservas') {
             $data['availableProducts'] = $reservaModel->getAvailableProducts();
+        } elseif ($section === 'tienda') {
+            $search = $_GET['search'] ?? '';
+            $category = $_GET['category'] ?? null;
+            $page = max(1, intval($_GET['page'] ?? 1));
+            
+            $data['products'] = $productModel->getAll($page, 12, $search, $category);
+            $totalProducts = $productModel->count($search, $category);
+            $data['categories'] = $productModel->getCategories();
+            $data['totalPages'] = ceil($totalProducts / 12);
+            $data['currentPage'] = $page;
+            $data['search'] = $search;
+            $data['currentCategory'] = $category;
         }
 
         $pageTitle = 'Mi Panel - ' . ucfirst($section);

@@ -54,9 +54,16 @@ class Validator {
     public function date($field, $label = null) {
         $label = $label ?? $field;
         if (isset($this->data[$field]) && !strtotime($this->data[$field])) {
-            $this->errors[$field] = "El campo {$label} debe ser una fecha válida.";
+            $this->errors[$field] = "El campo {$label} debe tener un formato de fecha válido.";
         }
         return $this;
+    }
+
+    public function validate() {
+        if ($this->fails()) {
+            throw new \App\Exceptions\ValidationException($this->errors);
+        }
+        return $this->data;
     }
 
     public function fails() {

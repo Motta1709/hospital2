@@ -1,3 +1,4 @@
+SET NAMES utf8mb4;
 USE pharmacrm;
 INSERT INTO clients (document_type, document_number, first_name, last_name, email, phone) VALUES
 ('CC', '3000000001', 'ClienteEco', 'Gen1', 'eco_client_1@email.local', '3150000001'),

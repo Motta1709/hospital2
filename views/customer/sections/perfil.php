@@ -35,7 +35,7 @@
             <h2>Editar Mis Datos</h2>
             <button class="modal-close" onclick="this.closest('.modal-overlay').classList.remove('active')">&times;</button>
         </div>
-        <form method="POST" action="<?= APP_URL ?>?route=customer-dashboard&action=updateProfile&client_id=<?= $data['profile']['id'] ?>">
+        <form method="POST" action="<?= APP_URL ?>/?route=customer-dashboard&action=updateProfile&client_id=<?= $data['profile']['id'] ?>">
             <div class="form-row">
                 <div class="form-group"><label>Nombres</label><input type="text" name="first_name" class="form-control" value="<?= htmlspecialchars($data['profile']['first_name']) ?>" required></div>
                 <div class="form-group"><label>Apellidos</label><input type="text" name="last_name" class="form-control" value="<?= htmlspecialchars($data['profile']['last_name']) ?>" required></div>
@@ -80,7 +80,7 @@
         <h2>Nueva Direccion</h2>
         <button class="modal-close" onclick="this.closest('.modal-overlay').classList.remove('active')">&times;</button>
     </div>
-    <form method="POST" action="<?= APP_URL ?>?route=customer-dashboard&action=addAddress&client_id=<?= $data['profile']['id'] ?>">
+    <form method="POST" action="<?= APP_URL ?>/?route=customer-dashboard&action=addAddress&client_id=<?= $data['profile']['id'] ?>">
         <div class="form-group">
             <label>Etiqueta</label>
             <select name="label" class="form-control"><option value="casa">Casa</option><option value="trabajo">Trabajo</option><option value="otro">Otro</option></select>

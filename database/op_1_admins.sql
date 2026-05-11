@@ -1,3 +1,4 @@
+SET NAMES utf8mb4;
 USE pharmacrm;
 INSERT INTO users (role_id, username, email, password, full_name, phone) VALUES
 (1, 'op_admin_1', 'op_admin_1@pharmacrm.local', '$2y$12$l2fAUJkATgkhvrxJHLsWqeOEbl/TizUEgTUlVsomEX50R8geI2lEi', 'Op_admin User 1', '3000000001'),

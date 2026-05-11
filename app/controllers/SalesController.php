@@ -1,9 +1,17 @@
 <?php
 class SalesController {
-    private $saleModel;
+    private $saleRepository;
+    private $productRepository;
+    private $checkoutService;
 
-    public function __construct() {
-        $this->saleModel = new Sale();
+    public function __construct(
+        \App\Interfaces\SaleRepositoryInterface $saleRepository = null,
+        \App\Interfaces\ProductRepositoryInterface $productRepository = null,
+        \App\Interfaces\CheckoutServiceInterface $checkoutService = null
+    ) {
+        $this->saleRepository = $saleRepository ?? new \App\Repositories\SaleRepository();
+        $this->productRepository = $productRepository ?? new \App\Repositories\ProductRepository();
+        $this->checkoutService = $checkoutService ?? new \App\Services\CheckoutService($this->saleRepository, $this->productRepository);
     }
 
     public function index() {
@@ -11,17 +19,12 @@ class SalesController {
             setFlash('error', 'No tienes permiso para ver el historial de ventas.');
             redirect('?route=dashboard');
         }
-        $page = max(1, intval($_GET['page'] ?? 1));
-        $dateFrom = $_GET['date_from'] ?? null;
-        $dateTo = $_GET['date_to'] ?? null;
+        
+        $sales = $this->saleRepository->all();
 
         $data = [
-            'sales' => $this->saleModel->getAll($page, ITEMS_PER_PAGE, $dateFrom, $dateTo),
-            'totalSales' => $this->saleModel->count($dateFrom, $dateTo),
-            'page' => $page,
-            'totalPages' => ceil($this->saleModel->count($dateFrom, $dateTo) / ITEMS_PER_PAGE),
-            'dateFrom' => $dateFrom,
-            'dateTo' => $dateTo,
+            'sales' => $sales,
+            'totalSales' => count($sales),
         ];
 
         $pageTitle = 'Historial de Ventas';
@@ -57,10 +60,10 @@ class SalesController {
             $saleData = [
                 'client_id' => $input['client_id'] ?: null,
                 'user_id' => Auth::id(),
+                'branch_id' => $_SESSION['branch_id'] ?? 1,
                 'invoice_number' => generateInvoiceNumber(),
                 'subtotal' => $input['subtotal'],
                 'discount_amount' => $input['discount_amount'] ?? 0,
-                'tax_amount' => 0,
                 'total' => $input['total'],
                 'payment_method' => $input['payment_method'] ?? 'cash',
                 'cash_received' => $input['cash_received'] ?? $input['total'],
@@ -69,7 +72,9 @@ class SalesController {
                 'notes' => $input['notes'] ?? null,
             ];
 
-            $saleId = $this->saleModel->create($saleData, $input['items']);
+            // Delegar al servicio (SOLID: SRP)
+            $saleId = $this->checkoutService->processSale($saleData, $input['items']);
+            
             jsonResponse(['success' => true, 'sale_id' => $saleId, 'invoice' => $saleData['invoice_number']]);
         } catch (Exception $e) {
             jsonResponse(['error' => true, 'message' => $e->getMessage()], 500);
@@ -78,12 +83,20 @@ class SalesController {
 
     public function detail() {
         $id = intval($_GET['id'] ?? 0);
-        $sale = $this->saleModel->findById($id);
-        if (!$sale) { setFlash('error', 'Venta no encontrada.'); redirect('?route=sales'); }
+        $sale = $this->saleRepository->findById($id);
+        if (!$sale) { 
+            setFlash('error', 'Venta no encontrada.'); 
+            redirect('?route=sales'); 
+        }
 
-        $data = ['sale' => $sale, 'items' => $this->saleModel->getSaleItems($id)];
+        $data = [
+            'sale' => $sale, 
+            'items' => $this->saleRepository->getItems($id)
+        ];
 
-        if (isAjax()) { jsonResponse($data); }
+        if (isAjax()) { 
+            jsonResponse($data); 
+        }
 
         $pageTitle = 'Detalle de Venta';
         $currentRoute = 'sales';
@@ -99,7 +112,7 @@ class SalesController {
         }
         $id = intval($_GET['id'] ?? 0);
         try {
-            $this->saleModel->cancel($id);
+            $this->saleRepository->delete($id); // Status -> cancelled
             if (isAjax()) jsonResponse(['success' => true]);
             setFlash('success', 'Venta anulada.');
         } catch (Exception $e) {
@@ -111,8 +124,7 @@ class SalesController {
 
     public function searchProduct() {
         $q = sanitize($_GET['q'] ?? '');
-        $productModel = new Product();
-        jsonResponse($productModel->search($q));
+        jsonResponse($this->productRepository->search($q));
     }
 }
 

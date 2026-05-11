@@ -18,7 +18,7 @@
 
 /* --- LAYOUT CLIENTE --- */
 .customer-layout {
-    display: flex;
+    display: block;
     min-height: 100vh;
 }
 
@@ -591,6 +591,19 @@
     color: var(--text-secondary);
 }
 
+/* --- CATALOG TIENDA --- */
+.catalog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+.catalog-search-form {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
 /* --- RESPONSIVE CUSTOMER --- */
 @media (max-width: 1024px) {
     .customer-sidebar {
@@ -610,9 +623,25 @@
         flex-wrap: wrap;
         gap: 16px;
     }
+    
+    .catalog-header {
+        flex-direction: column;
+        align-items: stretch !important;
+        gap: 16px;
+    }
+    .catalog-title-box {
+        text-align: center;
+    }
 }
 
 @media (max-width: 640px) {
+    .catalog-search-form {
+        width: 100%;
+        flex-direction: column;
+    }
+    .catalog-search-form button {
+        width: 100%;
+    }
     .customer-kpi-grid {
         grid-template-columns: 1fr 1fr;
     }

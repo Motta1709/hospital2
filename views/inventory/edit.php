@@ -1,7 +1,7 @@
 <?php $p = $data['product']; ?>
 <div class="card" style="max-width:800px">
 <div class="card-header"><h3 class="card-title"><i class="fas fa-edit"></i> Editar: <?= htmlspecialchars($p['name']) ?></h3></div>
-<form action="<?= APP_URL ?>?route=inventory&action=update" method="POST">
+<form action="<?= APP_URL ?>/?route=inventory&action=update" method="POST">
 <input type="hidden" name="id" value="<?= $p['id'] ?>">
 <div class="form-row">
 <div class="form-group"><label>Nombre *</label><input type="text" name="name" class="form-control" value="<?= htmlspecialchars($p['name']) ?>" required></div>

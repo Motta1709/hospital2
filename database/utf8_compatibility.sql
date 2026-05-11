@@ -1,3 +1,4 @@
+SET NAMES utf8mb4;
 -- =====================================================
 -- PharmaCRM - Configuración de Compatibilidad UTF-8mb4
 -- Garantiza soporte para caracteres internacionales y símbolos

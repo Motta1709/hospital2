@@ -50,7 +50,7 @@
         <h2>Reservar Medicamento</h2>
         <button class="modal-close" onclick="this.closest('.modal-overlay').classList.remove('active')">&times;</button>
     </div>
-    <form method="POST" action="<?= APP_URL ?>?route=customer-dashboard&action=createReserva&client_id=<?= $data['profile']['id'] ?>" enctype="multipart/form-data">
+    <form method="POST" action="<?= APP_URL ?>/?route=customer-dashboard&action=createReserva&client_id=<?= $data['profile']['id'] ?>" enctype="multipart/form-data">
         <div class="form-group">
             <label>Medicamento a reservar</label>
             <select name="product_id" class="form-control" required onchange="checkPrescription(this)">

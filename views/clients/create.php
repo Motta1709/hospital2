@@ -16,7 +16,7 @@ $isEdit = !empty($client);
         </h3>
     </div>
 
-    <form action="<?= APP_URL ?>?route=clients&action=<?= $isEdit ? 'update' : 'store' ?>" method="POST" class="p-4">
+    <form action="<?= APP_URL ?>/?route=clients&action=<?= $isEdit ? 'update' : 'store' ?>" method="POST" class="p-4">
         
         <?php if ($isEdit): ?>
             <!-- Campo oculto para el ID en caso de edición -->

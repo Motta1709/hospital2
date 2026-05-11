@@ -1,6 +1,6 @@
 <div class="card" style="max-width:800px">
 <div class="card-header"><h3 class="card-title"><i class="fas fa-plus-circle"></i> Nuevo Producto</h3></div>
-<form action="<?= APP_URL ?>?route=inventory&action=store" method="POST">
+<form action="<?= APP_URL ?>/?route=inventory&action=store" method="POST">
 <div class="form-row">
 <div class="form-group"><label>Nombre del Producto *</label><input type="text" name="name" class="form-control" required></div>
 <div class="form-group"><label>Nombre Genérico</label><input type="text" name="generic_name" class="form-control"></div>

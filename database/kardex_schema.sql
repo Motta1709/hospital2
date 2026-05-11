@@ -1,3 +1,4 @@
+SET NAMES utf8mb4;
 -- =====================================================
 -- PharmaCRM - Sistema de Kardex y FIFO/PEPS
 -- Implementación de Lotes y Movimientos de Inventario

@@ -50,7 +50,7 @@
         <h2>Solicitar Devolucion</h2>
         <button class="modal-close" onclick="this.closest('.modal-overlay').classList.remove('active')">&times;</button>
     </div>
-    <form method="POST" action="<?= APP_URL ?>?route=customer-dashboard&action=createDevolucion&client_id=<?= $data['profile']['id'] ?>" enctype="multipart/form-data">
+    <form method="POST" action="<?= APP_URL ?>/?route=customer-dashboard&action=createDevolucion&client_id=<?= $data['profile']['id'] ?>" enctype="multipart/form-data">
         <div class="form-group">
             <label>Selecciona la Factura</label>
             <select name="sale_id" class="form-control" required onchange="loadOrderItems(this.value)">

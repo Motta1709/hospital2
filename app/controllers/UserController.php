@@ -40,25 +40,20 @@ class UserController {
     }
 
     public function store() {
-        if (!Auth::hasPermission('manage_users')) return redirect('?route=users');
-        
-        $v = new Validator($_POST);
-        $v->required('username', 'Usuario')->required('email', 'Email')
-          ->required('password', 'Contraseña')->required('role_id', 'Rol');
-        
-        if ($v->fails()) {
-            setFlash('error', $v->firstError());
-            redirect('?route=users&action=create');
+        if (!Auth::hasPermission('manage_users')) {
+            throw new \App\Exceptions\SystemException("No tiene permisos para realizar esta acción.", 403);
         }
+        
+        $v = new \Validator($_POST);
+        $v->required('username', 'Nombre de Usuario')
+          ->email('email', 'Correo Electrónico')
+          ->required('password', 'Contraseña')
+          ->required('role_id', 'Rol Asignado')
+          ->validate();
 
-        try {
-            $this->userModel->create($_POST);
-            setFlash('success', 'Usuario creado exitosamente.');
-            redirect('?route=users');
-        } catch (Exception $e) {
-            setFlash('error', 'Error: ' . $e->getMessage());
-            redirect('?route=users&action=create');
-        }
+        $this->userModel->create($_POST);
+        setFlash('success', 'Usuario creado exitosamente conforme a la normativa de seguridad.');
+        redirect('?route=users');
     }
 
     public function edit() {

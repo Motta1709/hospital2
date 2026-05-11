@@ -37,7 +37,7 @@
         <h2>Nueva Solicitud PQRSF</h2>
         <button class="modal-close" onclick="this.closest('.modal-overlay').classList.remove('active')">&times;</button>
     </div>
-    <form method="POST" action="<?= APP_URL ?>?route=customer-dashboard&action=createPqrsf&client_id=<?= $data['profile']['id'] ?>">
+    <form method="POST" action="<?= APP_URL ?>/?route=customer-dashboard&action=createPqrsf&client_id=<?= $data['profile']['id'] ?>">
         <div class="form-group">
             <label>Tipo de solicitud</label>
             <select name="tipo" class="form-control" required>

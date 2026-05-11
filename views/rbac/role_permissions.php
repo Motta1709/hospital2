@@ -5,7 +5,7 @@
             Asignar Permisos al Rol: <strong><?= ucfirst($data['role']['name']) ?></strong>
         </h3>
     </div>
-    <form action="<?= APP_URL ?>?route=rbac&action=update-role" method="POST">
+    <form action="<?= APP_URL ?>/?route=rbac&action=update-role" method="POST">
         <input type="hidden" name="role_id" value="<?= $data['role']['id'] ?>">
         
         <div class="card-body">

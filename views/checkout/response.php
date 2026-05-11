@@ -1,107 +1,92 @@
-<div class="response-page py-5">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-7">
-                <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
-                    <div id="loading" class="card-body p-5 text-center">
-                        <div class="spinner-border text-primary mb-4" role="status"></div>
-                        <h3>Validando tu transacción...</h3>
-                        <p class="text-muted">Por favor espera un momento mientras confirmamos el pago con ePayco.</p>
-                    </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Resultado del Pago — PharmaCRM</title>
+<link rel="stylesheet" href="<?= APP_URL ?>/public/css/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+.response-page{min-height:100vh;background:linear-gradient(135deg,#f0f4f8,#e2e8f0);display:flex;align-items:center;justify-content:center;padding:20px}
+.response-card{background:#fff;border-radius:20px;padding:48px;max-width:520px;width:100%;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.status-icon{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:36px}
+.status-icon.success{background:#f0fff4;color:#38a169}
+.status-icon.pending{background:#fffbeb;color:#d69e2e}
+.status-icon.failed{background:#fff5f5;color:#e53e3e}
+.response-card h1{font-size:24px;margin-bottom:8px;color:#1a202c}
+.response-card p{color:#718096;font-size:14px;margin-bottom:24px}
+.detail-row{display:flex;justify-content:space-between;padding:10px 16px;background:#f7fafc;border-radius:8px;margin-bottom:8px;font-size:13px}
+.detail-row span:first-child{color:#718096}
+.detail-row span:last-child{font-weight:600;color:#2d3748}
+.btn-group{display:flex;gap:12px;margin-top:28px;justify-content:center}
+.btn-group a{padding:12px 24px;border-radius:10px;text-decoration:none;font-weight:600;font-size:14px;transition:all .3s}
+.btn-dashboard{background:#667eea;color:#fff}
+.btn-dashboard:hover{background:#5a67d8}
+.btn-shop{background:#edf2f7;color:#4a5568}
+.btn-shop:hover{background:#e2e8f0}
+</style>
+</head>
+<body>
+<div class="response-page">
+<div class="response-card">
+<?php
+$txData = $data['result']['data'] ?? null;
+$status = $txData['x_response'] ?? 'Desconocido';
+$isSuccess = ($status === 'Aceptada');
+$isPending = ($status === 'Pendiente');
+?>
 
-                    <div id="transaction-detail" class="card-body p-5 d-none">
-                        <div class="text-center mb-5">
-                            <div id="status-icon" class="mb-4"></div>
-                            <h2 id="status-text" class="fw-bold"></h2>
-                            <p id="status-desc" class="text-muted"></p>
-                        </div>
+<?php if ($isSuccess): ?>
+<div class="status-icon success"><i class="fas fa-check"></i></div>
+<h1>Pago Exitoso!</h1>
+<p>Tu pago ha sido procesado correctamente.</p>
+<?php elseif ($isPending): ?>
+<div class="status-icon pending"><i class="fas fa-clock"></i></div>
+<h1>Pago Pendiente</h1>
+<p>Tu pago esta siendo procesado. Te notificaremos cuando se confirme.</p>
+<?php else: ?>
+<div class="status-icon failed"><i class="fas fa-times"></i></div>
+<h1>Pago No Completado</h1>
+<p>Hubo un problema con tu pago. Puedes intentarlo nuevamente.</p>
+<?php endif; ?>
 
-                        <div class="table-responsive">
-                            <table class="table table-borderless bg-light rounded-3 p-3">
-                                <tbody>
-                                    <tr>
-                                        <td class="text-muted">Referencia ePayco</td>
-                                        <td class="text-end fw-bold" id="ref-epayco"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted">Referencia Factura</td>
-                                        <td class="text-end fw-bold" id="ref-invoice"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted">Descripción</td>
-                                        <td class="text-end" id="desc"></td>
-                                    </tr>
-                                    <tr class="border-top">
-                                        <td class="text-muted h5 pt-3">Total Pagado</td>
-                                        <td class="text-end h5 pt-3 fw-bold text-primary" id="amount"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="d-grid mt-5">
-                            <a href="<?= APP_URL ?>?route=home" class="btn btn-primary py-3 rounded-pill">
-                                Volver al Inicio
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<?php if ($txData): ?>
+<div class="detail-row">
+<span>Referencia ePayco</span>
+<span><?= htmlspecialchars($txData['x_ref_payco'] ?? $data['ref_payco'] ?? 'N/A') ?></span>
 </div>
+<div class="detail-row">
+<span>Factura</span>
+<span><?= htmlspecialchars($txData['x_invoice'] ?? 'N/A') ?></span>
+</div>
+<div class="detail-row">
+<span>Monto</span>
+<span>$ <?= number_format($txData['x_amount'] ?? 0, 0, ',', '.') ?> COP</span>
+</div>
+<div class="detail-row">
+<span>Estado</span>
+<span><?= htmlspecialchars($status) ?></span>
+</div>
+<div class="detail-row">
+<span>Metodo de Pago</span>
+<span><?= htmlspecialchars($txData['x_franchise'] ?? 'N/A') ?></span>
+</div>
+<?php else: ?>
+<div class="detail-row">
+<span>Referencia</span>
+<span><?= htmlspecialchars($data['ref_payco'] ?? 'No disponible') ?></span>
+</div>
+<?php endif; ?>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const ref_payco = urlParams.get('ref_payco');
-
-        if (ref_payco) {
-            fetch(`https://secure.epayco.co/validation/v1/reference/${ref_payco}`)
-                .then(response => response.json())
-                .then(res => {
-                    const data = res.data;
-                    
-                    document.getElementById('loading').classList.add('d-none');
-                    document.getElementById('transaction-detail').classList.remove('d-none');
-
-                    // Llenar datos
-                    document.getElementById('ref-epayco').textContent = data.x_ref_payco;
-                    document.getElementById('ref-invoice').textContent = data.x_id_invoice;
-                    document.getElementById('desc').textContent = data.x_description;
-                    document.getElementById('amount').textContent = '$ ' + parseInt(data.x_amount).toLocaleString('es-CO');
-
-                    const statusIcon = document.getElementById('status-icon');
-                    const statusText = document.getElementById('status-text');
-                    const statusDesc = document.getElementById('status-desc');
-
-                    switch (data.x_cod_response) {
-                        case 1: // Aceptada
-                            statusIcon.innerHTML = '<i class="fas fa-check-circle fa-5x text-success"></i>';
-                            statusText.textContent = "¡Pago Exitoso!";
-                            statusDesc.textContent = "Tu transacción ha sido aprobada. En breve recibirás tus productos.";
-                            // Limpiar carrito si el pago es exitoso (Simulado en frontend para demo)
-                            break;
-                        case 2: // Rechazada
-                            statusIcon.innerHTML = '<i class="fas fa-times-circle fa-5x text-danger"></i>';
-                            statusText.textContent = "Pago Rechazado";
-                            statusDesc.textContent = "Lo sentimos, la transacción no pudo ser procesada.";
-                            break;
-                        case 3: // Pendiente
-                            statusIcon.innerHTML = '<i class="fas fa-clock fa-5x text-warning"></i>';
-                            statusText.textContent = "Pago Pendiente";
-                            statusDesc.textContent = "Estamos esperando la confirmación de tu banco.";
-                            break;
-                        default:
-                            statusIcon.innerHTML = '<i class="fas fa-exclamation-circle fa-5x text-muted"></i>';
-                            statusText.textContent = data.x_response;
-                            statusDesc.textContent = "Estado de transacción desconocido.";
-                    }
-                })
-                .catch(err => {
-                    console.error('Error al validar:', err);
-                });
-        }
-    });
-</script>
-
+<div class="btn-group">
+<a href="<?= APP_URL ?>/?route=customer-dashboard" class="btn-dashboard">
+<i class="fas fa-chart-pie"></i> Mi Dashboard
+</a>
+<a href="<?= APP_URL ?>/?route=home" class="btn-shop">
+<i class="fas fa-store"></i> Seguir Comprando
+</a>
+</div>
+</div>
+</div>
+</body>
+</html>

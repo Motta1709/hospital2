@@ -14,12 +14,43 @@ require_once __DIR__ . '/app/helpers/Validator.php';
 
 // 3. Autocarga Automática de Modelos y Controladores
 spl_autoload_register(function ($class) {
-    $paths = [
-        __DIR__ . '/app/models/',
-        __DIR__ . '/app/controllers/',
+    // 1. Manejo de Namespaces App\ -> app/
+    if (strpos($class, 'App\\') === 0) {
+        $relativeClass = substr($class, 4);
+        $filePath = __DIR__ . '/app/' . str_replace('\\', '/', $relativeClass) . '.php';
+        
+        // Intentar carga directa (sensible a mayúsculas o no según el SO)
+        if (file_exists($filePath)) {
+            require_once $filePath;
+            return;
+        }
+        
+        // Intentar carga con carpetas en minúsculas (ej. app/core/ vs app/Core/)
+        $parts = explode('\\', $relativeClass);
+        $className = array_pop($parts);
+        $folders = array_map('strtolower', $parts);
+        $filePath = __DIR__ . '/app/' . implode('/', $folders) . '/' . $className . '.php';
+        
+        if (file_exists($filePath)) {
+            require_once $filePath;
+            return;
+        }
+    }
+
+    // 2. Manejo de clases legadas sin namespace (Models, Controllers, etc)
+    $legacyFolders = [
+        'app/models',
+        'app/controllers',
+        'app/helpers',
+        'app/core',
+        'app/repositories',
+        'app/services',
+        'app/interfaces',
+        'app/exceptions'
     ];
-    foreach ($paths as $path) {
-        $file = $path . $class . '.php';
+
+    foreach ($legacyFolders as $folder) {
+        $file = __DIR__ . '/' . $folder . '/' . $class . '.php';
         if (file_exists($file)) {
             require_once $file;
             return;
@@ -31,13 +62,24 @@ spl_autoload_register(function ($class) {
 $route = $_GET['route'] ?? 'home';
 $action = $_GET['action'] ?? 'index';
 
-// Rutas públicas
-$publicRoutes = ['home', 'login', 'auth', 'cart', 'checkout', 'customer-dashboard'];
+// Rutas publicas (no requieren autenticacion)
+$publicRoutes = ['home', 'login', 'auth', 'cart', 'checkout'];
 
-// 5. Verificación de Seguridad
-if (!in_array($route, $publicRoutes) && !Auth::check()) {
-    header('Location: ?route=login');
-    exit;
+// Rutas que requieren sesion de cliente
+$clientRoutes = ['customer-dashboard'];
+
+// 5. Verificacion de Seguridad
+if (!in_array($route, $publicRoutes)) {
+    if (in_array($route, $clientRoutes)) {
+        // Rutas de cliente: requieren sesion de cliente
+        if (empty($_SESSION['client_id']) && !Auth::check()) {
+            header('Location: ?route=login');
+            exit;
+        }
+    } elseif (!Auth::check()) {
+        header('Location: ?route=login');
+        exit;
+    }
 }
 
 // 6. Router (Switch Tradicional)
@@ -49,6 +91,7 @@ try {
 
         case 'login':
             if (Auth::check()) { header('Location: ?route=dashboard'); exit; }
+            if (!empty($_SESSION['client_id'])) { header('Location: ?route=customer-dashboard'); exit; }
             (new AuthController())->login();
             break;
 
@@ -56,6 +99,7 @@ try {
             $controller = new AuthController();
             if ($action === 'login') $controller->authenticate();
             elseif ($action === 'logout') $controller->logout();
+            elseif ($action === 'register') $controller->register();
             break;
 
         case 'dashboard':
@@ -142,12 +186,8 @@ try {
             include __DIR__ . '/views/layouts/main.php';
             break;
     }
-} catch (Exception $e) {
-    if (isAjax()) {
-        jsonResponse(['error' => true, 'message' => $e->getMessage()], 500);
-    } else {
-        die("<h1>Error</h1><p>{$e->getMessage()}</p>");
-    }
+} catch (\Throwable $e) {
+    \App\Core\ErrorHandler::handle($e);
 }
 
 /**

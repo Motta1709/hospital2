@@ -3,54 +3,30 @@
  * PharmaCRM - Helper de Autenticación
  */
 class Auth {
+    private static $service;
+
+    private static function getService() {
+        if (self::$service === null) {
+            $userRepo = new \App\Repositories\UserRepository();
+            self::$service = new \App\Services\AuthService($userRepo);
+        }
+        return self::$service;
+    }
 
     public static function check() {
-        return isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
+        return self::getService()->check();
     }
 
     public static function user() {
-        if (!self::check()) return null;
-        return [
-            'id' => $_SESSION['user_id'],
-            'username' => $_SESSION['username'],
-            'full_name' => $_SESSION['full_name'],
-            'role' => $_SESSION['role'],
-            'role_id' => $_SESSION['role_id'],
-            'branch_id' => $_SESSION['branch_id'] ?? 1,
-            'branch_name' => $_SESSION['branch_name'] ?? 'Sede Principal',
-            'email' => $_SESSION['email'] ?? ''
-        ];
+        return self::getService()->user();
     }
 
     public static function login($user) {
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['username'] = $user['username'];
-        $_SESSION['full_name'] = $user['full_name'];
-        $_SESSION['role'] = $user['role_name'] ?? $user['role'];
-        $_SESSION['role_id'] = $user['role_id'];
-        $_SESSION['email'] = $user['email'];
-        $_SESSION['branch_id'] = $user['branch_id'] ?? 1;
-        $_SESSION['branch_name'] = $user['branch_name'] ?? 'Sede Principal';
-
-        // Cargar permisos en la sesión
-        self::loadPermissions($user['role_id']);
-
-        // Update last login
-        $db = Database::getInstance()->getConnection();
-        $stmt = $db->prepare("UPDATE users SET last_login = NOW() WHERE id = ?");
-        $stmt->execute([$user['id']]);
+        self::getService()->login($user);
     }
 
-    public static function loadPermissions($roleId) {
-        $db = Database::getInstance()->getConnection();
-        $stmt = $db->prepare("
-            SELECT p.name 
-            FROM permissions p
-            JOIN role_permissions rp ON p.id = rp.permission_id
-            WHERE rp.role_id = ?
-        ");
-        $stmt->execute([$roleId]);
-        $_SESSION['permissions'] = $stmt->fetchAll(\PDO::FETCH_COLUMN);
+    public static function logout() {
+        self::getService()->logout();
     }
 
     public static function hasPermission($permission) {
@@ -60,11 +36,6 @@ class Auth {
         
         $permissions = $_SESSION['permissions'] ?? [];
         return in_array($permission, $permissions);
-    }
-
-    public static function logout() {
-        session_destroy();
-        $_SESSION = [];
     }
 
     public static function isAdmin() {

@@ -6,7 +6,7 @@
                 <h2 class="h5 mb-0 fw-bold">Editar Sucursal: <?= htmlspecialchars($b['name']) ?></h2>
             </div>
             <div class="card-body p-4">
-                <form action="<?= APP_URL ?>?route=branches&action=update" method="POST">
+                <form action="<?= APP_URL ?>/?route=branches&action=update" method="POST">
                     <input type="hidden" name="id" value="<?= $b['id'] ?>">
                     
                     <div class="row g-3">

@@ -10,7 +10,7 @@ $isEdit = !empty($user);
             <?= $isEdit ? 'Editar' : 'Nuevo' ?> Usuario
         </h3>
     </div>
-    <form action="<?= APP_URL ?>?route=users&action=<?= $isEdit ? 'update' : 'store' ?>" method="POST" class="p-4">
+    <form action="<?= APP_URL ?>/?route=users&action=<?= $isEdit ? 'update' : 'store' ?>" method="POST" class="p-4">
         <?php if ($isEdit): ?>
             <input type="hidden" name="id" value="<?= $user['id'] ?>">
         <?php endif; ?>

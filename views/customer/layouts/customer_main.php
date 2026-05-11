@@ -19,8 +19,14 @@
 </div>
 <nav class="sidebar-nav">
     <div class="nav-section">
+        <div class="nav-section-title">Tienda</div>
+        <a href="<?= APP_URL ?>?route=customer-dashboard&section=tienda" class="nav-link <?= ($_GET['section'] ?? 'tienda') === 'tienda' ? 'active' : '' ?>" data-section="tienda">
+            <i class="fas fa-store"></i> Catálogo de Productos
+        </a>
+    </div>
+    <div class="nav-section">
         <div class="nav-section-title">Panel</div>
-        <a href="<?= APP_URL ?>?route=customer-dashboard" class="nav-link <?= ($_GET['section'] ?? '') === '' ? 'active' : '' ?>" data-section="resumen">
+        <a href="<?= APP_URL ?>?route=customer-dashboard&section=resumen" class="nav-link <?= ($_GET['section'] ?? '') === 'resumen' ? 'active' : '' ?>" data-section="resumen">
             <i class="fas fa-chart-pie"></i> Resumen
         </a>
     </div>
@@ -74,7 +80,9 @@
             <h4><?= htmlspecialchars(($data['profile']['first_name'] ?? '') . ' ' . ($data['profile']['last_name'] ?? '')) ?></h4>
             <span><i class="fas fa-star text-warning"></i> <?= number_format($data['summary']['puntos'] ?? 0) ?> puntos</span>
         </div>
-        <a href="<?= APP_URL ?>?route=home" title="Volver a la tienda" style="color:var(--text-muted)"><i class="fas fa-store"></i></a>
+        <div style="display:flex;gap:8px;align-items:center">
+            <a href="<?= APP_URL ?>/?route=auth&action=logout" title="Cerrar sesion" style="color:var(--danger,#ef4444)"><i class="fas fa-right-from-bracket"></i></a>
+        </div>
     </div>
 </div>
 </aside>
@@ -86,9 +94,19 @@
         <button class="sidebar-toggle" onclick="document.getElementById('customerSidebar').classList.toggle('open')"><i class="fas fa-bars"></i></button>
         <h1><?= $pageTitle ?? 'Mi Panel' ?></h1>
     </div>
-    <div class="topbar-actions">
+    <div class="topbar-actions" style="display:flex;align-items:center;gap:16px">
+        <a href="<?= APP_URL ?>/?route=cart" style="text-decoration:none;color:var(--text-color);position:relative">
+            <i class="fas fa-shopping-cart" style="font-size:20px;color:var(--primary-color)"></i>
+            <?php 
+            $cartCount = 0;
+            foreach ($_SESSION['cart'] ?? [] as $item) $cartCount += $item['qty'];
+            if ($cartCount > 0): 
+            ?>
+                <span style="position:absolute;top:-8px;right:-10px;background:var(--danger,#ef4444);color:#fff;border-radius:50%;width:18px;height:18px;font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:bold"><?= $cartCount ?></span>
+            <?php endif; ?>
+        </a>
         <span class="customer-greeting">Hola, <?= htmlspecialchars($data['profile']['first_name'] ?? 'Cliente') ?></span>
-        <span style="font-size:13px;color:var(--text-muted)"><i class="fas fa-calendar"></i> <?= date('d M Y') ?></span>
+        <span style="font-size:13px;color:var(--text-muted);display:none"><i class="fas fa-calendar"></i> <?= date('d M Y') ?></span>
     </div>
 </header>
 <div class="page-content">

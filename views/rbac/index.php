@@ -80,7 +80,7 @@
             <h3 class="card-title">Nueva Función</h3>
             <button class="btn-close" onclick="hideNewPermModal()"></button>
         </div>
-        <form action="<?= APP_URL ?>?route=rbac&action=store-perm" method="POST" class="p-3">
+        <form action="<?= APP_URL ?>/?route=rbac&action=store-perm" method="POST" class="p-3">
             <div class="form-group mb-3">
                 <label>Módulo</label>
                 <select name="module_id" class="form-control" required>

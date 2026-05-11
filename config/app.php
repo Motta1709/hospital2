@@ -36,15 +36,28 @@ define('ITEMS_PER_PAGE', 15);
 define('CURRENCY_SYMBOL', '$');
 define('CURRENCY_CODE', 'COP');
 
-// Configuración de ePayco (Sandbox)
-define('EPAYCO_PUBLIC_KEY', 'b36e8484e5695026c07659556d1f9746');
-define('EPAYCO_TESTING', true);
+// Configuracion segura de ePayco desde BD/Cache
+require_once APP_ROOT . '/config/Settings.php';
+$epaycoSettings = Settings::loadGroup('epayco');
+
+define('EPAYCO_CUST_ID', $epaycoSettings['EPAYCO_CUST_ID'] ?? '');
+define('EPAYCO_P_KEY', $epaycoSettings['EPAYCO_P_KEY'] ?? '');
+define('EPAYCO_PUBLIC_KEY', $epaycoSettings['EPAYCO_PUBLIC_KEY'] ?? '');
+define('EPAYCO_PRIVATE_KEY', $epaycoSettings['EPAYCO_PRIVATE_KEY'] ?? '');
+// Convertir testing a booleano real
+define('EPAYCO_TESTING', filter_var($epaycoSettings['EPAYCO_TESTING'] ?? true, FILTER_VALIDATE_BOOLEAN));
+define('EPAYCO_LANG', $epaycoSettings['EPAYCO_LANG'] ?? 'es');
+define('EPAYCO_CURRENCY', $epaycoSettings['EPAYCO_CURRENCY'] ?? 'COP');
+define('EPAYCO_COUNTRY', $epaycoSettings['EPAYCO_COUNTRY'] ?? 'CO');
+define('EPAYCO_RESPONSE_URL', APP_URL . '/?route=checkout&action=response');
+define('EPAYCO_CONFIRMATION_URL', APP_URL . '/?route=checkout&action=confirm');
 
 /**
  * Helper para formatear moneda colombiana
  */
 function formatCurrency($amount) {
-    return CURRENCY_SYMBOL . ' ' . number_format($amount, 0, ',', '.');
+    $val = (float)($amount ?? 0);
+    return CURRENCY_SYMBOL . ' ' . number_format($val, 0, ',', '.');
 }
 
 /**

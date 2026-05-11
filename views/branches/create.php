@@ -15,7 +15,7 @@
                     </div>
                 </div>
 
-                <form action="<?= APP_URL ?>?route=branches&action=store" method="POST">
+                <form action="<?= APP_URL ?>/?route=branches&action=store" method="POST">
                     <div class="row g-3">
                         <div class="col-md-12">
                             <label class="form-label fw-bold">Nombre de la Sucursal *</label>

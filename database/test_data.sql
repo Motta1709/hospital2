@@ -1,3 +1,4 @@
+SET NAMES utf8mb4;
 USE pharmacrm;
 
 -- Clientes Adicionales
@@ -29,7 +30,7 @@ VALUES (
     (
         'CC',
         '1002223334',
-        'Andrés',
+        X'416E6472C3A973',
         'Felipe Rivera',
         'andres.rivera@example.com',
         '3117778899',
@@ -73,7 +74,7 @@ VALUES (
         1,
         '7701234567890',
         'Centrum Silver',
-        'Multivitamínico',
+        X'4D756C7469766974616DC3AD6E69636F',
         'Frasco x 60 tabletas',
         'N/A',
         'LOT-999',
@@ -87,8 +88,8 @@ VALUES (
         11,
         2,
         '7709876543210',
-        'Alcohol Antiséptico',
-        'Alcohol Etílico',
+        X'416C636F686F6C20416E746973C3A9707469636F',
+        X'416C636F686F6C204574C3AD6C69636F',
         'Frasco x 500ml',
         '70%',
         'LOT-888',
@@ -103,7 +104,7 @@ VALUES (
         3,
         '7705554443332',
         'Dolex Avanzado',
-        'Acetaminofén',
+        X'41636574616D696E6F66C3A96E',
         'Caja x 24 tabletas',
         '500mg',
         'LOT-777',
