@@ -1,0 +1,12 @@
+{
+    "epayco": {
+        "EPAYCO_CUST_ID": "1581627",
+        "EPAYCO_P_KEY": "7141425823ade7a9cad3b7b62058ce26f6a6a48e",
+        "EPAYCO_PUBLIC_KEY": "355c8fbe174f54a3ee7f413162b69e47",
+        "EPAYCO_PRIVATE_KEY": "17e7cfad6a6266254aa63bcda26ed8f0",
+        "EPAYCO_TESTING": "0",
+        "EPAYCO_LANG": "es",
+        "EPAYCO_CURRENCY": "COP",
+        "EPAYCO_COUNTRY": "CO"
+    }
+}

@@ -7,7 +7,18 @@
 <input type="text" id="posSearch" placeholder="Buscar producto por nombre o código..." oninput="searchPosProduct(this.value)" autofocus>
 </div>
 <div id="posProductGrid" class="product-grid">
-<div class="empty-state"><i class="fas fa-barcode"></i><h3>Busca un producto</h3><p>Escribe el nombre o escanea el código de barras</p></div>
+<?php if (!empty($data['products'])): ?>
+<?php foreach ($data['products'] as $p): ?>
+<div class="product-card" onclick='addToCart(<?= json_encode($p) ?>)'>
+    <div class="p-name"><?= htmlspecialchars($p['name']) ?></div>
+    <div class="p-generic"><?= htmlspecialchars($p['generic_name'] ?? '') ?><?= !empty($p['concentration']) ? ' · ' . htmlspecialchars($p['concentration']) : '' ?></div>
+    <div class="p-price">$ <?= number_format($p['sale_price'], 0, ',', '.') ?></div>
+    <div class="p-stock">Stock: <?= (int)$p['stock'] ?><?= ($p['requires_prescription'] ?? 0) == 1 ? ' · <i class="fas fa-prescription" style="color:var(--warning)"></i>' : '' ?></div>
+</div>
+<?php endforeach; ?>
+<?php else: ?>
+<div class="empty-state"><i class="fas fa-box-open"></i><h3>Sin productos disponibles</h3><p>No hay productos con stock en este momento</p></div>
+<?php endif; ?>
 </div>
 </div>
 </div>
@@ -55,20 +66,33 @@ let cart = [];
 let selectedClient = null;
 const BASE = '<?= APP_URL ?>';
 
-function searchPosProduct(q){
-if(q.length < 2){document.getElementById('posProductGrid').innerHTML='<div class="empty-state"><i class="fas fa-barcode"></i><h3>Busca un producto</h3></div>';return;}
-fetch(BASE+'?route=sales&action=search-product&q='+encodeURIComponent(q),{headers:{'X-Requested-With':'XMLHttpRequest'}})
-.then(r=>r.json()).then(products=>{
-const grid = document.getElementById('posProductGrid');
-if(!products.length){grid.innerHTML='<div class="empty-state"><i class="fas fa-search"></i><h3>Sin resultados</h3></div>';return;}
-grid.innerHTML = products.map(p=>`
-<div class="product-card" onclick='addToCart(${JSON.stringify(p)})'>
-<div class="p-name">${p.name}</div>
-<div class="p-generic">${p.generic_name||''} · ${p.concentration||''}</div>
-<div class="p-price">$ ${Number(p.sale_price).toLocaleString('es-CO')}</div>
-<div class="p-stock">Stock: ${p.stock} ${p.requires_prescription==1?'· <i class="fas fa-prescription" style="color:var(--warning)"></i>':''}</div>
-</div>`).join('');
-});
+// Catálogo completo pre-cargado desde PHP
+const ALL_PRODUCTS = <?= json_encode(array_values($data['products'] ?? []), JSON_UNESCAPED_UNICODE) ?>;
+
+function renderProductGrid(products) {
+    const grid = document.getElementById('posProductGrid');
+    if (!products.length) {
+        grid.innerHTML = '<div class="empty-state"><i class="fas fa-search"></i><h3>Sin resultados</h3><p>Intenta con otro término</p></div>';
+        return;
+    }
+    grid.innerHTML = products.map(p => `
+        <div class="product-card" onclick='addToCart(${JSON.stringify(p)})'>
+            <div class="p-name">${p.name}</div>
+            <div class="p-generic">${p.generic_name||''} ${p.concentration ? '· '+p.concentration : ''}</div>
+            <div class="p-price">$ ${Number(p.sale_price).toLocaleString('es-CO')}</div>
+            <div class="p-stock">Stock: ${p.stock} ${p.requires_prescription==1?'· <i class="fas fa-prescription" style="color:var(--warning)"></i>':''}</div>
+        </div>`).join('');
+}
+
+function searchPosProduct(q) {
+    if (q.length < 2) {
+        // Al limpiar la búsqueda, mostrar todos los productos
+        renderProductGrid(ALL_PRODUCTS);
+        return;
+    }
+    fetch(BASE + '?route=sales&action=search-product&q=' + encodeURIComponent(q), {headers: {'X-Requested-With': 'XMLHttpRequest'}})
+        .then(r => r.json())
+        .then(products => renderProductGrid(products));
 }
 
 function searchPosClient(q){
@@ -164,7 +188,8 @@ document.getElementById('cashReceived').value='';
 document.getElementById('changeAmount').textContent='';
 renderCart();
 document.getElementById('posSearch').value='';
-document.getElementById('posProductGrid').innerHTML='<div class="empty-state"><i class="fas fa-check-circle" style="color:var(--success)"></i><h3>Venta completada</h3></div>';
+// Volver a mostrar el catálogo completo tras finalizar la venta
+renderProductGrid(ALL_PRODUCTS);
 } else alert('Error: '+(res.message||'Desconocido'));
 }).catch(e=>alert('Error de conexión'));
 }

@@ -10,6 +10,10 @@ docs/
 context/*.docx
 gen_hash.php
 mi-qa/
+settings_schema.sql
+xxx/
+/xxx
+/xxx/
 
 # Executables
 *.swf
@@ -30,3 +34,8 @@ mi-qa/
 # information for Eclipse / Flash Builder.
 /mi-qa/node_modules/.bin
 /mi-qa
+
+# Composer
+/vendor/
+composer.phar
+composer-setup.php

@@ -4,6 +4,11 @@
  * Revertido a Endpoints Tradicionales (?route=)
  */
 
+// 0. Autoload de Composer (SDK ePayco y otras dependencias)
+if (file_exists(__DIR__ . '/vendor/autoload.php')) {
+    require_once __DIR__ . '/vendor/autoload.php';
+}
+
 // 1. Inicialización y Carga de Núcleo
 require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/config/app.php';
@@ -63,7 +68,7 @@ $route = $_GET['route'] ?? 'home';
 $action = $_GET['action'] ?? 'index';
 
 // Rutas publicas (no requieren autenticacion)
-$publicRoutes = ['home', 'login', 'auth', 'cart', 'checkout'];
+$publicRoutes = ['home', 'login', 'auth', 'cart', 'checkout', 'nequi'];
 
 // Rutas que requieren sesion de cliente
 $clientRoutes = ['customer-dashboard'];
@@ -150,6 +155,12 @@ try {
 
         case 'checkout':
             $controller = new CheckoutController();
+            if (method_exists($controller, $action)) $controller->$action();
+            else $controller->index();
+            break;
+
+        case 'nequi':
+            $controller = new NequiController();
             if (method_exists($controller, $action)) $controller->$action();
             else $controller->index();
             break;

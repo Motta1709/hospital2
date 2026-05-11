@@ -1,0 +1,12 @@
+# Graphify - Ignorar archivos no relevantes para el grafo de conocimiento
+xxx/
+mi-qa/resultados/
+libs/graphify/graphify-out/
+graphify-out/
+.git/
+node_modules/
+scratch/
+*.log
+*.tmp
+*.bak
+*.json.html

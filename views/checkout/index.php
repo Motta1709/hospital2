@@ -35,6 +35,10 @@
 .btn-back:hover{color:#4a5568}
 .secure-badge{display:flex;align-items:center;gap:8px;padding:12px;background:#f0fff4;border-radius:10px;margin-top:16px;font-size:12px;color:#38a169}
 .secure-badge i{font-size:16px}
+.btn-nequi-link{width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,#da3791,#e04068);color:#fff;font-size:16px;font-weight:700;cursor:pointer;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .3s ease;box-shadow:0 4px 14px rgba(218,55,145,.3);text-decoration:none}
+.btn-nequi-link:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(218,55,145,.4)}
+.payment-separator{display:flex;align-items:center;gap:12px;margin:14px 0 2px;color:#a0aec0;font-size:12px}
+.payment-separator::before,.payment-separator::after{content:'';flex:1;height:1px;background:#e2e8f0}
 @media(max-width:768px){.checkout-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -69,11 +73,15 @@
 <div class="checkout-summary">
 <h2><i class="fas fa-receipt" style="color:#ed8936"></i> Resumen</h2>
 <div class="summary-row">
-<span>Subtotal</span>
+<span>Precio total (IVA incl.)</span>
+<span><?= formatCurrency($data['total']) ?></span>
+</div>
+<div class="summary-row" style="font-size:12px;color:#a0aec0">
+<span>Base imponible</span>
 <span><?= formatCurrency($data['subtotal']) ?></span>
 </div>
-<div class="summary-row">
-<span>IVA (19%)</span>
+<div class="summary-row" style="font-size:12px;color:#a0aec0">
+<span>IVA 19% (incluido)</span>
 <span><?= formatCurrency($data['iva']) ?></span>
 </div>
 <div class="summary-row total">
@@ -84,6 +92,10 @@
 <button class="btn-epayco" id="btnPayEpayco" onclick="openEpaycoCheckout()">
 <i class="fas fa-credit-card"></i> Pagar con ePayco
 </button>
+
+<a href="<?= APP_URL ?>/?route=nequi" class="btn-nequi-link" id="btnNequi">
+    <i class="fas fa-mobile-alt"></i> Pagar con Nequi
+</a>
 
 <div class="secure-badge">
 <i class="fas fa-lock"></i>

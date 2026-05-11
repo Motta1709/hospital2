@@ -38,7 +38,14 @@ class SalesController {
             setFlash('error', 'No tienes permiso para acceder al Punto de Venta.');
             redirect('?route=dashboard');
         }
-        $data = ['invoiceNumber' => generateInvoiceNumber()];
+
+        // Pre-cargar todos los productos disponibles (stock > 0) para mostrarlos de inmediato
+        $allProducts = $this->productRepository->search('');
+
+        $data = [
+            'invoiceNumber' => generateInvoiceNumber(),
+            'products'      => $allProducts,
+        ];
         $pageTitle = 'Punto de Venta';
         $currentRoute = 'sales';
         $content = APP_ROOT . '/views/sales/pos.php';

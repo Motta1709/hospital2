@@ -41,10 +41,11 @@ class CheckoutController {
             redirect('?route=cart');
         }
 
-        // Calcular IVA (19% Colombia)
-        $iva = round($total * 0.19);
-        $baseIva = $total;
-        $totalConIva = $total + $iva;
+        // El precio publicado YA INCLUYE IVA (19%).
+        // Se extrae el IVA del total en lugar de sumarlo.
+        $baseIva     = round($total / 1.19, 2);  // base sin IVA
+        $iva         = round($total - $baseIva, 2); // IVA contenido
+        $totalConIva = $total;                    // total = precio final (sin cambio)
 
         // Generar referencia unica
         $invoiceRef = 'PCRM-' . date('Ymd') . '-' . strtoupper(substr(md5(uniqid()), 0, 6));
@@ -66,7 +67,7 @@ class CheckoutController {
             $stmtSale->execute([
                 $_SESSION['client_id'],
                 $invoiceRef,
-                $total,
+                $baseIva,      // subtotal = base sin IVA
                 $iva,
                 $totalConIva
             ]);
@@ -98,12 +99,12 @@ class CheckoutController {
         $_SESSION['checkout_total'] = $totalConIva;
 
         $data = [
-            'items' => $cartItems,
-            'subtotal' => $total,
-            'iva' => $iva,
-            'total' => $totalConIva,
+            'items'    => $cartItems,
+            'subtotal' => $baseIva,      // base sin IVA (para desglose)
+            'iva'      => $iva,
+            'total'    => $totalConIva,  // precio final (ya incluye IVA)
             'invoiceRef' => $invoiceRef,
-            'client' => $client,
+            'client'   => $client,
         ];
 
         include APP_ROOT . '/views/checkout/index.php';

@@ -1,0 +1,1262 @@
+{
+  "C:\\wamp64\\www\\hospital\\index.php": {
+    "mtime": 1778463539.2076807,
+    "hash": "8c8d786be44904dc075a731319adcbbe"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\controllers\\ApiController.php": {
+    "mtime": 1778255711.1422193,
+    "hash": "da3f3458f712477f5906add2f9fefbf0"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\controllers\\AuthController.php": {
+    "mtime": 1778463513.2699523,
+    "hash": "7e27b41453aca6077852101bfe78be9d"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\controllers\\BranchController.php": {
+    "mtime": 1778255711.143744,
+    "hash": "e86e3e0f6936af0653a56ffb38c8242e"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\controllers\\CartController.php": {
+    "mtime": 1778469997.5864909,
+    "hash": "0fd9b4764323705bf4723bcf148dbe66"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\controllers\\CheckoutController.php": {
+    "mtime": 1778469127.6491234,
+    "hash": "a60756bbdbbcc48d0e9d48a1904947b8"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\controllers\\ClientController.php": {
+    "mtime": 1778255711.143744,
+    "hash": "d0fa85a46cd64c64934f3207a331ead7"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\controllers\\CustomerDashboardController.php": {
+    "mtime": 1778469774.871371,
+    "hash": "3b3fa1dede8f5972809f3daff6993057"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\controllers\\DashboardController.php": {
+    "mtime": 1778451987.2778,
+    "hash": "9e78b24e0cbb43c0b1ea83c34545b9a9"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\controllers\\HomeController.php": {
+    "mtime": 1778255711.147719,
+    "hash": "62627a5753da542b35c870ae3a0b7c2c"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\controllers\\InventoryController.php": {
+    "mtime": 1778255711.148632,
+    "hash": "0d4f6a33dfbe813ded63663937a0105c"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\controllers\\LoyaltyController.php": {
+    "mtime": 1778451987.2778,
+    "hash": "c47f46ba1f76a921a93bd760893ed26e"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\controllers\\RbacController.php": {
+    "mtime": 1778255711.1491804,
+    "hash": "4b3068daa32884b38ce04d695184724f"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\controllers\\ReportController.php": {
+    "mtime": 1778255711.1491804,
+    "hash": "5eb2e968ec0a4ff59812e74f236bb7b7"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\controllers\\SalesController.php": {
+    "mtime": 1778454062.9686234,
+    "hash": "dd7948ecf0c26fe230261d9df97cedf5"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\controllers\\UserController.php": {
+    "mtime": 1778454258.8506687,
+    "hash": "931b57484385ae50f6618c5a2c715410"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\core\\ErrorHandler.php": {
+    "mtime": 1778455239.3627942,
+    "hash": "f5aafb264b5b939ec99fd469b6effb01"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\exceptions\\SystemException.php": {
+    "mtime": 1778454177.0812826,
+    "hash": "572198017d3f5e52229f36198d93aa0d"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\exceptions\\ValidationException.php": {
+    "mtime": 1778454220.618311,
+    "hash": "066466b780b63cf8fe3fe87bb87693ad"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\helpers\\Auth.php": {
+    "mtime": 1778453811.9228885,
+    "hash": "58c14b7f645a416b074afd0968ac72dc"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\helpers\\Validator.php": {
+    "mtime": 1778454232.4745224,
+    "hash": "65524242a838670b168561593a636e1e"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\interfaces\\AuthServiceInterface.php": {
+    "mtime": 1778453747.8489692,
+    "hash": "6e396b80df97077ca1a7d024f1593930"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\interfaces\\BaseRepositoryInterface.php": {
+    "mtime": 1778453988.085588,
+    "hash": "b4b425d9b06e70b0a98e7f0d8d787569"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\interfaces\\CheckoutServiceInterface.php": {
+    "mtime": 1778454029.856612,
+    "hash": "5989cd102e85b2a760adc9d0310dc523"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\interfaces\\ProductRepositoryInterface.php": {
+    "mtime": 1778453994.248951,
+    "hash": "787a67c6c298d7498ef944257991d3d8"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\interfaces\\SaleRepositoryInterface.php": {
+    "mtime": 1778454015.5581658,
+    "hash": "321285f5b3f78df39bc39afc4be1a997"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\interfaces\\UserRepositoryInterface.php": {
+    "mtime": 1778453742.4259899,
+    "hash": "ff22e2db4e59187bed63c940eed98aab"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\models\\Branch.php": {
+    "mtime": 1778451987.281586,
+    "hash": "246b6d32099c3b623ef785a9793dbc07"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\models\\Classification.php": {
+    "mtime": 1778451987.281586,
+    "hash": "f8d29b3a76f67e8cb7ef02da46ae0a51"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\models\\Client.php": {
+    "mtime": 1778452041.9816582,
+    "hash": "1bf31e5ed5d98602cff1807d758d086a"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\models\\CustomerOrder.php": {
+    "mtime": 1778452041.982205,
+    "hash": "31376e42f4ff8fa9f1842dc418f503c9"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\models\\CustomerProfile.php": {
+    "mtime": 1778452041.982205,
+    "hash": "933b2469f8ffcf67d2102aeb0e278db5"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\models\\Devolucion.php": {
+    "mtime": 1778452041.983715,
+    "hash": "9bbd8cd02a4096177820bc236ec8e0aa"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\models\\Domicilio.php": {
+    "mtime": 1778452041.983715,
+    "hash": "d8e2e4750578a0bf0be8f4301176e744"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\models\\Kardex.php": {
+    "mtime": 1778452041.983715,
+    "hash": "f6870bdc0360f4177903e24a5fe480ba"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\models\\LoyaltyProgram.php": {
+    "mtime": 1778452041.983715,
+    "hash": "0922ae175eb149a2616035980bc516d3"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\models\\Notificacion.php": {
+    "mtime": 1778452041.985871,
+    "hash": "91a8fbaddbccb199ca7faad9bf19e997"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\models\\Permission.php": {
+    "mtime": 1778451987.2883177,
+    "hash": "6222b1a1375cee45f1077cb9351b6c1a"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\models\\PQRSF.php": {
+    "mtime": 1778452041.985871,
+    "hash": "f866ce2814c721e48c26e956e705c756"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\models\\Product.php": {
+    "mtime": 1778455029.6397789,
+    "hash": "ff75f2d8008a1f0e6edccda8ddf0eef9"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\models\\Report.php": {
+    "mtime": 1778452041.986876,
+    "hash": "219b9002515965f5e0079800ca89ae04"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\models\\ReservaMedicamento.php": {
+    "mtime": 1778452041.9884465,
+    "hash": "576fd3bc1033cd210b255195b84795b3"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\models\\Role.php": {
+    "mtime": 1778451987.2898622,
+    "hash": "8b36c506e0a01680aa992dda98878235"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\models\\Sale.php": {
+    "mtime": 1778452041.9884465,
+    "hash": "1ab1574071cc226cb6680b7c094d1cda"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\models\\Subclassification.php": {
+    "mtime": 1778451987.2898622,
+    "hash": "58dd4e4e3e3b12d886c4f9f4cacd2bac"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\models\\User.php": {
+    "mtime": 1778452041.9896295,
+    "hash": "71746be101edf7ad2313bfe5654a7fe9"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\repositories\\ProductRepository.php": {
+    "mtime": 1778454003.1102169,
+    "hash": "ac52586f5f7b1c659dabbd8c1379ad97"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\repositories\\SaleRepository.php": {
+    "mtime": 1778454024.0531852,
+    "hash": "0fcdf83845a1e559d0b7ce9916e8e449"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\repositories\\UserRepository.php": {
+    "mtime": 1778455295.6799226,
+    "hash": "3a13f2cc331cd9b1b19a0a947c330f8f"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\services\\AuthService.php": {
+    "mtime": 1778453820.069629,
+    "hash": "2c57a6ee3066f216482cfd9eebec0468"
+  },
+  "C:\\wamp64\\www\\hospital\\app\\services\\CheckoutService.php": {
+    "mtime": 1778454039.6614065,
+    "hash": "4207854fc99d3812a362861ba9ca5eb0"
+  },
+  "C:\\wamp64\\www\\hospital\\config\\app.php": {
+    "mtime": 1778472513.280223,
+    "hash": "2e2664f75f60f45b2e1c4bd8081e3485"
+  },
+  "C:\\wamp64\\www\\hospital\\config\\database.php": {
+    "mtime": 1778255711.1684391,
+    "hash": "0dbd9069bd079fa8476a2bc66bc80f4b"
+  },
+  "C:\\wamp64\\www\\hospital\\config\\Settings.php": {
+    "mtime": 1778472498.9684932,
+    "hash": "4c9e30bde08aca7a392986b7eebe8610"
+  },
+  "C:\\wamp64\\www\\hospital\\context\\read_docx.php": {
+    "mtime": 1778255711.169888,
+    "hash": "23013121d0954ec3304deb16bf0f2729"
+  },
+  "C:\\wamp64\\www\\hospital\\context\\read_docx2.php": {
+    "mtime": 1778255711.1740623,
+    "hash": "d9f23e9b895b37a1b92b5750ec6b3557"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\branches_schema.sql": {
+    "mtime": 1778453000.2993906,
+    "hash": "8950f2db15ea546a6d66a3848c6d0609"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\branch_admin_permissions.sql": {
+    "mtime": 1778255711.1740623,
+    "hash": "e4eb7b3272092e4fc222865ee8dc7b9e"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\check_roles.sql": {
+    "mtime": 1778255711.1740623,
+    "hash": "d5003f81ded80cb722e76bb318b0c6c6"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\check_users.sql": {
+    "mtime": 1778255711.1740623,
+    "hash": "5c8ad9b85ad74dfbb62ab51880f63eb6"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\customer_module_schema.sql": {
+    "mtime": 1778472840.263407,
+    "hash": "f8f7c749b101dfba5a47a5ff57e43d7b"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\eco_1_admins.sql": {
+    "mtime": 1778453000.3034122,
+    "hash": "6aab7794f1104220658034707f864c8b"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\eco_2_supervisors.sql": {
+    "mtime": 1778453000.3074422,
+    "hash": "3a5ab543bf8545beaf21afcb9d083a50"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\eco_3_cashiers.sql": {
+    "mtime": 1778453000.3253775,
+    "hash": "1435b290cf4d29fc5da482a7b54f236e"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\eco_4_clients.sql": {
+    "mtime": 1778453000.3556628,
+    "hash": "d39c608b45e105cd360194b0c5126249"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\inventory_branch_fix.sql": {
+    "mtime": 1778255711.1825883,
+    "hash": "39aea1a7d90e30c866f50cd2a37d3bea"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\inventory_branch_fix_v2.sql": {
+    "mtime": 1778255711.1825883,
+    "hash": "29467ee0e77007de4f56a962dffba3fd"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\kardex_schema.sql": {
+    "mtime": 1778453000.3024042,
+    "hash": "a4159ff55e4745129060de8154e0ef39"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\migration_v2.sql": {
+    "mtime": 1778255711.1836274,
+    "hash": "b67b1f2caae47f6bfc2b83b0a15eb3d8"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\op_1_admins.sql": {
+    "mtime": 1778453000.359965,
+    "hash": "f3b92c3b41606bbb2124e68d25f416e0"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\op_2_supervisors.sql": {
+    "mtime": 1778453000.371123,
+    "hash": "0f57673ec57aa584d85efdd7bf3cc541"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\op_3_cashiers.sql": {
+    "mtime": 1778453000.4169946,
+    "hash": "83e2564c7be2c3b7273e7a41fdbbf639"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\rbac_schema.sql": {
+    "mtime": 1778453000.301387,
+    "hash": "f1c2861d8ed4032215500f069bbae1c4"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\schema.sql": {
+    "mtime": 1778453000.2968686,
+    "hash": "a644dc31420be2195064d9ee4712db1b"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\settings_schema.sql": {
+    "mtime": 1778472112.6907794,
+    "hash": "538d30328bb9d58d0a9fa7656beab72e"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\test_data.sql": {
+    "mtime": 1778453000.418499,
+    "hash": "2112c56e8f61a845bb6948b7839e687c"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\user_seeds.sql": {
+    "mtime": 1778453000.4169946,
+    "hash": "057f781157c9e1fd3ae6c85f1e4623c9"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\utf8_compatibility.sql": {
+    "mtime": 1778453000.3024042,
+    "hash": "6c4f2cc975294569895232a6df8eeb2a"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\verify_admin.sql": {
+    "mtime": 1778255711.1985898,
+    "hash": "b595efb19a33becc96697095f39cdf30"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\seeds\\ecosystem\\ecosystem_seeds.sql": {
+    "mtime": 1778255711.1900463,
+    "hash": "423b70eb80196403208cb761c99980be"
+  },
+  "C:\\wamp64\\www\\hospital\\database\\seeds\\operative\\operative_seeds.sql": {
+    "mtime": 1778255711.1938279,
+    "hash": "d1744d8dbeec2117d3e58e72186c216f"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\analyze.py": {
+    "mtime": 1778280788.9394696,
+    "hash": "9aca90023e723b13c37ced82155bb03c"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\benchmark.py": {
+    "mtime": 1778280788.9399881,
+    "hash": "0742c9e521cedc1cbd6e213b01c93d4a"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\build.py": {
+    "mtime": 1778280788.9405499,
+    "hash": "fb1e20b7ef65255bc7c14d938da0d80e"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\cache.py": {
+    "mtime": 1778280788.9405499,
+    "hash": "32a8513b63dc676a9f7938f3e25d9fe8"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\cluster.py": {
+    "mtime": 1778280788.9405499,
+    "hash": "0ba0c84b570abbfc1581ba5336b24a3f"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\dedup.py": {
+    "mtime": 1778280788.943602,
+    "hash": "23a8b1a851ec9ff7239c27ad0e715ced"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\detect.py": {
+    "mtime": 1778280788.943602,
+    "hash": "2c2c372589a73e23086103e1062abc8e"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\export.py": {
+    "mtime": 1778280788.943602,
+    "hash": "945319fd9b206051aa344f8278f348fb"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\extract.py": {
+    "mtime": 1778280788.9480045,
+    "hash": "48b827940559ad3950b7e8a19126761c"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\global_graph.py": {
+    "mtime": 1778280788.9480045,
+    "hash": "26162123669cdc6311fe1cc7edf371b5"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\google_workspace.py": {
+    "mtime": 1778280788.9495487,
+    "hash": "65f351d6eb1778feacaff4ea6fd2b2a1"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\hooks.py": {
+    "mtime": 1778280788.9505725,
+    "hash": "359c072c949d7ee88162d3d8a390c042"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\ingest.py": {
+    "mtime": 1778280788.9505725,
+    "hash": "c9688ebc354ea9a8b6b69448b8d67956"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\llm.py": {
+    "mtime": 1778280788.9520905,
+    "hash": "3dc386680610c0a16956d08a534d90bf"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\manifest.py": {
+    "mtime": 1778280788.9520905,
+    "hash": "b6fb195b7900f4ed7bec86a8b0d43a18"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\report.py": {
+    "mtime": 1778280788.9520905,
+    "hash": "82a03153b8a81bf229b865cee202cacc"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\security.py": {
+    "mtime": 1778280788.9537003,
+    "hash": "4a413809994067d9cb55b74fdd289e6e"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\serve.py": {
+    "mtime": 1778280788.9537003,
+    "hash": "6a5b9f81abc1003881d792e3b9bd9796"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\transcribe.py": {
+    "mtime": 1778280788.9683044,
+    "hash": "806ed4df8ffa36a40cc887a8b07e0c36"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\tree_html.py": {
+    "mtime": 1778280788.9688284,
+    "hash": "7b89a14fd14e3387bdcd52b6a15b0038"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\validate.py": {
+    "mtime": 1778280788.9688284,
+    "hash": "58b66d31350c480f602c1cb09648245d"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\watch.py": {
+    "mtime": 1778280788.9688284,
+    "hash": "77f2c060c207433d9301a55c1c6b3e3d"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\wiki.py": {
+    "mtime": 1778280788.9714613,
+    "hash": "451857d3af393251392e3e96a882340d"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\__init__.py": {
+    "mtime": 1778280788.9374492,
+    "hash": "7d6b16eb66fd4852a50d7474a1815579"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\__main__.py": {
+    "mtime": 1778280788.9374492,
+    "hash": "f8b5fb6a8738ff20b1adf7b7e0688e24"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\bench_extract.py": {
+    "mtime": 1778280788.9739788,
+    "hash": "1a7d90e1abc6d7a780849ca3d5b3223e"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_analyze.py": {
+    "mtime": 1778280789.0036309,
+    "hash": "5bd4365db0eac9719eecfae8eca781be"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_benchmark.py": {
+    "mtime": 1778280789.0056493,
+    "hash": "a69a555b607b9127019ba985d4a68693"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_build.py": {
+    "mtime": 1778280789.0061722,
+    "hash": "d351bd3e46b0032bb91cb681ec1ddf61"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_cache.py": {
+    "mtime": 1778280789.0061722,
+    "hash": "2233754d22d5470b8a4b9dd0438b9e5a"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_chunking.py": {
+    "mtime": 1778280789.0061722,
+    "hash": "29049c19d1d5fa98e8205d73481585c6"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_claude_md.py": {
+    "mtime": 1778280789.0081904,
+    "hash": "b8fcdab59fac826310c473a1b2f861c1"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_cli_export.py": {
+    "mtime": 1778280789.0081904,
+    "hash": "0177341b1fd4ec996a35503398cc4a99"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_cluster.py": {
+    "mtime": 1778280789.0081904,
+    "hash": "d5e27be6e3fea2ec8e17bb332f3c82de"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_confidence.py": {
+    "mtime": 1778280789.009751,
+    "hash": "aeaab1837c65fb85507e96621d1fa9e7"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_dedup.py": {
+    "mtime": 1778280789.0108664,
+    "hash": "bd5ca5a186b81c13f152b99d607c7b69"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_detect.py": {
+    "mtime": 1778280789.0115378,
+    "hash": "73228b182e8b09e9f58b659d72c0fdb4"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_export.py": {
+    "mtime": 1778280789.0115378,
+    "hash": "f59ed5733ae316f309a051811d27130b"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_extract.py": {
+    "mtime": 1778280789.0115378,
+    "hash": "17315358870c9ae7f2cf4086d1364d85"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_global_graph.py": {
+    "mtime": 1778280789.0115378,
+    "hash": "6fdfe804a4fdc06aa9130dd7d925bcbd"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_google_workspace.py": {
+    "mtime": 1778280789.0115378,
+    "hash": "af8a234affff192d1d3f7af2c6bc4245"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_hooks.py": {
+    "mtime": 1778280789.0115378,
+    "hash": "ff9765f0078ecc8c9e8a9284255cc669"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_hypergraph.py": {
+    "mtime": 1778280789.0115378,
+    "hash": "1256cad0b03866e952d14314edd08116"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_import_extension_resolution.py": {
+    "mtime": 1778280789.0115378,
+    "hash": "d37c11d3cdfc282dcd96546cf6706f39"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_incremental.py": {
+    "mtime": 1778280789.0115378,
+    "hash": "1d4989a9713b39532efe44a0111e7c96"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_ingest.py": {
+    "mtime": 1778280789.0180726,
+    "hash": "887c3a601773a11f6a3a119c2aa94067"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_install.py": {
+    "mtime": 1778280789.0185938,
+    "hash": "5a0fba6fa534fffaa6044e913e6b72ce"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_languages.py": {
+    "mtime": 1778280789.0185938,
+    "hash": "257be5f4879d125c9ebbdfe13c7facb2"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_llm_backends.py": {
+    "mtime": 1778280789.0185938,
+    "hash": "12fc16691122175e55ed21a83e57ce98"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_multilang.py": {
+    "mtime": 1778280789.0185938,
+    "hash": "ae92369b22db5acb233734b40941a44b"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_ollama.py": {
+    "mtime": 1778280789.021161,
+    "hash": "e656280553f32f61207d8babbe28b31a"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_pipeline.py": {
+    "mtime": 1778280789.021161,
+    "hash": "7fd37b8566d77fd4127081245f605e7d"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_query_cli.py": {
+    "mtime": 1778280789.021161,
+    "hash": "bc551c6d83285973c4294dbdbd7b966d"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_rationale.py": {
+    "mtime": 1778280789.021161,
+    "hash": "ce6717bb61b68ce94667f5e15c0c65fe"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_report.py": {
+    "mtime": 1778280789.021161,
+    "hash": "c30892057a259583592cb99291c7e424"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_security.py": {
+    "mtime": 1778280789.021161,
+    "hash": "64d4de68f085220c6b6287610f4e5777"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_semantic_similarity.py": {
+    "mtime": 1778280789.021161,
+    "hash": "8b6da033b8d5c2e759b10162e507acd3"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_serve.py": {
+    "mtime": 1778280789.026834,
+    "hash": "f53513131eef0f676f536e184ecc9c40"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_transcribe.py": {
+    "mtime": 1778280789.0288804,
+    "hash": "4f93c061f990991830203ce129291dd0"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_validate.py": {
+    "mtime": 1778280789.0288804,
+    "hash": "40f7c94d777ba791d6711ca7ad6444b1"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_watch.py": {
+    "mtime": 1778280789.0288804,
+    "hash": "f5445400c8ccee88ea82fe260089d946"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\test_wiki.py": {
+    "mtime": 1778280789.0288804,
+    "hash": "4bff6934bc13e4d3e52c00e2b7f337e9"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\__init__.py": {
+    "mtime": 1778280788.9714613,
+    "hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\cjs_require.js": {
+    "mtime": 1778280788.9739788,
+    "hash": "7e96267e28c319393a69533179675d75"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\dynamic_import.ts": {
+    "mtime": 1778280788.9739788,
+    "hash": "3c8854b41bfd47798987f3a982fdb73e"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.c": {
+    "mtime": 1778280788.9836476,
+    "hash": "576c1baf1268255813afcee65d95d625"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.cpp": {
+    "mtime": 1778280788.9836476,
+    "hash": "acdb94344746d663c1703d3039e18dd5"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.cs": {
+    "mtime": 1778280788.9836476,
+    "hash": "f55760ad01c6837fd70c3fd3127e52b1"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.ex": {
+    "mtime": 1778280788.9836476,
+    "hash": "d5edac0c474cea2d4ea70646f010e6f8"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.f90": {
+    "mtime": 1778280788.9856672,
+    "hash": "b4ba1e911a8d6e6eb334b28e4fa6d66a"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.go": {
+    "mtime": 1778280788.9856672,
+    "hash": "68d764f267d6de33e0072e51b46984fd"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.groovy": {
+    "mtime": 1778280788.9871764,
+    "hash": "930d531632bec334756dbc1ecffd5607"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.java": {
+    "mtime": 1778280788.9871764,
+    "hash": "b212881676b2bc38a9bd1ce24e5aecab"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.jl": {
+    "mtime": 1778280788.9871764,
+    "hash": "05bf69b153b47ea73964930b374d12ae"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.kt": {
+    "mtime": 1778280788.9871764,
+    "hash": "e42eb24a6f09aded02c0ae1cd611c476"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.luau": {
+    "mtime": 1778280788.9897878,
+    "hash": "0371e4839c69f9e6e4bd6648c4658c30"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.m": {
+    "mtime": 1778280788.9903207,
+    "hash": "c5f2fc141ac551aa2b005874ef90fadb"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.php": {
+    "mtime": 1778280788.9903207,
+    "hash": "fdde93cc61eb3a06c278942c289b61ed"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.ps1": {
+    "mtime": 1778280788.9903207,
+    "hash": "f490c05808fe7a2405d59746deff79a8"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.py": {
+    "mtime": 1778280788.9903207,
+    "hash": "40d26857f9db668c666b9fd6e89cae0f"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.rb": {
+    "mtime": 1778280788.9903207,
+    "hash": "bc67e4db7dcea4169441db46e4c0d1b2"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.rs": {
+    "mtime": 1778280788.9937496,
+    "hash": "df2e677c4a4fb3ff16f25d01e8ece881"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.scala": {
+    "mtime": 1778280788.9937496,
+    "hash": "49e434e95d052ffed3d41a76fc090697"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.sql": {
+    "mtime": 1778280788.9937496,
+    "hash": "edcd04dd6a02eb350ac8f8c2bc42c3b1"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.swift": {
+    "mtime": 1778280788.9955013,
+    "hash": "404ffe894f2b37ccc94a518a5aa5b52e"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.ts": {
+    "mtime": 1778280788.9955013,
+    "hash": "eca8672c41e03530fc355526545c425e"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.tsx": {
+    "mtime": 1778280788.9955013,
+    "hash": "cc4c55319bb09b4bcb9137d52ad8d16c"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.zig": {
+    "mtime": 1778280788.9985325,
+    "hash": "2b70ac0b9a1698a539c3a0413369a7ba"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample_alter_fk.sql": {
+    "mtime": 1778280788.9985325,
+    "hash": "3ef2846871ce9629d644790cfce469fa"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample_calls.py": {
+    "mtime": 1778280788.9985325,
+    "hash": "5d61d0c3268393efdff61e775d0299dc"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample_php_config.php": {
+    "mtime": 1778280789.0000525,
+    "hash": "ec8acdd57e6c48be2208c8adb68ec9fb"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample_php_container.php": {
+    "mtime": 1778280789.0000525,
+    "hash": "53f59426adc01aad42273a91b9c5d682"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample_php_listen.php": {
+    "mtime": 1778280789.0000525,
+    "hash": "ee3ff06e804e168123f8426894527195"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample_php_static_prop.php": {
+    "mtime": 1778280789.0020707,
+    "hash": "73b53ddaa4e0b43f9868a14f57e41ff7"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample_schema_qualified.sql": {
+    "mtime": 1778280789.0020707,
+    "hash": "790a536e9a3979fe42fb0ced05550da4"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample_spock.groovy": {
+    "mtime": 1778280789.0036309,
+    "hash": "1a8cc277ce07523862b09afecdd932e1"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\typescript_advanced.ts": {
+    "mtime": 1778280789.0036309,
+    "hash": "1c8c7caaa22b89dc2ae46a98bf1ec2c4"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\example\\raw\\api.py": {
+    "mtime": 1778280789.033692,
+    "hash": "94803866dac5d43ca93424600f92d087"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\example\\raw\\parser.py": {
+    "mtime": 1778280789.033692,
+    "hash": "7e851d6c9387d9dfe3d950da8134e907"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\example\\raw\\processor.py": {
+    "mtime": 1778280789.033692,
+    "hash": "039460bdd76c82646b92300559d85c8b"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\example\\raw\\storage.py": {
+    "mtime": 1778280789.037339,
+    "hash": "51d7ae51c2822415aa561d6b5c2d21eb"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\example\\raw\\validator.py": {
+    "mtime": 1778280789.037339,
+    "hash": "0a1d1764da88dd249b9234f2fed8a4c8"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\httpx\\raw\\auth.py": {
+    "mtime": 1778280789.0403805,
+    "hash": "f5e54f028db29f5ade3137e89f11e2e9"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\httpx\\raw\\client.py": {
+    "mtime": 1778280789.0429018,
+    "hash": "cb2d79a9a63444bd67eac05d9180eee6"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\httpx\\raw\\exceptions.py": {
+    "mtime": 1778280789.0439105,
+    "hash": "5cbe3454de1c02efd39d6ed626891664"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\httpx\\raw\\models.py": {
+    "mtime": 1778280789.0439105,
+    "hash": "8bd8f9e42930dfdd3f11236ea96dd30c"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\httpx\\raw\\transport.py": {
+    "mtime": 1778280789.0439105,
+    "hash": "44ad90c1522cf5a4cdcc204a823d4b38"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\httpx\\raw\\utils.py": {
+    "mtime": 1778280789.0439105,
+    "hash": "396942df3d2ce6762c3d65014d0bbe19"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\mixed-corpus\\raw\\analyze.py": {
+    "mtime": 1778280789.0534823,
+    "hash": "ab646c14d0bd6ade6453e830d366760c"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\mixed-corpus\\raw\\build.py": {
+    "mtime": 1778280789.056208,
+    "hash": "5473722d759c4cde9072c2612c1c0a9e"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\mixed-corpus\\raw\\cluster.py": {
+    "mtime": 1778280789.057727,
+    "hash": "cb21fb4b090dc4b6067a9235ee1278cb"
+  },
+  "C:\\wamp64\\www\\hospital\\mi-qa\\generate_reports.ps1": {
+    "mtime": 1778476428.1531973,
+    "hash": "0feac22ff28f405f9b5451d6dbacf953"
+  },
+  "C:\\wamp64\\www\\hospital\\scripts\\generate_sql_seeds.php": {
+    "mtime": 1778451987.3100698,
+    "hash": "ac8a8d95f21188254b3a8afc1321ed10"
+  },
+  "C:\\wamp64\\www\\hospital\\scripts\\generate_users.php": {
+    "mtime": 1778451987.3100698,
+    "hash": "0fb670c3f2b586a730e5f801280080db"
+  },
+  "C:\\wamp64\\www\\hospital\\scripts\\inject_seeds.php": {
+    "mtime": 1778255711.2562237,
+    "hash": "aee4f6cce88dc1ef83ea26e9254c4827"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\home.php": {
+    "mtime": 1778455318.8318784,
+    "hash": "35f978f5d1508d5eb76502ec9bee5f8e"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\auth\\login.php": {
+    "mtime": 1778465773.3977802,
+    "hash": "4155982cb008f16a9a1327555172ea58"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\auth\\register.php": {
+    "mtime": 1778463561.500655,
+    "hash": "c1cc734d7f05b404f0b83e5ffda6a4f5"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\branches\\create.php": {
+    "mtime": 1778455318.8349073,
+    "hash": "6997b73efa652f136e26daed2a19e385"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\branches\\edit.php": {
+    "mtime": 1778455318.8375235,
+    "hash": "ca52010b7e99d45dab8c3829d0bb5302"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\branches\\index.php": {
+    "mtime": 1778455318.839049,
+    "hash": "b1dd12744926d887b5370be875563454"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\cart\\index.php": {
+    "mtime": 1778455318.8400583,
+    "hash": "390fdf0cd9ce33caab84680966440b73"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\checkout\\index.php": {
+    "mtime": 1778468282.5346515,
+    "hash": "3639c0684d166f1510ddbfcda092894f"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\checkout\\response.php": {
+    "mtime": 1778468310.2276402,
+    "hash": "00e1c7e15f65f397d94ef0219456e696"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\clients\\create.php": {
+    "mtime": 1778455318.8511968,
+    "hash": "e009e6a05d1eb4f021a1c51a21a05c25"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\clients\\index.php": {
+    "mtime": 1778455318.8532703,
+    "hash": "fb64faedb82472f2bb0d07c2fe4a12a4"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\clients\\profile.php": {
+    "mtime": 1778455318.855798,
+    "hash": "109f1ad218442814e366cfa6b4ecfeb9"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\customer\\dashboard.php": {
+    "mtime": 1778469940.0518239,
+    "hash": "0fab6c0ddf7199f592696f152d8b37f3"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\customer\\layouts\\customer_main.php": {
+    "mtime": 1778469902.1937177,
+    "hash": "47100a26193e078ceb09f1cc0c9741d1"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\customer\\sections\\compras.php": {
+    "mtime": 1778455318.8639493,
+    "hash": "90bee9b7cb49ff8c6aca7ec210e111a1"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\customer\\sections\\devoluciones.php": {
+    "mtime": 1778455318.8659873,
+    "hash": "8291e18f897dff6b658c47556336d1d5"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\customer\\sections\\domicilios.php": {
+    "mtime": 1778455318.8703117,
+    "hash": "1532f248a74eed73ccb39c5dbddc7c6e"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\customer\\sections\\notificaciones.php": {
+    "mtime": 1778455318.871335,
+    "hash": "3475b52615d8e49ff894488352da8f7b"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\customer\\sections\\perfil.php": {
+    "mtime": 1778455318.8738723,
+    "hash": "6e6c0be112c062058b8a591fdee4632b"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\customer\\sections\\pqrsf.php": {
+    "mtime": 1778455318.8738723,
+    "hash": "53d660f0c8fcf6a56ca3aaf06965b8d2"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\customer\\sections\\reservas.php": {
+    "mtime": 1778455318.8787887,
+    "hash": "30478badeeb9146489afd2e96a1a110f"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\customer\\sections\\resumen.php": {
+    "mtime": 1778455318.8817937,
+    "hash": "f725aab868b45578b54d1399fa4ed866"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\customer\\sections\\tienda.php": {
+    "mtime": 1778470223.6841936,
+    "hash": "b25cf33a6bbdb02ea29ed05d8970d52c"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\dashboard\\index.php": {
+    "mtime": 1778455318.8862023,
+    "hash": "3e094518c9fcf415c2e06800573185dc"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\errors\\standard_error.php": {
+    "mtime": 1778455318.8882525,
+    "hash": "85ec2fcb1ad4b81ebc1c35bb624f51f5"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\inventory\\create.php": {
+    "mtime": 1778455318.8907928,
+    "hash": "0f5972328c4ec038b754e3989dadeb5b"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\inventory\\edit.php": {
+    "mtime": 1778455318.8907928,
+    "hash": "814486d91143a848e4a2bcabdfd452a0"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\inventory\\index.php": {
+    "mtime": 1778455318.89533,
+    "hash": "43fd14d1e23c6135f15ffbd247224666"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\inventory\\kardex.php": {
+    "mtime": 1778455318.8968413,
+    "hash": "a86384151ed2b45893c1b7e6c5878f52"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\layouts\\main.php": {
+    "mtime": 1778455318.8994474,
+    "hash": "7f8b8450a50fa0654b6deacf26487d3a"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\rbac\\index.php": {
+    "mtime": 1778455318.901466,
+    "hash": "8f91faabc548c164008c77ac84c3e168"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\rbac\\role_permissions.php": {
+    "mtime": 1778455318.9048347,
+    "hash": "36a1fa7cee839d3bbb9f2fda718b491a"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\sales\\index.php": {
+    "mtime": 1778455318.9058447,
+    "hash": "65e567ed4222aabf2f9de209fcb50181"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\sales\\pos.php": {
+    "mtime": 1778455318.909355,
+    "hash": "8f4d29945e59a0a729c7143833f579f7"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\users\\form.php": {
+    "mtime": 1778455318.911269,
+    "hash": "6c2ea24a83fc44dae3edcba65e6a9c1a"
+  },
+  "C:\\wamp64\\www\\hospital\\views\\users\\index.php": {
+    "mtime": 1778455318.9181721,
+    "hash": "e9a676b10fed0517be1250bb621a0102"
+  },
+  "C:\\wamp64\\www\\hospital\\AGENTS.md": {
+    "mtime": 1778451987.275197,
+    "hash": "24f10cdfb9c080a59db39127a037c3ee"
+  },
+  "C:\\wamp64\\www\\hospital\\README.md": {
+    "mtime": 1778451987.2757292,
+    "hash": "cbadc08648c355c5c4f1a51097c9ad94"
+  },
+  "C:\\wamp64\\www\\hospital\\context\\doc1_full.txt": {
+    "mtime": 1776987492.0,
+    "hash": "98017e2e8be821b991157017253d9dfe"
+  },
+  "C:\\wamp64\\www\\hospital\\context\\doc2_full.txt": {
+    "mtime": 1776987494.0,
+    "hash": "ba976cf9b6166211f54b36118c71558b"
+  },
+  "C:\\wamp64\\www\\hospital\\context\\doc3_full.txt": {
+    "mtime": 1776987494.0,
+    "hash": "7e720297bcf5b6eb4370bbac70c663b9"
+  },
+  "C:\\wamp64\\www\\hospital\\context\\clientes\\cliente.md": {
+    "mtime": 1778255711.169888,
+    "hash": "4af73cb1b68085409a6faed71acaeed3"
+  },
+  "C:\\wamp64\\www\\hospital\\docs\\articulo_software.md": {
+    "mtime": 1776997624.0,
+    "hash": "afef05726c1d7c01259f30a73bedb530"
+  },
+  "C:\\wamp64\\www\\hospital\\docs\\manual_tecnico.md": {
+    "mtime": 1776997616.0,
+    "hash": "f812dd1c1c729fe0e3895c95e64e89ad"
+  },
+  "C:\\wamp64\\www\\hospital\\docs\\manual_usuario.md": {
+    "mtime": 1776997610.0,
+    "hash": "256a828fb65d26ee343cec65d9202b58"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\AGENTS.md": {
+    "mtime": 1778280788.9035397,
+    "hash": "ab254d0a1c83f1f4813a79ddddbdf284"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\ARCHITECTURE.md": {
+    "mtime": 1778280788.9035397,
+    "hash": "6fbda68fd55f3a2db296796187b144e4"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\CHANGELOG.md": {
+    "mtime": 1778280788.9035397,
+    "hash": "8b9c263132fe65adde70904db392823b"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\GRAPHIFY_INTERPRETATION.md": {
+    "mtime": 1778287423.9696343,
+    "hash": "e9be048c1ab3bab71e322b12c815574b"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\README.md": {
+    "mtime": 1778280788.906134,
+    "hash": "731863d045982e9731d65038a101d22a"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\SECURITY.md": {
+    "mtime": 1778280788.9081554,
+    "hash": "8cc42d0936db88514164fa88aa35ee37"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\docker-mcp-sqlite.md": {
+    "mtime": 1778280788.9081554,
+    "hash": "f560062bc0fa9015e579083a3c6de462"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\how-it-works.md": {
+    "mtime": 1778280788.9102511,
+    "hash": "a3fd0ccb5508eaad428b9586ab459afc"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\superpowers\\plans\\2026-05-04-incremental-updates-dedup.md": {
+    "mtime": 1778280788.9112978,
+    "hash": "8f2e4bf83e61604829f985428bb51fe3"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\superpowers\\specs\\2026-05-04-incremental-updates-dedup-design.md": {
+    "mtime": 1778280788.9112978,
+    "hash": "1e5a0a2f249d793a88a2c729679be698"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.ar-SA.md": {
+    "mtime": 1778280788.9163108,
+    "hash": "21dee88d435f035aa8b5ac20365a5d42"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.cs-CZ.md": {
+    "mtime": 1778280788.9163108,
+    "hash": "9a352adc0f566a84536b4264f18cfb1c"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.da-DK.md": {
+    "mtime": 1778280788.9183173,
+    "hash": "b12b903f0e5e2f8f347c535042a8426e"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.de-DE.md": {
+    "mtime": 1778280788.918835,
+    "hash": "496f2233f8409cf7189f30ca6eb4da0f"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.el-GR.md": {
+    "mtime": 1778280788.918835,
+    "hash": "b46bd9efa7b586ad2737bfd0e841fd0c"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.es-ES.md": {
+    "mtime": 1778280788.918835,
+    "hash": "cb7c647e726c762c673de90ac3135b05"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.fi-FI.md": {
+    "mtime": 1778280788.918835,
+    "hash": "fb07be821d7175af4d315bc951c1efe9"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.fr-FR.md": {
+    "mtime": 1778280788.918835,
+    "hash": "2d4f43daef30bde2c1fc72725884a184"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.hi-IN.md": {
+    "mtime": 1778280788.918835,
+    "hash": "feda9705bf766f80162bfff7311c2f29"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.hu-HU.md": {
+    "mtime": 1778280788.918835,
+    "hash": "55b9cb2c207d244249dd1caebe2e5e45"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.id-ID.md": {
+    "mtime": 1778280788.918835,
+    "hash": "85e8584403716bad05394a0add760f93"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.it-IT.md": {
+    "mtime": 1778280788.918835,
+    "hash": "caecd57423f35f7539eaabe4d1319662"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.ja-JP.md": {
+    "mtime": 1778280788.926589,
+    "hash": "7fa0dce1445a4432b352633e07aedf54"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.ko-KR.md": {
+    "mtime": 1778280788.9271188,
+    "hash": "88a4a59719dee4c9338d5bea39c33c8f"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.nl-NL.md": {
+    "mtime": 1778280788.9271188,
+    "hash": "68837abbcb701c80d9d3947bde1cac72"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.no-NO.md": {
+    "mtime": 1778280788.9281356,
+    "hash": "1d428724eb3541ced336b31d841bcbe4"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.pl-PL.md": {
+    "mtime": 1778280788.9286938,
+    "hash": "e9870f9afdc4c6214549655abccd2255"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.pt-BR.md": {
+    "mtime": 1778280788.9286938,
+    "hash": "27b64dc0e34fe88e13d13e8cd8714caa"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.ro-RO.md": {
+    "mtime": 1778280788.9286938,
+    "hash": "ae90ff6940a62ef6514e9d3d5385cd26"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.ru-RU.md": {
+    "mtime": 1778280788.9286938,
+    "hash": "70ea1a4f8f81424937ec7d537c49881c"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.sv-SE.md": {
+    "mtime": 1778280788.9286938,
+    "hash": "bf5625414eb9c19780b79f99cba6201f"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.th-TH.md": {
+    "mtime": 1778280788.9286938,
+    "hash": "faee08ef1c36d5b3f20e311a24c84497"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.tr-TR.md": {
+    "mtime": 1778280788.9333098,
+    "hash": "b030515ddecdd2d3035deb8dcd94ab44"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.uk-UA.md": {
+    "mtime": 1778280788.93433,
+    "hash": "41013b232d2917a2a7380b8e8725fb5c"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.vi-VN.md": {
+    "mtime": 1778280788.93433,
+    "hash": "b7276048863b55d4e8e50881a25bcd6b"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.zh-CN.md": {
+    "mtime": 1778280788.93433,
+    "hash": "d8c173e505a6c7bdef3136e8215dbdf0"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\translations\\README.zh-TW.md": {
+    "mtime": 1778280788.93433,
+    "hash": "44fe44e290d5343df65bde35a88d2b3b"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\skill-aider.md": {
+    "mtime": 1778280788.9562762,
+    "hash": "6b886d5981c5c38cf4ad45c4288a5311"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\skill-claw.md": {
+    "mtime": 1778280788.9562762,
+    "hash": "d80ef31f651db9ebfc757bdb7d742d4e"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\skill-codex.md": {
+    "mtime": 1778280788.957797,
+    "hash": "bfc8fa5ea54ea80307d96eea119996cd"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\skill-copilot.md": {
+    "mtime": 1778280788.9588225,
+    "hash": "96cc13e0fda898b9aa8dbfc765d17c79"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\skill-droid.md": {
+    "mtime": 1778280788.9598434,
+    "hash": "83864d8ac67b8723341abfc13af49a2b"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\skill-kiro.md": {
+    "mtime": 1778280788.961436,
+    "hash": "8bdd6056478b081e4ff100294b33b1b3"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\skill-opencode.md": {
+    "mtime": 1778280788.961436,
+    "hash": "8d150bd0dba08b9ff95e2b7421dfe1d2"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\skill-pi.md": {
+    "mtime": 1778280788.9634547,
+    "hash": "50b8c5a242704249525ae8553c810443"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\skill-trae.md": {
+    "mtime": 1778280788.9634547,
+    "hash": "379caff1ca137af3fe680dcab40b4736"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\skill-vscode.md": {
+    "mtime": 1778280788.9634547,
+    "hash": "c8d4fe3b15c15f4d069d3e1d721f3ef1"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\skill-windows.md": {
+    "mtime": 1778280788.9634547,
+    "hash": "d9edd0d224d3d4133fcaa99fcbb3b084"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\graphify\\skill.md": {
+    "mtime": 1778280788.9634547,
+    "hash": "3b5cb6d3ea73e8908b914c54d7868203"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\deploy_guide.md": {
+    "mtime": 1778280788.9739788,
+    "hash": "4c9127679279842396174bef13f7937b"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\tests\\fixtures\\sample.md": {
+    "mtime": 1778280788.9903207,
+    "hash": "e23659acdd71c13913857fceb1fabb48"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\example\\README.md": {
+    "mtime": 1778280789.032599,
+    "hash": "0ad0e818e81e67221ca59bba8f61dedc"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\example\\raw\\architecture.md": {
+    "mtime": 1778280789.033692,
+    "hash": "1201316b29aec5bf4ce130fd116ea910"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\example\\raw\\notes.md": {
+    "mtime": 1778280789.033692,
+    "hash": "b34fb1280985d1a2a44baca60fa2debf"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\httpx\\GRAPH_REPORT.md": {
+    "mtime": 1778280789.0393598,
+    "hash": "a604a6da7f618b140193e923e5bc4f92"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\httpx\\README.md": {
+    "mtime": 1778280789.0393598,
+    "hash": "433f8494c1a0c308c5ef09f0a2c54f80"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\httpx\\review.md": {
+    "mtime": 1778280789.0439105,
+    "hash": "02e23ebb29f068b23dcce29af3d368d8"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\karpathy-repos\\GRAPH_REPORT.md": {
+    "mtime": 1778280789.0489216,
+    "hash": "69d7498903d698e456f009958234917c"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\karpathy-repos\\README.md": {
+    "mtime": 1778280789.0489216,
+    "hash": "b1cbbadc195601e545d3258ddb690553"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\karpathy-repos\\review.md": {
+    "mtime": 1778280789.0504448,
+    "hash": "9697fe2ebd4458a2d4957220e6ae5a10"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\mixed-corpus\\GRAPH_REPORT.md": {
+    "mtime": 1778280789.0519629,
+    "hash": "f5f230efee89ed874926d520edc12c66"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\mixed-corpus\\README.md": {
+    "mtime": 1778280789.0534823,
+    "hash": "34252f3bf7a5af70096da4ffa8d086ff"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\mixed-corpus\\review.md": {
+    "mtime": 1778280789.057727,
+    "hash": "485aa5f2c880fde1b8f5342401f6038a"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\sp\\README.txt": {
+    "mtime": 1778255711.232862,
+    "hash": "77078324b86d1cedeed7a042e7d22748"
+  },
+  "C:\\wamp64\\www\\hospital\\mi-qa\\stress-5000.yml": {
+    "mtime": 1778476408.673484,
+    "hash": "65149c7d4b9f5c78fc23f80831e5dd1e"
+  },
+  "C:\\wamp64\\www\\hospital\\mi-qa\\tests\\basico.yaml": {
+    "mtime": 1778476408.6636379,
+    "hash": "3246ff38d4f47f4e9a8908cfd05916a8"
+  },
+  "C:\\wamp64\\www\\hospital\\mi-qa\\tests\\hospital-api.yaml": {
+    "mtime": 1778476408.6657794,
+    "hash": "1dccf0b40bd3f00aa534884213f0ef3a"
+  },
+  "C:\\wamp64\\www\\hospital\\mi-qa\\tests\\hospital-e2e.yaml": {
+    "mtime": 1778476408.6678114,
+    "hash": "7aa25b5ca9e3258ec72f9a71cf7af1b5"
+  },
+  "C:\\wamp64\\www\\hospital\\mi-qa\\tests\\hospital-loyalty.yaml": {
+    "mtime": 1778476408.6705914,
+    "hash": "7ca2a2861bb06458f1303a0ad7df9e13"
+  },
+  "C:\\wamp64\\www\\hospital\\mi-qa\\tests\\jwt-auth.yaml": {
+    "mtime": 1778476408.672472,
+    "hash": "ddcd00db54990e388bce28cd417d34ca"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\worked\\mixed-corpus\\raw\\attention_notes.md": {
+    "mtime": 1778280789.056208,
+    "hash": "1d9910017f78af70ed111d74b5e3558d"
+  },
+  "C:\\wamp64\\www\\hospital\\context\\clientes\\cliente.png": {
+    "mtime": 1778255711.169888,
+    "hash": "d4de4164f2e24a475ac9f6baedf7b924"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\logo-icon.svg": {
+    "mtime": 1778280788.9107742,
+    "hash": "7bfdde1f83bb3423470b408efabc2c52"
+  },
+  "C:\\wamp64\\www\\hospital\\libs\\graphify\\docs\\logo-text.svg": {
+    "mtime": 1778280788.9112978,
+    "hash": "3a5c53971d1c5eca33d038201999dd68"
+  }
+}
