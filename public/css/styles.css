@@ -1,27 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-:root{
-  --primary: #2563EB; /* Blue */
-  --primary-dark: #1D4ED8;
-  --primary-light: #60A5FA;
-  --accent: #10B981; /* Green */
-  --bg-main: #F3F4F6; /* Light gray */
-  --bg-card: #FFFFFF; /* White */
-  --bg-surface: #F9FAFB;
-  --bg-hover: #E5E7EB;
-  --text-primary: #111827; /* Dark gray */
-  --text-secondary: #4B5563;
-  --text-muted: #9CA3AF;
-  --warning: #F59E0B;
-  --danger: #EF4444;
-  --success: #10B981;
-  --info: #3B82F6;
-  --border-color: rgba(0,0,0,.08);
+:root {
+  /* PharmaCRM Clinical Palette */
+  --midnight-blue: #102A43; /* Elegancia y Rigor - Títulos, Nav */
+  --emerald-vital: #00A896; /* Salud y Naturaleza - Botones principales */
+  --mint-healing: #02C39A; /* Vitalidad y Frescura - Éxito, Stock */
+  --orange-energetic: #FF9F1C; /* Atención - Alertas, Notificaciones */
+  --steel-gray: #486581; /* Profesionalismo - Menús, Etiquetas */
+  --surgical-white: #F0F4F8; /* Limpieza - Fondo principal */
+  --soft-cyan: #E1E8ED; /* Estructura - Bordes, Divisores, Cards secundarias */
+  --yellow-info: #FFD93D; /* Información - Próximo vencimiento */
+  --orange-warning: #F97316; /* Alerta - Vencimiento medio */
+
+  /* Utility Mapping */
+  --primary: var(--emerald-vital);
+  --primary-dark: #008f80;
+  --primary-light: var(--mint-healing);
+  --accent: var(--mint-healing);
+  --bg-main: var(--surgical-white);
+  --bg-card: #FFFFFF;
+  --bg-surface: var(--soft-cyan);
+  --bg-hover: #D1D9E0;
+  --text-primary: var(--midnight-blue);
+  --text-secondary: var(--steel-gray);
+  --text-muted: #829AB1;
+  --warning: var(--orange-energetic);
+  --danger: #D64545;
+  --success: var(--mint-healing);
+  --info: #334E68;
+  --border-color: var(--soft-cyan);
   --radius: 12px;
   --radius-sm: 8px;
   --radius-lg: 16px;
-  --shadow: 0 4px 16px rgba(0,0,0,.06);
-  --shadow-lg: 0 10px 30px rgba(0,0,0,.08);
-  --transition: all .3s cubic-bezier(.4,0,.2,1);
+  --shadow: 0 4px 12px rgba(16, 42, 67, 0.08);
+  --shadow-lg: 0 10px 25px rgba(16, 42, 67, 0.12);
+  --transition: all .3s cubic-bezier(.4, 0, .2, 1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',sans-serif;background:var(--bg-main);color:var(--text-primary);min-height:100vh;overflow-x:hidden}
@@ -116,6 +128,8 @@ tr:hover td{background:var(--bg-surface)}
 .badge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600}
 .badge-success{background:rgba(16,185,129,.15);color:var(--success)}
 .badge-warning{background:rgba(245,158,11,.15);color:var(--warning)}
+.badge-orange{background:rgba(249,115,22,.15);color:var(--orange-warning)}
+.badge-yellow{background:rgba(255,217,61,.2);color:#B45309}
 .badge-danger{background:rgba(239,68,68,.15);color:var(--danger)}
 .badge-info{background:rgba(59,130,246,.15);color:var(--info)}
 .badge-primary{background:rgba(37,99,235,.15);color:var(--primary)}
@@ -226,7 +240,7 @@ tr:hover td{background:var(--bg-surface)}
 .expiry-7{background:rgba(239,68,68,.1);color:var(--danger)}
 .expiry-expired{background:rgba(239,68,68,.2);color:#991B1B}
 /* MISC */
-.text-success{color:var(--success)}.text-danger{color:var(--danger)}.text-warning{color:var(--warning)}.text-info{color:var(--info)}.text-muted{color:var(--text-muted)}
+.text-success{color:var(--success)}.text-danger{color:var(--danger)}.text-warning{color:var(--warning)}.text-orange{color:var(--orange-warning)}.text-yellow{color:#B45309}.text-info{color:var(--info)}.text-muted{color:var(--text-muted)}
 .text-right{text-align:right}.text-center{text-align:center}
 .mt-1{margin-top:8px}.mt-2{margin-top:16px}.mt-3{margin-top:24px}.mb-1{margin-bottom:8px}.mb-2{margin-bottom:16px}.mb-3{margin-bottom:24px}
 .flex{display:flex}.flex-between{display:flex;justify-content:space-between;align-items:center}.gap-1{gap:8px}.gap-2{gap:16px}

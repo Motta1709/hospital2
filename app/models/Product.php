@@ -372,26 +372,30 @@ class Product {
      */
     public function getTrafficLightStatus($product) {
         $status = [
-            'stock' => ['color' => 'green', 'label' => 'Óptimo'],
-            'expiration' => ['color' => 'green', 'label' => 'Vigente']
+            'stock' => ['color' => 'success', 'label' => 'Óptimo'],
+            'expiration' => ['color' => 'success', 'label' => 'Vigente']
         ];
 
         // 1. Semaforización por Stock
         if ($product['stock'] <= 0) {
-            $status['stock'] = ['color' => 'red', 'label' => 'Agotado'];
+            $status['stock'] = ['color' => 'danger', 'label' => 'Agotado'];
         } elseif ($product['stock'] <= $product['min_stock']) {
-            $status['stock'] = ['color' => 'red', 'label' => 'Crítico'];
+            $status['stock'] = ['color' => 'danger', 'label' => 'Crítico'];
         } elseif ($product['stock'] <= ($product['min_stock'] * 2)) {
-            $status['stock'] = ['color' => 'yellow', 'label' => 'Bajo'];
+            $status['stock'] = ['color' => 'warning', 'label' => 'Bajo'];
         }
 
         // 2. Semaforización por Vencimiento
         if ($product['days_to_expire'] <= 0) {
-            $status['expiration'] = ['color' => 'red', 'label' => 'Vencido'];
-        } elseif ($product['days_to_expire'] <= 30) {
-            $status['expiration'] = ['color' => 'red', 'label' => 'Próximo (30d)'];
-        } elseif ($product['days_to_expire'] <= 90) {
-            $status['expiration'] = ['color' => 'yellow', 'label' => 'Alerta (90d)'];
+            $status['expiration'] = ['color' => 'danger', 'label' => 'Vencido'];
+        } elseif ($product['days_to_expire'] <= ALERT_EXPIRY_CRITICAL) {
+            $status['expiration'] = ['color' => 'danger', 'label' => 'Crítico (90d)'];
+        } elseif ($product['days_to_expire'] <= ALERT_EXPIRY_WARNING) {
+            $status['expiration'] = ['color' => 'orange', 'label' => 'Alerta (180d)'];
+        } elseif ($product['days_to_expire'] <= ALERT_EXPIRY_INFO) {
+            $status['expiration'] = ['color' => 'yellow', 'label' => 'Próximo (270d)'];
+        } else {
+            $status['expiration'] = ['color' => 'success', 'label' => 'Vigente'];
         }
 
         return $status;

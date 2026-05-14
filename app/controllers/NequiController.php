@@ -71,10 +71,9 @@ class NequiController {
             redirect('?route=cart');
         }
 
-        // El precio publicado YA INCLUYE IVA (19%).
-        // Se extrae el IVA del total en lugar de sumarlo.
-        $baseIva     = round($total / 1.19, 2);  // base sin IVA
-        $iva         = round($total - $baseIva, 2); // IVA contenido
+        // Por solicitud del usuario, el IVA para ePayco se establece en 0.
+        $baseIva     = $total;                    // base = total
+        $iva         = 0;                         // IVA = 0
         $totalConIva = $total;                    // total = precio final (sin cambio)
 
         // Generar referencia unica

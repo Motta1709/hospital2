@@ -1,5 +1,4 @@
 # Graphify - Ignorar archivos no relevantes para el grafo de conocimiento
-xxx/
 mi-qa/resultados/
 libs/graphify/graphify-out/
 graphify-out/
@@ -10,3 +9,6 @@ scratch/
 *.tmp
 *.bak
 *.json.html
+
+vendor/
+libs/

@@ -138,13 +138,20 @@ class InventoryController {
         }
 
         $id = intval($_GET['id'] ?? 0);
+        $filters = [
+            'date_from' => $_GET['date_from'] ?? null,
+            'date_to' => $_GET['date_to'] ?? null
+        ];
         $kardexModel = new Kardex();
-        $movements = $kardexModel->getMovementHistory($id ?: null);
+        $movements = $kardexModel->getMovementHistory($id ?: null, null, 50, $filters);
         $product = $id ? $this->productModel->findById($id) : null;
 
         $data = [
             'movements' => $movements,
-            'product' => $product
+            'product' => $product,
+            'dateFrom' => $filters['date_from'],
+            'dateTo' => $filters['date_to'],
+            'productId' => $id
         ];
 
         $pageTitle = 'Kardex de Inventario';

@@ -25,9 +25,9 @@ define('LOYALTY_POINTS_PER_1000', 1); // 1 punto por cada $1000 COP
 define('LOYALTY_POINT_VALUE', 100);    // Cada punto vale $100 COP
 
 // Configuración de alertas de vencimiento (días)
-define('ALERT_EXPIRY_30', 30);
-define('ALERT_EXPIRY_15', 15);
-define('ALERT_EXPIRY_7', 7);
+define('ALERT_EXPIRY_CRITICAL', 90);
+define('ALERT_EXPIRY_WARNING', 180);
+define('ALERT_EXPIRY_INFO', 270);
 
 // Paginación
 define('ITEMS_PER_PAGE', 15);

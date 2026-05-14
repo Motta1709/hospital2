@@ -5,15 +5,15 @@
 
 /* --- VARIABLES EXTENDIDAS --- */
 .customer-body {
-    --customer-primary: #2563EB;
-    --customer-accent: #10B981;
-    --customer-purple: #7C3AED;
-    --customer-orange: #F59E0B;
-    --customer-rose: #F43F5E;
-    --customer-cyan: #06B6D4;
-    --gradient-primary: linear-gradient(135deg, #2563EB, #7C3AED);
-    --gradient-accent: linear-gradient(135deg, #10B981, #06B6D4);
-    --gradient-warm: linear-gradient(135deg, #F59E0B, #F43F5E);
+    --customer-primary: var(--emerald-vital, #00A896);
+    --customer-accent: var(--mint-healing, #02C39A);
+    --customer-purple: #486581; /* Replaced with steel gray for professional feel */
+    --customer-orange: var(--orange-energetic, #FF9F1C);
+    --customer-rose: #D64545;
+    --customer-cyan: #102A43; /* Midnight blue for high contrast labels */
+    --gradient-primary: linear-gradient(135deg, var(--midnight-blue), var(--steel-gray));
+    --gradient-accent: linear-gradient(135deg, var(--emerald-vital), var(--mint-healing));
+    --gradient-warm: linear-gradient(135deg, var(--orange-energetic), #F43F5E);
 }
 
 /* --- LAYOUT CLIENTE --- */

@@ -97,7 +97,7 @@ $isPending = ($status === 'Pendiente');
     <a href="<?= APP_URL ?>/?route=customer-dashboard" class="btn-dashboard">
         <i class="fas fa-chart-pie"></i> Mi Dashboard
     </a>
-    <a href="<?= APP_URL ?>/?route=home" class="btn-shop">
+    <a href="<?= APP_URL ?>?route=customer-dashboard&section=tienda" class="btn-shop">
         <i class="fas fa-store"></i> Seguir Comprando
     </a>
 </div>

@@ -156,7 +156,7 @@ class Kardex {
     /**
      * Obtiene el historial de movimientos de un producto filtrado por sucursal
      */
-    public function getMovementHistory($productId = null, $branchId = null, $limit = 50) {
+    public function getMovementHistory($productId = null, $branchId = null, $limit = 50, $filters = []) {
         $branchId = $branchId ?? $_SESSION['branch_id'] ?? 1;
         $query = "
             SELECT k.*, p.name as product_name, b.lot_number, u.username
@@ -171,6 +171,16 @@ class Kardex {
         if ($productId) {
             $query .= " AND k.product_id = ?";
             $params[] = $productId;
+        }
+
+        if (!empty($filters['date_from'])) {
+            $query .= " AND k.created_at >= ?";
+            $params[] = $filters['date_from'] . ' 00:00:00';
+        }
+
+        if (!empty($filters['date_to'])) {
+            $query .= " AND k.created_at <= ?";
+            $params[] = $filters['date_to'] . ' 23:59:59';
         }
         
         $query .= " ORDER BY k.created_at DESC LIMIT " . (int)$limit;

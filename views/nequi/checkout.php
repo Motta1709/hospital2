@@ -177,8 +177,8 @@ body{margin:0;font-family:'Inter',sans-serif}
                 <span style="color:rgba(255,255,255,.4)"><?= formatCurrency($data['subtotal']) ?></span>
             </div>
             <div class="summary-row" style="font-size:12px;">
-                <span style="color:rgba(255,255,255,.4)">IVA 19% (incluido)</span>
-                <span style="color:rgba(255,255,255,.4)"><?= formatCurrency($data['iva']) ?></span>
+                <span style="color:rgba(255,255,255,.4)">IVA 0% (exento)</span>
+                <span style="color:rgba(255,255,255,.4)"><?= formatCurrency(0) ?></span>
             </div>
             <div class="summary-row total">
                 <span>Total a pagar</span>

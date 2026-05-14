@@ -20,6 +20,7 @@ class ReportController {
             'salesByCategory' => $this->reportModel->getSalesByCategory($dateFrom, $dateTo),
             'inventoryValue' => $this->reportModel->getInventoryValue(),
             'expirationReport' => $this->reportModel->getExpirationReport(),
+            'topProducts' => $this->reportModel->getTopSellingProducts($dateFrom, $dateTo),
             'dateFrom' => $dateFrom,
             'dateTo' => $dateTo,
         ];
@@ -38,6 +39,7 @@ class ReportController {
             case 'sales-daily': jsonResponse($this->reportModel->getSalesByDay($dateFrom, $dateTo)); break;
             case 'sales-category': jsonResponse($this->reportModel->getSalesByCategory($dateFrom, $dateTo)); break;
             case 'inventory': jsonResponse($this->reportModel->getInventoryValue()); break;
+            case 'top-products': jsonResponse($this->reportModel->getTopSellingProducts($dateFrom, $dateTo)); break;
             default: jsonResponse($this->reportModel->getSalesSummary($dateFrom, $dateTo));
         }
     }

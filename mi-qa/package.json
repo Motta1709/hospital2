@@ -4,13 +4,14 @@
   "description": "Suite de pruebas de carga y rendimiento para PharmaCRM — Hospital",
   "private": true,
   "scripts": {
-    "test:smoke": "artillery run tests/basico.yml --output reports/smoke-report.json",
-    "test:api": "artillery run tests/api-rest.yml --output reports/api-report.json",
-    "test:scenarios": "artillery run tests/escenarios.yml --output reports/scenarios-report.json",
-    "test:load": "artillery run tests/carga.yml --output reports/load-report.json",
-    "test:stress": "artillery run tests/avanzado.yml --output reports/stress-report.json",
-    "test:all": "npm run test:smoke && npm run test:api && npm run test:scenarios",
-    "report": "artillery report reports/smoke-report.json && artillery report reports/api-report.json"
+    "test:smoke": "artillery run tests/basico.yaml --output resultados/smoke-report.json",
+    "test:api": "artillery run tests/hospital-api.yaml --output resultados/api-report.json",
+    "test:e2e": "artillery run tests/hospital-e2e.yaml --output resultados/e2e-report.json",
+    "test:loyalty": "artillery run tests/hospital-loyalty.yaml --output resultados/loyalty-report.json",
+    "test:jwt": "artillery run tests/jwt-auth.yaml --output resultados/jwt-report.json",
+    "test:stress": "artillery run stress-5000.yml --output resultados/stress-report.json",
+    "test:all": "npm run test:smoke && npm run test:api && npm run test:e2e && npm run test:loyalty && npm run test:jwt",
+    "report": "artillery report resultados/smoke-report.json && artillery report resultados/api-report.json"
   },
   "devDependencies": {
     "artillery": "^2.0.31"

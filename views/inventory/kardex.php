@@ -21,6 +21,25 @@
     </div>
 </div>
 
+<div class="toolbar mb-4" style="background: var(--bg-card); padding: 15px; border-radius: 12px; border: 1px solid var(--border-color);">
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <div class="d-flex align-items-center gap-2">
+            <label for="dateFrom" class="small text-muted mb-0">Desde:</label>
+            <input type="date" class="form-control form-control-sm" id="dateFrom" value="<?= $data['dateFrom'] ?? '' ?>">
+        </div>
+        <div class="d-flex align-items-center gap-2">
+            <label for="dateTo" class="small text-muted mb-0">Hasta:</label>
+            <input type="date" class="form-control form-control-sm" id="dateTo" value="<?= $data['dateTo'] ?? '' ?>">
+        </div>
+        <button class="btn btn-primary btn-sm" onclick="filterKardex()">
+            <i class="fas fa-filter"></i> Filtrar
+        </button>
+        <a href="<?= APP_URL ?>?route=inventory&action=kardex<?= $data['productId'] ? '&id='.$data['productId'] : '' ?>" class="btn btn-outline-secondary btn-sm">
+            <i class="fas fa-undo"></i> Limpiar
+        </a>
+    </div>
+</div>
+
 <div class="card">
     <div class="table-wrapper">
         <table class="table table-hover">
@@ -103,4 +122,17 @@
 .badge-info-light { background: #e0f2fe; color: #075985; }
 .text-xs { font-size: 0.75rem; }
 </style>
+
+<script>
+function filterKardex() {
+    const f = document.getElementById('dateFrom').value;
+    const t = document.getElementById('dateTo').value;
+    const productId = '<?= $data['productId'] ?>';
+    let url = '<?= APP_URL ?>?route=inventory&action=kardex';
+    if (productId && productId != '0') url += '&id=' + productId;
+    if (f) url += '&date_from=' + f;
+    if (t) url += '&date_to=' + t;
+    window.location.href = url;
+}
+</script>
 

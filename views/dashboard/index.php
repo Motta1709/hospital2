@@ -96,16 +96,20 @@
                 <?php else: ?>
                     <div class="list-group list-group-flush overflow-auto" style="max-height: 300px;">
                         <!-- Productos por Vencer -->
-                        <?php foreach (array_slice($data['expiringProducts'], 0, 5) as $p): ?>
+                        <?php 
+                        $productModel = new Product();
+                        foreach (array_slice($data['expiringProducts'], 0, 8) as $p): 
+                            $status = $productModel->getTrafficLightStatus($p);
+                        ?>
                             <div class="list-group-item d-flex align-items-center gap-3 py-3">
-                                <div class="alert-icon bg-soft-warning">
-                                    <i class="fas fa-clock text-warning"></i>
+                                <div class="alert-icon" style="background: rgba(var(--<?= $status['expiration']['color'] ?>-rgb, 150, 150, 150), 0.1)">
+                                    <i class="fas fa-clock text-<?= $status['expiration']['color'] ?>"></i>
                                 </div>
                                 <div class="flex-grow-1">
                                     <div class="fw-bold small"><?= htmlspecialchars($p['name']) ?></div>
-                                    <small class="text-muted">Vence en <?= $p['days_to_expire'] ?> días</small>
+                                    <small class="text-muted"><?= $status['expiration']['label'] ?></small>
                                 </div>
-                                <span class="expiry-badge <?= $p['days_to_expire'] <= 7 ? 'expiry-7' : ($p['days_to_expire'] <= 15 ? 'expiry-15' : 'expiry-30') ?>">
+                                <span class="badge badge-<?= $status['expiration']['color'] ?>">
                                     <?= $p['days_to_expire'] ?>d
                                 </span>
                             </div>
@@ -262,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const stepX = chartW / (values.length - 1 || 1);
         
         // --- Dibujar Rejilla (Grid) ---
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+        ctx.strokeStyle = 'rgba(16, 42, 67, 0.08)'; // Using midnight blue with very low opacity
         ctx.lineWidth = 1;
         for (let i = 0; i <= 4; i++) {
             const y = padding.top + (chartH / 4) * i;
@@ -281,8 +285,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // --- Dibujar Área de Gráfico (Gradiente) ---
         const gradient = ctx.createLinearGradient(0, padding.top, 0, h - padding.bottom);
-        gradient.addColorStop(0, 'rgba(13, 148, 136, 0.3)');
-        gradient.addColorStop(1, 'rgba(13, 148, 136, 0)');
+        gradient.addColorStop(0, 'rgba(0, 168, 150, 0.25)'); // Emerald Vital
+        gradient.addColorStop(1, 'rgba(0, 168, 150, 0)');
         
         ctx.beginPath();
         ctx.moveTo(padding.left, h - padding.bottom);
@@ -304,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (i === 0) ctx.moveTo(x, y);
             else ctx.lineTo(x, y);
         });
-        ctx.strokeStyle = '#0D9488';
+        ctx.strokeStyle = '#00A896'; // Emerald Vital
         ctx.lineWidth = 3;
         ctx.lineJoin = 'round';
         ctx.lineCap = 'round';
@@ -318,7 +322,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Punto
             ctx.beginPath();
             ctx.arc(x, y, 5, 0, Math.PI * 2);
-            ctx.fillStyle = '#0D9488';
+            ctx.fillStyle = '#00A896'; // Emerald Vital
             ctx.fill();
             
             ctx.beginPath();

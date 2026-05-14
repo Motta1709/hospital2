@@ -20,11 +20,20 @@ class SalesController {
             redirect('?route=dashboard');
         }
         
-        $sales = $this->saleRepository->all();
+        $filters = [
+            'date_from' => $_GET['date_from'] ?? null,
+            'date_to'   => $_GET['date_to'] ?? null,
+            'status'    => $_GET['status'] ?? null
+        ];
+
+        $sales = $this->saleRepository->all($filters);
 
         $data = [
             'sales' => $sales,
             'totalSales' => count($sales),
+            'dateFrom' => $filters['date_from'],
+            'dateTo' => $filters['date_to'],
+            'status' => $filters['status']
         ];
 
         $pageTitle = 'Historial de Ventas';
@@ -132,6 +141,60 @@ class SalesController {
     public function searchProduct() {
         $q = sanitize($_GET['q'] ?? '');
         jsonResponse($this->productRepository->search($q));
+    }
+
+    /**
+     * Sincroniza manualmente un pago con ePayco
+     */
+    public function syncPayment() {
+        if (!Auth::hasPermission('view_sales')) {
+            setFlash('error', 'No tienes permiso para realizar esta acción.');
+            redirect('?route=sales');
+        }
+
+        $invoice = sanitize($_GET['invoice'] ?? '');
+        $refPayco = sanitize($_GET['ref_payco'] ?? '');
+
+        if (!$invoice || !$refPayco) {
+            setFlash('error', 'Datos insuficientes para la sincronización.');
+            redirect('?route=sales');
+        }
+
+        // Consultar estado en ePayco
+        $url = "https://secure.epayco.co/validation/v1/reference/{$refPayco}";
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($response && $httpCode === 200) {
+            $result = json_decode($response, true);
+            $txStatus = $result['data']['x_response'] ?? 'Pendiente';
+            
+            $db = Database::getInstance()->getConnection();
+            
+            if ($txStatus === 'Aceptada') {
+                $stmt = $db->prepare("UPDATE sales SET status = 'completed', epayco_ref = ? WHERE invoice_number = ?");
+                $stmt->execute([$refPayco, $invoice]);
+                setFlash('success', "Pago confirmado exitosamente para la factura $invoice.");
+            } elseif ($txStatus === 'Rechazada' || $txStatus === 'Fallida') {
+                $stmt = $db->prepare("UPDATE sales SET status = 'failed', epayco_ref = ? WHERE invoice_number = ?");
+                $stmt->execute([$refPayco, $invoice]);
+                setFlash('error', "El pago para la factura $invoice fue rechazado o falló.");
+            } else {
+                // Si sigue pendiente, al menos guardamos la referencia para futuros intentos
+                $stmt = $db->prepare("UPDATE sales SET epayco_ref = ? WHERE invoice_number = ?");
+                $stmt->execute([$refPayco, $invoice]);
+                setFlash('warning', "La transacción $refPayco sigue en estado: $txStatus.");
+            }
+        } else {
+            setFlash('error', "No se pudo conectar con ePayco para validar la referencia $refPayco.");
+        }
+
+        redirect('?route=sales');
     }
 }
 

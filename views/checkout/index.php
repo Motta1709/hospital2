@@ -9,51 +9,52 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script src="https://checkout.epayco.co/checkout.js"></script>
 <style>
-.checkout-page{min-height:100vh;background:linear-gradient(135deg,#f0f4f8 0%,#e2e8f0 100%);padding:40px 20px}
-.checkout-container{max-width:900px;margin:0 auto}
-.checkout-header{text-align:center;margin-bottom:32px}
-.checkout-header h1{font-size:28px;color:#1a202c;margin-bottom:8px}
-.checkout-header p{color:#718096;font-size:14px}
-.checkout-grid{display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:start}
-.checkout-items{background:#fff;border-radius:16px;padding:24px;box-shadow:0 4px 16px rgba(0,0,0,.06)}
-.checkout-items h2{font-size:18px;margin-bottom:16px;color:#2d3748;display:flex;align-items:center;gap:8px}
-.item-row{display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid #edf2f7}
-.item-row:last-child{border-bottom:none}
-.item-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;flex-shrink:0}
-.item-info{flex:1}
-.item-info h4{font-size:14px;color:#2d3748;margin-bottom:2px}
-.item-info small{color:#a0aec0;font-size:12px}
-.item-price{text-align:right;font-weight:700;color:#2d3748;font-size:15px}
-.item-qty{color:#a0aec0;font-size:12px}
-.checkout-summary{background:#fff;border-radius:16px;padding:24px;box-shadow:0 4px 16px rgba(0,0,0,.06);position:sticky;top:20px}
-.checkout-summary h2{font-size:18px;margin-bottom:20px;color:#2d3748;display:flex;align-items:center;gap:8px}
-.summary-row{display:flex;justify-content:space-between;padding:10px 0;font-size:14px;color:#4a5568}
-.summary-row.total{border-top:2px solid #edf2f7;padding-top:16px;margin-top:8px;font-size:18px;font-weight:700;color:#1a202c}
-.btn-epayco{width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,#38b2ac,#319795);color:#fff;font-size:16px;font-weight:700;cursor:pointer;margin-top:20px;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .3s ease;box-shadow:0 4px 14px rgba(56,178,172,.3)}
-.btn-epayco:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(56,178,172,.4)}
-.btn-back{display:inline-flex;align-items:center;gap:6px;color:#718096;text-decoration:none;font-size:13px;margin-top:16px;transition:color .2s}
-.btn-back:hover{color:#4a5568}
-.secure-badge{display:flex;align-items:center;gap:8px;padding:12px;background:#f0fff4;border-radius:10px;margin-top:16px;font-size:12px;color:#38a169}
-.secure-badge i{font-size:16px}
-.btn-nequi-link{width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,#da3791,#e04068);color:#fff;font-size:16px;font-weight:700;cursor:pointer;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .3s ease;box-shadow:0 4px 14px rgba(218,55,145,.3);text-decoration:none}
-.btn-nequi-link:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(218,55,145,.4)}
-.payment-separator{display:flex;align-items:center;gap:12px;margin:14px 0 2px;color:#a0aec0;font-size:12px}
-.payment-separator::before,.payment-separator::after{content:'';flex:1;height:1px;background:#e2e8f0}
-@media(max-width:768px){.checkout-grid{grid-template-columns:1fr}}
+.checkout-page { min-height: 100vh; background: var(--bg-main); padding: 40px 20px; color: var(--text-primary); }
+.checkout-container { max-width: 1000px; margin: 0 auto; }
+.checkout-header { text-align: center; margin-bottom: 40px; }
+.checkout-header h1 { font-size: 32px; color: var(--midnight-blue); font-weight: 800; margin-bottom: 12px; letter-spacing: -0.02em; }
+.checkout-header p { color: var(--steel-gray); font-size: 16px; }
+.checkout-grid { display: grid; grid-template-columns: 1fr 400px; gap: 32px; align-items: start; }
+.checkout-items { background: #fff; border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow); border: 1px solid var(--soft-cyan); }
+.checkout-items h2 { font-size: 20px; margin-bottom: 24px; color: var(--midnight-blue); display: flex; align-items: center; gap: 12px; font-weight: 700; }
+.item-row { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--soft-cyan); }
+.item-row:last-child { border-bottom: none; }
+.item-icon { width: 56px; height: 56px; border-radius: 14px; background: var(--soft-cyan); display: flex; align-items: center; justify-content: center; color: var(--midnight-blue); font-size: 20px; flex-shrink: 0; border: 1px solid rgba(16, 42, 67, 0.1); }
+.item-info { flex: 1; }
+.item-info h4 { font-size: 15px; color: var(--midnight-blue); margin-bottom: 4px; font-weight: 600; }
+.item-info small { color: var(--steel-gray); font-size: 13px; display: block; }
+.item-price { text-align: right; font-weight: 700; color: var(--midnight-blue); font-size: 16px; }
+.item-qty { color: var(--steel-gray); font-size: 13px; }
+.checkout-summary { background: #fff; border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-lg); position: sticky; top: 20px; border: 1px solid var(--soft-cyan); }
+.checkout-summary h2 { font-size: 20px; margin-bottom: 24px; color: var(--midnight-blue); display: flex; align-items: center; gap: 12px; font-weight: 700; }
+.summary-row { display: flex; justify-content: space-between; padding: 12px 0; font-size: 15px; color: var(--steel-gray); }
+.summary-row.total { border-top: 2px solid var(--soft-cyan); padding-top: 20px; margin-top: 12px; font-size: 20px; font-weight: 800; color: var(--midnight-blue); }
+.btn-epayco { width: 100%; padding: 16px; border: none; border-radius: var(--radius); background: var(--midnight-blue); color: #fff; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 24px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: var(--transition); box-shadow: 0 4px 14px rgba(16, 42, 67, 0.2); }
+.btn-epayco:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(16, 42, 67, 0.3); background: #0a1b2d; }
+.btn-nequi-link { width: 100%; padding: 16px; border: 2px solid var(--soft-cyan); border-radius: var(--radius); background: #fff; color: var(--midnight-blue); font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: var(--transition); text-decoration: none; }
+.btn-nequi-link:hover { background: var(--soft-cyan); color: var(--midnight-blue); border-color: var(--midnight-blue); }
+.btn-nequi-link i { color: #da3791; }
+.btn-back { display: inline-flex; align-items: center; gap: 8px; color: var(--steel-gray); text-decoration: none; font-size: 14px; margin-top: 24px; transition: color .2s; font-weight: 500; }
+.btn-back:hover { color: var(--midnight-blue); }
+.secure-badge { display: flex; align-items: center; gap: 12px; padding: 16px; background: #f0fdf4; border-radius: 12px; margin-top: 20px; font-size: 13px; color: #166534; border: 1px solid #bbf7d0; line-height: 1.4; }
+.secure-badge i { font-size: 20px; color: var(--emerald-vital); }
+.payment-separator { display: flex; align-items: center; gap: 16px; margin: 20px 0; color: var(--steel-gray); font-size: 13px; font-weight: 500; }
+.payment-separator::before, .payment-separator::after { content: ''; flex: 1; height: 1px; background: var(--soft-cyan); }
+@media(max-width: 900px) { .checkout-grid { grid-template-columns: 1fr; } .checkout-summary { position: static; } }
 </style>
 </head>
 <body>
 <div class="checkout-page">
 <div class="checkout-container">
 <div class="checkout-header">
-<h1><i class="fas fa-shield-halved" style="color:#38b2ac"></i> Checkout Seguro</h1>
+<h1><i class="fas fa-shield-halved"></i> Checkout Seguro</h1>
 <p>Revisa tu pedido y procede al pago con ePayco</p>
 </div>
 
 <div class="checkout-grid">
 <!-- Productos -->
 <div class="checkout-items">
-<h2><i class="fas fa-shopping-bag" style="color:#667eea"></i> Tu Pedido (<?= count($data['items']) ?> productos)</h2>
+<h2><i class="fas fa-shopping-bag"></i> Tu Pedido (<?= count($data['items']) ?> productos)</h2>
 <?php foreach ($data['items'] as $item): ?>
 <div class="item-row">
 <div class="item-icon"><i class="fas fa-pills"></i></div>
@@ -71,7 +72,7 @@
 
 <!-- Resumen y boton de pago -->
 <div class="checkout-summary">
-<h2><i class="fas fa-receipt" style="color:#ed8936"></i> Resumen</h2>
+<h2><i class="fas fa-receipt"></i> Resumen</h2>
 <div class="summary-row">
 <span>Precio total (IVA incl.)</span>
 <span><?= formatCurrency($data['total']) ?></span>
@@ -81,8 +82,8 @@
 <span><?= formatCurrency($data['subtotal']) ?></span>
 </div>
 <div class="summary-row" style="font-size:12px;color:#a0aec0">
-<span>IVA 19% (incluido)</span>
-<span><?= formatCurrency($data['iva']) ?></span>
+<span>IVA 0% (exento)</span>
+<span><?= formatCurrency(0) ?></span>
 </div>
 <div class="summary-row total">
 <span>Total a Pagar</span>

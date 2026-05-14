@@ -5,7 +5,7 @@
                 <h1 class="h2 mb-1">Mi Carrito</h1>
                 <p class="text-muted">Gestiona tus productos y procede al pago seguro</p>
             </div>
-            <a href="<?= APP_URL ?>?route=home" class="btn btn-link text-decoration-none">
+            <a href="<?= APP_URL ?>?route=customer-dashboard&section=tienda" class="btn btn-link text-decoration-none">
                 <i class="fas fa-arrow-left me-2"></i> Continuar comprando
             </a>
         </div>
@@ -18,7 +18,7 @@
                     </div>
                     <h3>Tu carrito está vacío</h3>
                     <p class="text-muted mb-4">Parece que aún no has añadido ningún producto farmacéutico.</p>
-                    <a href="<?= APP_URL ?>?route=home" class="btn btn-primary px-5 py-3 rounded-pill">
+                    <a href="<?= APP_URL ?>?route=customer-dashboard&section=tienda" class="btn btn-primary px-5 py-3 rounded-pill">
                         Ver Catálogo de Productos
                     </a>
                 </div>

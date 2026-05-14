@@ -49,11 +49,11 @@
                      onmouseover="this.style.boxShadow='0 10px 25px rgba(0,0,0,0.05)';this.style.transform='translateY(-2px)'"
                      onmouseout="this.style.boxShadow='none';this.style.transform='none'">
                     
-                    <div style="position:absolute;top:12px;left:12px;background:<?= $product['category_color'] ?? 'var(--primary-color)' ?>;color:#fff;font-size:11px;font-weight:600;padding:4px 8px;border-radius:6px">
+                    <div style="position:absolute;top:12px;left:12px;background:<?= $product['category_color'] ?? 'var(--primary-color)' ?>;color:#fff;font-size:11px;font-weight:600;padding:4px 8px;border-radius:6px;z-index:10">
                         <?= htmlspecialchars($product['category_name']) ?>
                     </div>
                     
-                    <div style="height:120px;display:flex;align-items:center;justify-content:center;background:#f8fafc;border-radius:8px;margin-bottom:16px;color:<?= $product['category_color'] ?? 'var(--primary-color)' ?>;font-size:48px;opacity:0.8">
+                    <div style="height:120px;display:flex;align-items:center;justify-content:center;background:rgba(248,250,252,0.8);border-radius:8px;margin-bottom:16px;color:<?= $product['category_color'] ?? 'var(--primary-color)' ?>;font-size:48px">
                         <i class="fas fa-pills"></i>
                     </div>
                     

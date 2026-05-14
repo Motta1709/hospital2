@@ -171,11 +171,13 @@ try {
             else $controller->index();
             break;
 
+        /* 
         case 'rbac':
             $controller = new RbacController();
             if (method_exists($controller, $action)) $controller->$action();
             else $controller->index();
             break;
+        */
 
         case 'customer-dashboard':
             $controller = new CustomerDashboardController();

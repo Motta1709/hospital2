@@ -84,11 +84,13 @@ if($exp > 0) echo '<span class="badge">'.$exp.'</span>';
 </a>
 <?php endif; ?>
 
+<?php /*
 <?php if (Auth::hasPermission('manage_rbac')): ?>
 <a href="<?= APP_URL ?>?route=rbac" class="nav-link <?= ($currentRoute ?? '') === 'rbac' ? 'active' : '' ?>">
 <i class="fas fa-shield-halved"></i> Permisos RBAC
 </a>
 <?php endif; ?>
+*/ ?>
 
 <?php if (Auth::hasRole('admin')): ?>
 <a href="<?= APP_URL ?>?route=branches" class="nav-link <?= ($currentRoute ?? '') === 'branches' ? 'active' : '' ?>">

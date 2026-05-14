@@ -65,5 +65,19 @@ class Report {
         ");
         return $stmt->fetch();
     }
+
+    public function getTopSellingProducts($dateFrom, $dateTo, $limit = 10) {
+        $stmt = $this->db->prepare("
+            SELECT p.name, c.name as category_name, SUM(si.quantity) as total_quantity, SUM(si.subtotal) as total_revenue
+            FROM sale_items si
+            JOIN sales s ON si.sale_id = s.id
+            JOIN products p ON si.product_id = p.id
+            LEFT JOIN categories c ON p.category_id = c.id
+            WHERE s.status='completed' AND DATE(s.created_at) BETWEEN ? AND ?
+            GROUP BY p.id ORDER BY total_quantity DESC LIMIT ?
+        ");
+        $stmt->execute([$dateFrom, $dateTo, (int)$limit]);
+        return $stmt->fetchAll();
+    }
 }
 

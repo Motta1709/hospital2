@@ -29,12 +29,12 @@
 <div style="font-size:12px;color:var(--text-muted);margin-top:4px" id="posInvoice"><?= $data['invoiceNumber'] ?></div>
 </div>
 <!-- Client selector -->
-<div style="padding:12px;border-bottom:1px solid rgba(255,255,255,.06)">
-<div class="search-bar" style="max-width:100%">
-<i class="fas fa-user"></i>
-<input type="text" id="clientSearch" placeholder="Buscar cliente (opcional)..." oninput="searchPosClient(this.value)">
+<div style="padding:16px;border-bottom:1px solid var(--soft-cyan)">
+<div class="search-bar" style="max-width:100%;background:var(--surgical-white);border:1px solid var(--soft-cyan)">
+<i class="fas fa-user" style="color:var(--steel-gray)"></i>
+<input type="text" id="clientSearch" placeholder="Buscar cliente (opcional)..." oninput="searchPosClient(this.value)" style="color:var(--midnight-blue)">
 </div>
-<div id="clientResult" style="margin-top:8px;display:none;padding:8px;background:var(--bg-surface);border-radius:8px;font-size:13px"></div>
+<div id="clientResult" style="margin-top:8px;display:none;padding:12px;background:var(--soft-cyan);border-radius:var(--radius-sm);font-size:13px;border:1px solid rgba(16, 42, 67, 0.1);box-shadow:var(--shadow)"></div>
 </div>
 <div class="pos-cart-items" id="cartItems">
 <div class="empty-state"><i class="fas fa-cart-plus"></i><h3>Carrito vacío</h3><p>Agrega productos</p></div>

@@ -11,7 +11,7 @@ class DashboardController {
             'totalProducts' => $productModel->getTotalProducts(),
             'totalClients' => $clientModel->getTotalClients(),
             'stockValue' => $productModel->getTotalStockValue(),
-            'expiringProducts' => $productModel->getExpiringProducts(30),
+            'expiringProducts' => $productModel->getExpiringProducts(ALERT_EXPIRY_INFO),
             'lowStockProducts' => $productModel->getLowStockProducts(),
             'recentSales' => $saleModel->getRecentSales(5),
             'topProducts' => $productModel->getTopProducts(5),

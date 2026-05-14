@@ -23,8 +23,8 @@ class ProductRepository implements ProductRepositoryInterface {
         return $stmt->fetch();
     }
 
-    public function all(?int $branchId = null) {
-        $branchId = $branchId ?? $_SESSION['branch_id'] ?? 1;
+    public function all(array $filters = []) {
+        $branchId = $filters['branch_id'] ?? $_SESSION['branch_id'] ?? 1;
         $stmt = $this->db->prepare("SELECT * FROM products WHERE branch_id = ? AND is_active = 1");
         $stmt->execute([$branchId]);
         return $stmt->fetchAll();

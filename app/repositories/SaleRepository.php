@@ -13,19 +13,58 @@ class SaleRepository implements SaleRepositoryInterface {
     }
 
     public function findById(int $id) {
-        $stmt = $this->db->prepare("SELECT * FROM sales WHERE id = ?");
+        $stmt = $this->db->prepare("
+            SELECT s.*, u.full_name as cashier_name, CONCAT(c.first_name, ' ', c.last_name) as client_name
+            FROM sales s
+            LEFT JOIN users u ON s.user_id = u.id
+            LEFT JOIN clients c ON s.client_id = c.id
+            WHERE s.id = ?
+        ");
         $stmt->execute([$id]);
         return $stmt->fetch();
     }
 
     public function findByInvoice(string $invoiceNumber) {
-        $stmt = $this->db->prepare("SELECT * FROM sales WHERE invoice_number = ?");
+        $stmt = $this->db->prepare("
+            SELECT s.*, u.full_name as cashier_name, CONCAT(c.first_name, ' ', c.last_name) as client_name
+            FROM sales s
+            LEFT JOIN users u ON s.user_id = u.id
+            LEFT JOIN clients c ON s.client_id = c.id
+            WHERE s.invoice_number = ?
+        ");
         $stmt->execute([$invoiceNumber]);
         return $stmt->fetch();
     }
 
-    public function all() {
-        $stmt = $this->db->query("SELECT * FROM sales ORDER BY created_at DESC");
+    public function all(array $filters = []) {
+        $sql = "
+            SELECT s.*, u.full_name as cashier_name, CONCAT(c.first_name, ' ', c.last_name) as client_name
+            FROM sales s
+            LEFT JOIN users u ON s.user_id = u.id
+            LEFT JOIN clients c ON s.client_id = c.id
+            WHERE 1=1
+        ";
+        $params = [];
+
+        if (!empty($filters['date_from'])) {
+            $sql .= " AND s.created_at >= ?";
+            $params[] = $filters['date_from'] . ' 00:00:00';
+        }
+
+        if (!empty($filters['date_to'])) {
+            $sql .= " AND s.created_at <= ?";
+            $params[] = $filters['date_to'] . ' 23:59:59';
+        }
+
+        if (!empty($filters['status'])) {
+            $sql .= " AND s.status = ?";
+            $params[] = $filters['status'];
+        }
+
+        $sql .= " ORDER BY s.created_at DESC";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($params);
         return $stmt->fetchAll();
     }
 
